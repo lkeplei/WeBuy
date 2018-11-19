@@ -1,53 +1,68 @@
 <template>
 	<view class="page">
-		<view>
-			<image src=https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg mode=""></image>
-		</view>
-		<view>
-			You have a free gift to receive.
-		</view>
-		<button type="primary">
-			Get Now
-		</button>
-		<view>
-			You May Also Like
-		</view>
-		
-		<view class="uni-grid-9">
-			<view class="uni-grid-9-item" hover-class="uni-grid-9-item-hover" v-for="(item,index) in list" :key="index" :class="index % 3 === 2 ? 'no-border-right' : ''">
-				<image class="uni-grid-9-image" src="https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg"></image>
-				<text class="uni-grid-9-text" style="margin-top: 20upx;">grid</text>
-				<text class="uni-grid-9-text">1234</text>
-			</view>
-		</view>
+		<block v-for="(template, index) in templateList" :key="index">
+			<swiper v-if="template.type == 1" autoplay="true" indicator-dots="true" circular="true" class="swiper">
+				<swiper-item v-for="(img, key) in template.list" :key="key">
+					<image :src="img.image" class="swiper" />
+				</swiper-item>
+			</swiper>
+			
+			<tem-items v-if="template.type == 2"></tem-items>
+			<tem-grid v-if="template.type == 3"></tem-grid>
+			<tem-one4two v-if="template.type == 4"></tem-one4two>
+			<tem-one4four v-if="template.type == 5"></tem-one4four>
+			<tem-page v-if="template.type == 6"></tem-page>
+		</block>
 	</view>
 </template>
 
 <script>
+	import temGrid from '../../components/template/template-grid.vue'
+	import temItems from '../../components/template/template-items.vue'
+	import temOne4four from '../../components/template/template-one4four.vue'
+	import temOne4two from '../../components/template/template-one4two.vue'
+	import temPage from '../../components/template/template-page.vue'
+	
 	export default {
+		components: {
+			'tem-grid': temGrid,
+			'tem-items': temItems,
+			'tem-one4four': temOne4four,
+			'tem-one4two': temOne4two,
+			'tem-page': temPage
+		},
 		data() {
 			return {
-				list: [
-					{},
-					{},
-					{},
-					{},
-					{},
-					{},
-					{}
+				templateList: [
+					{
+						type: 1,
+						list: [
+							{image: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg'},
+							{image: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg'},
+							{image: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg'}
+						]
+					},
+					{
+						type: 2,
+					},
+					{
+						type: 3,
+					},
+					{
+						type: 4,
+					},
+					{
+						type: 5,
+					},
+					{
+						type: 6,
+					}
 				]
 			};
 		},
 		onLoad() {
-			uni.request({
-				url: 'https://unidemo.dcloud.net.cn/api/news',
-				method: 'GET',
-				data: {},
-				success: res => {
-					console.log(res);
-				},
-				fail: () => {},
-				complete: () => {}
+			this.post('home/template', {}).then(res => {
+				console.log(res);
 			});
 		}
 	}
@@ -55,13 +70,17 @@
 
 <style>
 	.page {
-        padding-top: 10upx;
-		
 		display: flex;
 		flex-direction: column;
+		justify-content: flex-start;
 		align-items: center;
     }
 
+	.swiper {
+		width: 750upx;
+		height: 400upx;
+	}
+	
     page {
         background: #efeff4;
     }
