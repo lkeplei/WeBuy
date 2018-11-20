@@ -53,8 +53,10 @@ function dealwithActionsheet (actionsheet) {
 	if (actionsheet) {
 		if (actionsheet.type == 0) {
 			uni.showToast({
+				duration: 3000,
+				icon: 'none',
 				title: actionsheet.message
-			})
+			});
 		} else if (actionsheet.type == 1) {
 			uni.showModal({
 				title: actionsheet.title,

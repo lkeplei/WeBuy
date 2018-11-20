@@ -6,15 +6,15 @@
     <button type="primary" class="_button data-v-3a9efe95"> Get Now </button>
     <text class="_text data-v-3a9efe95"> You May Also Like </text>
     <view class="_view data-v-3a9efe95 news-grid-9">
-      <view class="_view data-v-3a9efe95 news-grid-9-item" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'QPK-1-'+index}}" data-comkey="{{$k}}" wx:for="{{list}}" wx:for-index="index" wx:for-item="item">
+      <view class="_view data-v-3a9efe95 news-grid-9-item" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'FYr-1-'+index}}" data-comkey="{{$k}}" wx:for="{{list}}" wx:for-index="index" wx:for-item="item">
         <image class="_image data-v-3a9efe95 news-grid-9-image" src="../../static/cart/cartGrid.jpg"></image>
         <text class="_text data-v-3a9efe95 news-grid-9-text"> $ 16.99 </text>
-        <view class="_view data-v-3a9efe95 news-grid-heart" catchtap="handleProxy" data-eventid="{{'EBn-0-'+index}}" data-comkey="{{$k}}">
+        <view class="_view data-v-3a9efe95 news-grid-heart" catchtap="handleProxy" data-eventid="{{'905-0-'+index}}" data-comkey="{{$k}}">
           <image src="../../static/cart/cartDislike.png" class="_image data-v-3a9efe95"></image>
           <text class="_text data-v-3a9efe95">840</text>
         </view>
       </view>
     </view>
-    <template data="{{...$root['0'], ...$root[$kk+'29I-0'],$root}}" is="9015fa1a"></template>
+    <template data="{{...$root['0'], ...$root[$kk+'7Fe-0'],$root}}" is="9015fa1a"></template>
   </view>
 </template>

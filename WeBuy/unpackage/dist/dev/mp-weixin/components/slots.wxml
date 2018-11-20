@@ -1,1 +1,12 @@
 <import src="/components/load-more.vue.wxml" />
+<import src="/components/template/template-items.vue.wxml" />
+<import src="/components/template/template-grid.vue.wxml" />
+<import src="/components/template/template-one4two.vue.wxml" />
+<import src="/components/template/template-one4four.vue.wxml" />
+<import src="/components/template/template-page.vue.wxml" />
+<import src="/components/template/template-banners.vue.wxml" />
+<import src="/components/template/template-items.vue.wxml" />
+<import src="/components/template/template-grid.vue.wxml" />
+<import src="/components/template/template-one4two.vue.wxml" />
+<import src="/components/template/template-one4four.vue.wxml" />
+<import src="/components/template/template-page.vue.wxml" />

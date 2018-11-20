@@ -1,7 +1,7 @@
 
       !(function(){
         var uniAppViewReadyCallback = function(){
-          setCssToHead([],undefined,{path:"./pages/login/login.wxss"})();
+          setCssToHead([[2,1],],undefined,{path:"./pages/login/login.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/login/login.wxml') } }));
         }
         if(window.__uniAppViewReady__){

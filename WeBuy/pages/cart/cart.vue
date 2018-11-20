@@ -141,7 +141,7 @@
 
 	.news-grid-9-text {
 		width: 250upx;
-		line-height: 4upx;
+		line-height: 40upx;
 		height: 40upx;
 		text-align: center;
 		font-size: 30upx;
