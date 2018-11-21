@@ -7,12 +7,12 @@
 <template name="0a751938">
   <view class="_view data-v-0e7ce416 page">
     <block wx:key="index" key="{{index}}" wx:for="{{templateList}}" wx:for-index="index" wx:for-item="template">
-      <template wx:if="{{template.type == 1}}" data="{{...$root['0'], ...$root[$kk+'L1u-0-'+index],$root}}" is="09dbd800"></template>
-      <template wx:if="{{template.type == 2}}" data="{{...$root['0'], ...$root[$kk+'wRa-1-'+index],$root}}" is="7c2384b9"></template>
-      <template wx:if="{{template.type == 3}}" data="{{...$root['0'], ...$root[$kk+'o7a-2-'+index],$root}}" is="e2cfdf46"></template>
-      <template wx:if="{{template.type == 4}}" data="{{...$root['0'], ...$root[$kk+'0Hq-3-'+index],$root}}" is="54cb2ab7"></template>
-      <template wx:if="{{template.type == 5}}" data="{{...$root['0'], ...$root[$kk+'c53-4-'+index],$root}}" is="061b096a"></template>
-      <template wx:if="{{template.type == 6}}" data="{{...$root['0'], ...$root[$kk+'gWH-5-'+index],$root}}" is="a245c9b4"></template>
+      <template wx:if="{{template.type == 1}}" data="{{...$root['0'], ...$root[$kk+'ca6-0-'+index],$root}}" is="09dbd800"></template>
+      <template wx:if="{{template.type == 2}}" data="{{...$root['0'], ...$root[$kk+'s3x-1-'+index],$root}}" is="7c2384b9"></template>
+      <template wx:if="{{template.type == 3}}" data="{{...$root['0'], ...$root[$kk+'mzc-2-'+index],$root}}" is="e2cfdf46"></template>
+      <template wx:if="{{template.type == 4}}" data="{{...$root['0'], ...$root[$kk+'BeC-3-'+index],$root}}" is="54cb2ab7"></template>
+      <template wx:if="{{template.type == 5}}" data="{{...$root['0'], ...$root[$kk+'hfY-4-'+index],$root}}" is="061b096a"></template>
+      <template wx:if="{{template.type == 6}}" data="{{...$root['0'], ...$root[$kk+'m0D-5-'+index],$root}}" is="a245c9b4"></template>
     </block>
   </view>
 </template>

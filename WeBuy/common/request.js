@@ -44,10 +44,27 @@ function getUrl(path) {
 }
 
 function getParams(params) {
-	return params;
-}
+	var sign = ''; 
+	try {
+		const value = uni.getStorageSync(Vue.prototype.staticVar.sign);
+		if (value) {
+			sign = value;
+		}
+	} catch (e) {
+		console.log(e);
+	}
 
-import Vue from 'vue'
+	var auth = {
+		sign: sign,
+		apiVersion: '1'
+	}
+	
+	if (params.apiVersion) {
+		auth.apiVersion = params.apiVersion;
+		delete(params['apiVersion']);
+	}
+	return {auth: auth, request: params};
+}
 
 function dealwithActionsheet (actionsheet) {
 	if (actionsheet) {
@@ -75,7 +92,7 @@ function dealwithActionsheet (actionsheet) {
 						url = actionsheet.buttons[1].action;
 					}
 					
-					new Vue({}).router(url, () => {
+					Vue.prototype.router(url, () => {
 						
 					})
 				}

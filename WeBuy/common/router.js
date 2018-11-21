@@ -22,8 +22,6 @@ export default {
 }
 
 function getDispatchUrl(url) {
-	console.log(routerMap[url.split("?")[0]]);
-	
 	var array = url.split("?");
 	var path = routerMap[array[0]];
 	
