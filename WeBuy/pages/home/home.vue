@@ -1,5 +1,14 @@
 <template>
 	<view class="page">
+		<view class="nav">
+			<view class="nav-bar">
+				<view class="input-view">
+					<image src="../../static/search.png" mode=""></image>
+					<input confirm-type="search" @confirm="confirm" class="input" type="text" placeholder="输入搜索关键词" />
+				</view>
+			</view>
+		</view>
+		
 		<block v-for="(template, index) in templateList" :key="index">
 			<tem-banners v-if="template.type == 1" :list="template.list"></tem-banners>
 			<tem-items v-if="template.type == 2" :template="template"></tem-items>
@@ -30,6 +39,7 @@
 		},
 		data() {
 			return {
+				city: '北京',
 				templateList: [
 					{
 						type: 1,
@@ -122,11 +132,33 @@
 			this.post('home/template', {}).then(res => {
 				console.log(res);
 			});
+		},
+		methods: {
+			search() {
+				uni.showToast({
+					title: '搜索'
+				})
+			},
+			showCity() {
+				uni.showToast({
+					title: '选择城市'
+				})
+			},
+			scan() {
+				uni.showToast({
+					title: '扫码'
+				})
+			},
+			confirm() {
+				uni.showToast({
+					title: '搜索'
+				})
+			}
 		}
 	}
 </script>
 
-<style>
+<style scoped>
 	.page {
 		display: flex;
 		flex-direction: column;
@@ -137,4 +169,45 @@
     page {
         background: #efeff4;
     }
+	
+	/* nav */
+	.nav {
+		display: flex;
+		flex-direction: column;
+		position: fixed;
+		z-index: 99;
+		height: 64px;
+	}
+	
+	.nav-bar {
+		margin-top: 20px;
+		display: flex;
+		flex-direction: row;
+		height: 44px;
+		justify-content: flex-start;
+	}
+	
+	.input-view {
+		width: 500upx;
+		display: flex;
+		flex-direction: row;
+		height: 30px;
+		border-radius: 15px;
+		padding: 0 10px;
+		border: 2upx solid;
+		border-color: #eee;
+		margin-top: 6px;
+	}
+	
+	.input-view image {
+		width: 24px;
+		height: 24px;
+		margin-top: 3px;
+	}
+	
+	.input {
+		height: 30px;
+		padding: 0 5px;
+	}
+	
 </style>
