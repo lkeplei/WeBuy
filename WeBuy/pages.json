@@ -26,15 +26,15 @@
 			"path": "pages/account/account",
 			"style": {
                 "app-plus": {
-                    "bounce": "none", //关闭窗口回弹效果
                     "titleNView": {
                         "type": "transparent",//透明渐变导航栏
-                        "buttons": [ //原生标题栏按钮配置,
-                        	{
-                        		"float": "right",
-                        		"type": "share"	
-                        	}
-                        ]
+						"backgroundColor":"#D24C30",
+						"titleText":"My Account",
+						"buttons" : [
+							{
+								"type" : "favorite"
+							}
+						]
                     }
                 }
 			}

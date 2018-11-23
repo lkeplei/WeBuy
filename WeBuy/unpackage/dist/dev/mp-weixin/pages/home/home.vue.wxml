@@ -5,22 +5,14 @@
 <import src="/components/template/template-one4four.vue.wxml" />
 <import src="/components/template/template-page.vue.wxml" />
 <template name="0a751938">
-  <view class="_view data-v-0e7ce416 page">
-    <view class="_view data-v-0e7ce416 nav">
-      <view class="_view data-v-0e7ce416 nav-bar">
-        <view class="_view data-v-0e7ce416 input-view">
-          <image src="../../static/search.png" mode class="_image data-v-0e7ce416"></image>
-          <input confirm-type="search" bindconfirm="handleProxy" class="_input data-v-0e7ce416 input" type="text" placeholder="输入搜索关键词" data-eventid="{{'mwm-0'}}" data-comkey="{{$k}}" />
-        </view>
-      </view>
-    </view>
+  <view class="_view data-v-0e7ce416 page" bindtouchmove="handleProxy" bindtouchstart="handleProxy" data-eventid="{{'r5c-0'}}" data-comkey="{{$k}}">
     <block wx:key="index" key="{{index}}" wx:for="{{templateList}}" wx:for-index="index" wx:for-item="template">
-      <template wx:if="{{template.type == 1}}" data="{{...$root['0'], ...$root[$kk+'oa7-0-'+index],$root}}" is="09dbd800"></template>
-      <template wx:if="{{template.type == 2}}" data="{{...$root['0'], ...$root[$kk+'3Uv-1-'+index],$root}}" is="7c2384b9"></template>
-      <template wx:if="{{template.type == 3}}" data="{{...$root['0'], ...$root[$kk+'Jxy-2-'+index],$root}}" is="e2cfdf46"></template>
-      <template wx:if="{{template.type == 4}}" data="{{...$root['0'], ...$root[$kk+'gnP-3-'+index],$root}}" is="54cb2ab7"></template>
-      <template wx:if="{{template.type == 5}}" data="{{...$root['0'], ...$root[$kk+'cAY-4-'+index],$root}}" is="061b096a"></template>
-      <template wx:if="{{template.type == 6}}" data="{{...$root['0'], ...$root[$kk+'plJ-5-'+index],$root}}" is="a245c9b4"></template>
+      <template wx:if="{{template.type == 1}}" data="{{...$root['0'], ...$root[$kk+'Mro-0-'+index],$root}}" is="09dbd800"></template>
+      <template wx:if="{{template.type == 2}}" data="{{...$root['0'], ...$root[$kk+'eMc-1-'+index],$root}}" is="7c2384b9"></template>
+      <template wx:if="{{template.type == 3}}" data="{{...$root['0'], ...$root[$kk+'CTy-2-'+index],$root}}" is="e2cfdf46"></template>
+      <template wx:if="{{template.type == 4}}" data="{{...$root['0'], ...$root[$kk+'gYa-3-'+index],$root}}" is="54cb2ab7"></template>
+      <template wx:if="{{template.type == 5}}" data="{{...$root['0'], ...$root[$kk+'qcR-4-'+index],$root}}" is="061b096a"></template>
+      <template wx:if="{{template.type == 6}}" data="{{...$root['0'], ...$root[$kk+'jhU-5-'+index],$root}}" is="a245c9b4"></template>
     </block>
   </view>
 </template>

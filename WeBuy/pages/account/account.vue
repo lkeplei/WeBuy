@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="page">
 		
 	</view>
 </template>
@@ -19,6 +19,11 @@
 	}
 </script>
 
-<style>
-
+<style scoped>
+	.page {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+    }
 </style>
