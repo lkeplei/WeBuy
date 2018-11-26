@@ -1,7 +1,7 @@
-<template name="09dbd800">
-  <swiper autoplay="true" indicator-dots="true" circular="true" class="_swiper data-v-cd6e23e2 swiper-banners">
-    <swiper-item wx:key="key" key="{{key}}" bindtap="handleProxy" data-eventid="{{'r6U-0-'+key}}" data-comkey="{{$k}}" wx:for="{{list}}" wx:for-index="key" wx:for-item="item" class="_swiper-item data-v-cd6e23e2">
-      <image src="{{item.image}}" class="_image data-v-cd6e23e2 swiper-banners"></image>
+<template name="53b36e52">
+  <swiper autoplay="true" indicator-dots="true" circular="true" class="_swiper data-v-37428266 swiper-banners">
+    <swiper-item wx:key="key" key="{{key}}" bindtap="handleProxy" data-eventid="{{'w7f-0-'+key}}" data-comkey="{{$k}}" wx:for="{{list}}" wx:for-index="key" wx:for-item="item" class="_swiper-item data-v-37428266">
+      <image src="{{item.image}}" class="_image data-v-37428266 swiper-banners"></image>
     </swiper-item>
   </swiper>
 </template>

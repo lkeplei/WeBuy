@@ -1,9 +1,9 @@
-<template name="54cb2ab7">
-  <view class="_view data-v-19fbf674 container-two">
-    <image class="_image data-v-19fbf674 main-two" src="{{template.main.image}}" bindtap="handleProxy" data-eventid="{{'XMy-0'}}" data-comkey="{{$k}}"></image>
-    <view class="_view data-v-19fbf674 items-two">
-      <image src="{{template.top.image}}" bindtap="handleProxy" data-eventid="{{'veP-1'}}" data-comkey="{{$k}}" class="_image data-v-19fbf674"></image>
-      <image src="{{template.bottom.image}}" bindtap="handleProxy" data-eventid="{{'ZtN-2'}}" data-comkey="{{$k}}" class="_image data-v-19fbf674"></image>
+<template name="2fdf5f8e">
+  <view class="_view data-v-de08cdc6 container-two">
+    <image class="_image data-v-de08cdc6 main-two" src="{{template.main.image}}" bindtap="handleProxy" data-eventid="{{'Zgh-0'}}" data-comkey="{{$k}}"></image>
+    <view class="_view data-v-de08cdc6 items-two">
+      <image src="{{template.top.image}}" bindtap="handleProxy" data-eventid="{{'JbX-1'}}" data-comkey="{{$k}}" class="_image data-v-de08cdc6"></image>
+      <image src="{{template.bottom.image}}" bindtap="handleProxy" data-eventid="{{'py4-2'}}" data-comkey="{{$k}}" class="_image data-v-de08cdc6"></image>
     </view>
   </view>
 </template>

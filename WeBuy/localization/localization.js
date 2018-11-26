@@ -18,7 +18,8 @@ export default {
 					value = tradiChinese[key];
 					break;				
 				default:
-					value = english[key];
+					// value = english[key];
+					value = simpChinese[key];
 					break;
 			}
 			

@@ -1,13 +1,13 @@
-<template name="6f24cb58">
-  <view class="_view data-v-42f6f4ae page">
-    <text style="font-size: 40rpx;" class="_text data-v-42f6f4ae">邮箱密码登录</text>
-    <view class="_view data-v-42f6f4ae">
-      <input placeholder="{{placeholderMail}}" focus class="_input data-v-42f6f4ae" />
-      <view class="_view data-v-42f6f4ae">
-        <input class="_input data-v-42f6f4ae uni-input" placeholder="{{placeholderPwd}}" password="{{showPassword}}" />
-        <view class="_view data-v-42f6f4ae uni-icon uni-icon-eye {{[!showPassword ? 'uni-active' : '']}}" bindtap="handleProxy" data-eventid="{{'VeE-0'}}" data-comkey="{{$k}}"></view>
+<template name="7f65cfe1">
+  <view class="_view data-v-47cd4a9c page">
+    <text style="font-size: 40rpx;" class="_text data-v-47cd4a9c">邮箱密码登录</text>
+    <view class="_view data-v-47cd4a9c">
+      <input placeholder="{{placeholderMail}}" focus class="_input data-v-47cd4a9c" />
+      <view class="_view data-v-47cd4a9c">
+        <input class="_input data-v-47cd4a9c uni-input" placeholder="{{placeholderPwd}}" password="{{showPassword}}" />
+        <view class="_view data-v-47cd4a9c uni-icon uni-icon-eye {{[!showPassword ? 'uni-active' : '']}}" bindtap="handleProxy" data-eventid="{{'LXF-0'}}" data-comkey="{{$k}}"></view>
       </view>
     </view>
-    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="handleProxy" data-eventid="{{'ZrG-1'}}" data-comkey="{{$k}}" class="_button data-v-42f6f4ae"></button>
+    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="handleProxy" data-eventid="{{'jVS-1'}}" data-comkey="{{$k}}" class="_button data-v-47cd4a9c"></button>
   </view>
 </template>

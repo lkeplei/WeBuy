@@ -1,6 +1,6 @@
 @import "../../common/vendor.wxss";
 
-.page.data-v-0e7ce416 {
+.page.data-v-832bdd84 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -15,10 +15,10 @@
   -webkit-align-items: center;
   align-items: center;
 }
-page.data-v-0e7ce416 {
+page.data-v-832bdd84 {
   background: #efeff4;
 }
-.nav.data-v-0e7ce416 {
+.nav.data-v-832bdd84 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -30,7 +30,7 @@ page.data-v-0e7ce416 {
   z-index: 99;
   height: 64px;
 }
-.nav-bar.data-v-0e7ce416 {
+.nav-bar.data-v-832bdd84 {
   margin-top: 20px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -44,7 +44,7 @@ page.data-v-0e7ce416 {
   -webkit-justify-content: flex-start;
   justify-content: flex-start;
 }
-.input-view.data-v-0e7ce416 {
+.input-view.data-v-832bdd84 {
   width: 500rpx;
   display: -webkit-box;
   display: -webkit-flex;
@@ -60,12 +60,12 @@ page.data-v-0e7ce416 {
   border-color: #eee;
   margin-top: 6px;
 }
-.input-view image.data-v-0e7ce416 {
+.input-view image.data-v-832bdd84 {
   width: 24px;
   height: 24px;
   margin-top: 3px;
 }
-.input.data-v-0e7ce416 {
+.input.data-v-832bdd84 {
   height: 30px;
   padding: 0 5px;
 }
