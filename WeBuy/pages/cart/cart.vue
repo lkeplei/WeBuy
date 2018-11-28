@@ -58,6 +58,11 @@
 				fail: () => {},
 				complete: () => {}
 			});
+			
+			// 设置导航栏标题
+			uni.setNavigationBarTitle({
+				title: this.local('navTitleCart')
+			});
 		},
 		onPullDownRefresh() {
 			uni.showToast({

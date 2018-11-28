@@ -15,7 +15,6 @@
 				"app-plus": {
 					"titleNView": {
 						"backgroundColor":"#D24C30",
-						"titleColor": "#FFFFFF",
 						"titleText":"Cart",
 						"titleOverflow":"ellipsis"
 					}
@@ -29,6 +28,7 @@
                     "bounce": "none", //关闭窗口回弹效果
                     "titleNView": {
                         "type": "transparent",//透明渐变导航栏
+						"titleText":"My Account",
                         "buttons": [ //原生标题栏按钮配置,
                         	{
                         		"float": "right",
@@ -56,7 +56,7 @@
 			"path": "pages/login/login",
 			"style": {
 				"app-plus": {
-					"titleNView": false //禁用原生导航栏
+					// "titleNView": false //禁用原生导航栏
 				}
 			}
 		},
@@ -65,8 +65,6 @@
 			"style": {
 				"app-plus": {
 					"titleNView": {
-						"backgroundColor":"#D24C30",
-						"titleColor": "#FFFFFF",
 						"titleText":"My Order",
 						"titleOverflow":"ellipsis"
 					}
@@ -77,19 +75,22 @@
 			"path": "pages/account/my-info",
 			"style": {
 				"app-plus": {
-					"titleNView": {
-						"backgroundColor":"#D24C30",
-						"titleColor": "#FFFFFF",
-						"titleText":"My Info",
-						"titleOverflow":"ellipsis"
-					}
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/account/change-name",
+			"style": {
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
 				}
 			}
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarTextStyle": "white",
+		"navigationBarBackgroundColor": "#D24C30",
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar" : {
@@ -124,7 +125,7 @@
 			{
 				"name": "My Info", //模式名称
 				"path": "pages/account/my-info", //启动页面，必选
-				"query": "" //启动参数，在页面的onLoad函数里面得到
+				"query": "userName=my name" //启动参数，在页面的onLoad函数里面得到
 			}
 		]
 	}

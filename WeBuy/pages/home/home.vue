@@ -1,13 +1,17 @@
 <template>
-	<view class="page">
+	<view class="page" @touchmove="touchMove" @touchstart="touchStart">
+		<!-- #ifdef APP-PLUS -->
 		<view class="nav">
-			<view class="nav-bar">
+			<view class="nav-bar" :style="{'margin-top': statusHeight + 'px'}">
+				<image src="../../static/scan.png"></image>
 				<view class="input-view">
-					<image src="../../static/search.png" mode=""></image>
-					<input confirm-type="search" @confirm="confirm" class="input" type="text" placeholder="输入搜索关键词" />
+					<image src="../../static/search.png"></image>
+					<input confirm-type="search" class="input" type="text" placeholder="输入搜索关键词" />
 				</view>
+				<image src="../../static/info.png"></image>
 			</view>
 		</view>
+		<!-- #endif -->
 		
 		<block v-for="(template, index) in templateList" :key="index">
 			<tem-banners v-if="template.type == 1" :list="template.list"></tem-banners>
@@ -39,7 +43,8 @@
 		},
 		data() {
 			return {
-				city: '北京',
+				statusHeight: 20,
+				currentY: 0,
 				templateList: [
 					{
 						type: 1,
@@ -132,27 +137,18 @@
 			this.post('home/template', {}).then(res => {
 				console.log(res);
 			});
+			
+			this.statusHeight = uni.getSystemInfoSync().statusBarHeight;
 		},
 		methods: {
-			search() {
-				uni.showToast({
-					title: '搜索'
-				})
+			touchStart: function(e) {
+				this.currentY = e.clientY;
 			},
-			showCity() {
-				uni.showToast({
-					title: '选择城市'
-				})
-			},
-			scan() {
-				uni.showToast({
-					title: '扫码'
-				})
-			},
-			confirm() {
-				uni.showToast({
-					title: '搜索'
-				})
+			touchMove: function(e) {
+				var offsetY = e.clientY - this.currentY;
+				this.currentY = e.clientY;
+				
+				// this.statusHeight += offsetY;
 			}
 		}
 	}
@@ -177,14 +173,20 @@
 		position: fixed;
 		z-index: 99;
 		height: 64px;
+		width: 750upx;
 	}
 	
 	.nav-bar {
-		margin-top: 20px;
 		display: flex;
 		flex-direction: row;
 		height: 44px;
-		justify-content: flex-start;
+		justify-content: space-around;
+	}
+	
+	.nav-bar image {
+		width: 26px;
+		height: 26px;
+		margin-top: 8px;
 	}
 	
 	.input-view {

@@ -1,13 +1,25 @@
+<import src="/components/mpvue-picker/mpvuePicker.vue.wxml" />
 <template name="e10e762a">
-  <view class="_view data-v-024f0188">
-    <view class="_view data-v-024f0188 uni-list-cell" hover-class="uni-list-cell-hover">
-      <view class="_view data-v-024f0188 uni-list-cell-navigate uni-navigate-right uni-navigate-badge"> Item1 </view>
+  <view class="_view data-v-024f0188 page">
+    <view class="_view data-v-024f0188 user-cell" hover-class="user-cell-hover" bindtap="handleProxy" data-eventid="{{'4s5-0'}}" data-comkey="{{$k}}">
+      <view class="_view data-v-024f0188 uni-list-cell-navigate uni-navigate-right user-avatar"> {{avatar}}
+        <image src="../../static/userDefault.png" class="_image data-v-024f0188"></image>
+      </view>
     </view>
-    <view class="_view data-v-024f0188 uni-list-cell" hover-class="uni-list-cell-hover">
-      <view class="_view data-v-024f0188 uni-list-cell-navigate uni-navigate-right uni-navigate-badge" style="height: 200rpx;"> Item2 </view>
+    <view class="_view data-v-024f0188 user-cell" hover-class="user-cell-hover" bindtap="handleProxy" data-eventid="{{'eBt-1'}}" data-comkey="{{$k}}">
+      <view class="_view data-v-024f0188 uni-list-cell-navigate uni-navigate-right user-right"> {{name}}
+        <text class="_text data-v-024f0188">{{userName}}</text>
+      </view>
     </view>
-    <view class="_view data-v-024f0188 uni-list-cell" hover-class="uni-list-cell-hover">
-      <view class="_view data-v-024f0188 uni-list-cell-navigate uni-navigate-right uni-navigate-badge"> Item3 </view>
+    <view class="_view data-v-024f0188 func">
+      <block wx:key="index" key="{{index}}" wx:for="{{funcList}}" wx:for-index="index" wx:for-item="item">
+        <view class="_view data-v-024f0188 user-cell" hover-class="user-cell-hover" bindtap="handleProxy" data-eventid="{{'YC2-2-'+index}}" data-comkey="{{$k}}">
+          <view class="_view data-v-024f0188 uni-list-cell-navigate uni-navigate-right user-right"> {{item.text}}
+            <text class="_text data-v-024f0188">{{item.value}}</text>
+          </view>
+        </view>
+      </block>
     </view>
+    <template ref="mpvuePicker" bindonConfirm="handleProxy" data-eventid="{{'hnq-3'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'2jf-0'],$root}}" is="63c61dfc"></template>
   </view>
 </template>

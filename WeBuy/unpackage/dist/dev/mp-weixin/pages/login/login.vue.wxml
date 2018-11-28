@@ -5,9 +5,9 @@
       <input placeholder="{{placeholderMail}}" focus class="_input data-v-47cd4a9c" />
       <view class="_view data-v-47cd4a9c">
         <input class="_input data-v-47cd4a9c uni-input" placeholder="{{placeholderPwd}}" password="{{showPassword}}" />
-        <view class="_view data-v-47cd4a9c uni-icon uni-icon-eye {{[!showPassword ? 'uni-active' : '']}}" bindtap="handleProxy" data-eventid="{{'LXF-0'}}" data-comkey="{{$k}}"></view>
+        <view class="_view data-v-47cd4a9c uni-icon uni-icon-eye {{[!showPassword ? 'uni-active' : '']}}" bindtap="handleProxy" data-eventid="{{'udS-0'}}" data-comkey="{{$k}}"></view>
       </view>
     </view>
-    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="handleProxy" data-eventid="{{'jVS-1'}}" data-comkey="{{$k}}" class="_button data-v-47cd4a9c"></button>
+    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="handleProxy" data-eventid="{{'JZP-1'}}" data-comkey="{{$k}}" class="_button data-v-47cd4a9c"></button>
   </view>
 </template>

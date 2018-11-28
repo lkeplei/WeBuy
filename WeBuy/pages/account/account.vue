@@ -1,7 +1,7 @@
 <template>
 	<view class="page">
-		<view class="header">
-			<view class="user" @click="userClick">
+		<view class="header" :style="{'height': headerHeight + 'px'}">
+			<view class="user" @click="userClick" :style="{'margin-top': statusHeight + 44 + 'px'}">
 				<image src="../../static/userDefault.png" @click.stop="avatarClick"></image>
 				<text>{{accountName}}</text>
 			</view>
@@ -41,6 +41,10 @@
 				</view>
 			</block>
 		</view>
+		
+		<view style="height: 1000upx;">
+			
+		</view>
 	</view>
 </template>
 
@@ -48,6 +52,7 @@
 	export default {
 		data() {
 			return {
+				statusHeight: 20,
 				accountAllOrder: this.local('accountAllOrder'),
 				accountName: this.local('accountUnlogin'),
 				funcList: [
@@ -74,21 +79,39 @@
 				]
 			};
 		},
+		onLoad() {
+			// 设置导航栏标题
+			uni.setNavigationBarTitle({
+				title: this.local('navTitleAccount')
+			});
+			
+			this.statusHeight = uni.getSystemInfoSync().statusBarHeight;
+			
+			// 获取用户信息
+			this.post('user/info', {}).then(res => {
+				this.accountName = res.name;
+			});
+		},
 		onNavigationBarButtonTap(index) {
 			uni.navigateTo({
 				url: './setting'
 			});
+		},
+		computed: {
+			headerHeight() {
+				return this.statusHeight + 204;
+			}
 		},
 		methods: {
 			userClick: function() {
 				var sign = uni.getStorageSync(this.staticVar.sign);
 				if (typeof sign == 'string' && sign.length > 0) {
 					uni.navigateTo({
-						url: '/pages/account/my-info'
+						url: '/pages/account/my-info?userName=' + this.accountName
 					});
 				} else {
 					uni.navigateTo({
-						url: '/pages/login/login',
+						url: '/pages/login/login'
 					});
 				}
 			},
@@ -121,7 +144,6 @@
 	.header {
 		display: flex;
 		flex-direction: column;
-		height: 320upx;
 		background-color: #DC143C;
 		color: #FFFFFF;
 	}

@@ -1,0 +1,1 @@
+<import src="/pages/account/change-name.vue.wxml" /><template is="54d8b0c4" data="{{ ...$root['0'], $root }}"/>

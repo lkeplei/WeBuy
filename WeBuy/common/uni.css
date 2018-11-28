@@ -340,7 +340,7 @@
 	position: absolute;
 	right: 0;
 	bottom: 0;
-	left: 30upx;
+	left: 0upx;
 	height: 1upx;
 	content: '';
 	-webkit-transform: scaleY(.5);

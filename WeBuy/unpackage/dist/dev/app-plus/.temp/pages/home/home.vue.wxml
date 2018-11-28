@@ -1,0 +1,28 @@
+<import src="/components/template/template-banners.vue.wxml" />
+<import src="/components/template/template-items.vue.wxml" />
+<import src="/components/template/template-grid.vue.wxml" />
+<import src="/components/template/template-one4two.vue.wxml" />
+<import src="/components/template/template-one4four.vue.wxml" />
+<import src="/components/template/template-page.vue.wxml" />
+<template name="713ff3a6">
+  <view class="_view data-v-832bdd84 page" bindtouchmove="handleProxy" bindtouchstart="handleProxy" data-eventid="{{'J0j-0'}}" data-comkey="{{$k}}">
+    <view class="_view data-v-832bdd84 nav">
+      <view class="_view data-v-832bdd84 nav-bar" style=" {{('margin-top:' + (statusHeight + 'px') + ';')}}">
+        <image src="../../static/scan.png" class="_image data-v-832bdd84"></image>
+        <view class="_view data-v-832bdd84 input-view">
+          <image src="../../static/search.png" class="_image data-v-832bdd84"></image>
+          <input confirm-type="search" class="_input data-v-832bdd84 input" type="text" placeholder="输入搜索关键词" />
+        </view>
+        <image src="../../static/info.png" class="_image data-v-832bdd84"></image>
+      </view>
+    </view>
+    <block wx:key="index" key="{{index}}" wx:for="{{templateList}}" wx:for-index="index" wx:for-item="template">
+      <template wx:if="{{template.type == 1}}" data="{{...$root['0'], ...$root[$kk+'iCR-0-'+index],$root}}" is="53b36e52"></template>
+      <template wx:if="{{template.type == 2}}" data="{{...$root['0'], ...$root[$kk+'VyL-1-'+index],$root}}" is="4f9d0350"></template>
+      <template wx:if="{{template.type == 3}}" data="{{...$root['0'], ...$root[$kk+'zLg-2-'+index],$root}}" is="618e3a34"></template>
+      <template wx:if="{{template.type == 4}}" data="{{...$root['0'], ...$root[$kk+'g6Y-3-'+index],$root}}" is="2fdf5f8e"></template>
+      <template wx:if="{{template.type == 5}}" data="{{...$root['0'], ...$root[$kk+'II3-4-'+index],$root}}" is="f7363d58"></template>
+      <template wx:if="{{template.type == 6}}" data="{{...$root['0'], ...$root[$kk+'6Qq-5-'+index],$root}}" is="210424a2"></template>
+    </block>
+  </view>
+</template>

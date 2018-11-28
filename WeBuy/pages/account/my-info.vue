@@ -1,33 +1,195 @@
 <template>
-	<view>
-		<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-			<view class="uni-list-cell-navigate uni-navigate-right uni-navigate-badge">
-				Item1
+	<view class="page">
+		<view class="user-cell" hover-class="user-cell-hover" @click="uploadAvatar">
+			<view class="uni-list-cell-navigate uni-navigate-right user-avatar">
+				{{avatar}}
+				<image src="../../static/userDefault.png"></image>
 			</view>
 		</view>
-		<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-			<view class="uni-list-cell-navigate uni-navigate-right uni-navigate-badge" style="height: 200upx;">
-				Item2
+		<view class="user-cell" hover-class="user-cell-hover" @click="changeName">
+			<view class="uni-list-cell-navigate uni-navigate-right user-right">
+				{{name}}
+				<text>{{userName}}</text>
 			</view>
 		</view>
-		<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-			<view class="uni-list-cell-navigate uni-navigate-right uni-navigate-badge">
-				Item3
-			</view>
+		
+		<view class="func">
+			<block v-for="(item, index) in funcList" :key="index">
+				<view class="user-cell" hover-class="user-cell-hover" @click="clickFunc(item)">
+					<view class="uni-list-cell-navigate uni-navigate-right user-right">
+						{{item.text}}
+						<text>{{item.value}}</text>
+					</view>
+				</view>
+			</block>
 		</view>
+		
+		<mpvue-picker :themeColor="themeColor" ref="mpvuePicker" :mode="mode" :deepLength="deepLength" 
+					:pickerValueArray="pickerValueArray" :pickerValueDefault="pickerValueDefault"
+					@onConfirm="onConfirm">
+		</mpvue-picker>
+		
 	</view>
 </template>
 
 <script>
+	import mpvuePicker from '../../components/mpvue-picker/mpvuePicker.vue';
+	
 	export default {
+		components: {
+			mpvuePicker
+		},
 		data() {
 			return {
-				
+				userName: 'test',
+				avatar: this.local('myInfoAvatar'),
+				name: this.local('myInfoName'),
+				funcList: [
+					{text: this.local('myInfoBirthday'), type: 'birthday', value: '2018-01-01'},
+					{text: this.local('myInfoGender'), type: 'gender', value: 'male'}
+				],
+				// 多级选择
+				themeColor: '#007AFF',
+				mode: '',
+				deepLength: 1,
+				pickerValueDefault: [0],
+				pickerValueArray: [],
+				currentItem: {}
 			};
+		},
+		onLoad(prop) {
+			// 设置导航栏标题
+			uni.setNavigationBarTitle({
+				title: this.local('navTitleMyInfo')
+			});
+			
+			this.userName = prop.userName;
+		},
+		methods: {
+			uploadAvatar: function () {
+				uni.showToast({
+					title: 'upload avatar',
+					icon: 'none'
+				});
+			},
+			changeName: function () {
+				uni.navigateTo({
+					url: '/pages/account/change-name?userName=' + this.userName
+				});
+			},
+			clickFunc: function (item) {
+				if (item.type === 'birthday') {
+					this.pickerValueArray = [];
+					for (var year = 1970; year <= 2016; year++) {
+						var y = {value: '' + year, label: '' + year, children: []};
+						for (var month = 1; month <= 12; month++) {
+							var m = {value: '' + year + month, label: (month < 10 ? '0' : '') + month, children: []};
+							
+							var days = 31;
+							if (month == 4 || month == 6 || month == 9 || month == 11) {
+								days = 30
+							} else if (month == 2) {
+								days = year % 4 == 0 ? 29 : 28;
+							}
+							
+							for (var day = 1; day <= days; day++) {
+								m.children.push({value: '' + year + month + day, label: (day < 10 ? '0' : '') + day});
+							}
+							y.children.push(m);
+						}
+						this.pickerValueArray.push(y);
+					}
+					
+					this.mode = 'multiLinkageSelector';
+					this.deepLength = 3;
+					this.pickerValueDefault = [0, 0, 1];
+					this.$refs.mpvuePicker.show();
+				} else if (item.type === 'gender') {
+					this.pickerValueArray = [
+						{label: this.local('publicMale'), value: 'male'},
+						{label: this.local('publicFemale'), value: 'female'}
+					];
+					this.mode = 'selector';
+					this.deepLength = 1;
+					this.pickerValueDefault = [0];
+					this.$refs.mpvuePicker.show();
+				}
+				
+				this.currentItem = item;
+			},
+			onConfirm: function (e) {
+				this.currentItem.value = e.label;
+				
+				if (this.currentItem.type === 'birthday') {
+					this.post('user/changeBirthday', {birthday: e.label}).then(res => {
+						console.log(res);
+					});
+				} else if (this.currentItem.type === 'gender') {
+					this.post('user/changeGender', {gender: e.value}).then(res => {
+						console.log(res);
+					});
+				}
+			}
+		},
+		onBackPress() {
+			if (this.$refs.mpvuePicker.showPicker) {
+				this.$refs.mpvuePicker.pickerCancel();
+				return true;
+			}
+		},
+		onUnload() {
+			if (this.$refs.mpvuePicker.showPicker) {
+				this.$refs.mpvuePicker.pickerCancel();
+			}
 		}
 	}
 </script>
 
-<style>
-
+<style scoped>
+	.page {
+		display: flex;
+		flex-direction: column;
+		background-color: #F8F8F8;
+	}
+	
+	.user-cell {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		background-color: #FFFFFF;
+		border-bottom: 1upx solid;
+		border-color: #EEEEEE;
+	}
+	
+	.user-cell-hover {
+		background-color: #EEEEEE;
+	}
+	
+	.user-avatar {
+		height: 70px;
+		justify-content: space-between;
+	}
+	
+	.user-right {
+		justify-content: space-between;
+	}
+	
+	.user-right text {
+		margin-right: 10px;
+		color: #999999;
+	}
+	
+	.user-avatar image {
+		width: 50px;
+		height: 50px;
+		margin: 10px;
+	}
+	
+	.func {
+		display: flex;
+		flex-direction: column;
+		margin-top: 20px;
+	}
 </style>
