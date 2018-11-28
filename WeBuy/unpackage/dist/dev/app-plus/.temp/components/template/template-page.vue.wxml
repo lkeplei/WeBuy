@@ -6,11 +6,11 @@
       <text class="_text data-v-1ae89300">{{template.title}}</text>
     </view>
     <view class="_view data-v-1ae89300 page-list">
-      <view class="_view data-v-1ae89300 page-list-item" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'dh3-0-'+index}}" data-comkey="{{$k}}" wx:for="{{template.list}}" wx:for-index="index" wx:for-item="item">
+      <view class="_view data-v-1ae89300 page-list-item" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'dT2-0-'+index}}" data-comkey="{{$k}}" wx:for="{{template.list}}" wx:for-index="index" wx:for-item="item">
         <image class="_image data-v-1ae89300 page-list-image" src="{{item.image}}"></image>
         <text class="_text data-v-1ae89300 page-list-text"> {{item.title}} </text>
       </view>
     </view>
-    <template wx:if="{{template.haveMore}}" data="{{...$root['0'], ...$root[$kk+'c1a-0'],$root}}" is="3623c5ca"></template>
+    <template wx:if="{{template.haveMore}}" data="{{...$root['0'], ...$root[$kk+'hDt-0'],$root}}" is="3623c5ca"></template>
   </view>
 </template>

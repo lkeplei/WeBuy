@@ -25,7 +25,7 @@
 				logoutText: this.local('publicLogout'),
 				funcList: [
 					[
-						{text: this.local('settingMyInfo'), action: 'birthday', value: ''},
+						{text: this.local('settingMyInfo'), action: 'wb://user/info', value: ''},
 						{text: this.local('settingAddress'), action: 'gender', value: ''}
 					],
 					[
@@ -53,10 +53,6 @@
 		},
 		methods: {
 			clickFunc: function (item) {
-				uni.showToast({
-					title: item.action
-				});
-				
 				this.router(item.action, () => {
 
 				});

@@ -5,7 +5,7 @@
 <import src="/components/template/template-one4four.vue.wxml" />
 <import src="/components/template/template-page.vue.wxml" />
 <template name="713ff3a6">
-  <view class="_view data-v-832bdd84 container" bindtouchmove="handleProxy" bindtouchstart="handleProxy" data-eventid="{{'L80-0'}}" data-comkey="{{$k}}">
+  <view class="_view data-v-832bdd84 container" bindtouchmove="handleProxy" bindtouchstart="handleProxy" data-eventid="{{'xEG-0'}}" data-comkey="{{$k}}">
     <view class="_view data-v-832bdd84 nav">
       <view class="_view data-v-832bdd84 nav-bar" style=" {{('margin-top:' + (statusHeight + 'px') + ';')}}">
         <image src="../../static/scan.png" class="_image data-v-832bdd84"></image>
@@ -17,12 +17,12 @@
       </view>
     </view>
     <block wx:key="index" key="{{index}}" wx:for="{{templateList}}" wx:for-index="index" wx:for-item="template">
-      <template wx:if="{{template.type == 1}}" data="{{...$root['0'], ...$root[$kk+'5E3-0-'+index],$root}}" is="53b36e52"></template>
-      <template wx:if="{{template.type == 2}}" data="{{...$root['0'], ...$root[$kk+'EGa-1-'+index],$root}}" is="4f9d0350"></template>
-      <template wx:if="{{template.type == 3}}" data="{{...$root['0'], ...$root[$kk+'ehu-2-'+index],$root}}" is="618e3a34"></template>
-      <template wx:if="{{template.type == 4}}" data="{{...$root['0'], ...$root[$kk+'uGV-3-'+index],$root}}" is="2fdf5f8e"></template>
-      <template wx:if="{{template.type == 5}}" data="{{...$root['0'], ...$root[$kk+'lS0-4-'+index],$root}}" is="f7363d58"></template>
-      <template wx:if="{{template.type == 6}}" data="{{...$root['0'], ...$root[$kk+'fGT-5-'+index],$root}}" is="210424a2"></template>
+      <template wx:if="{{template.type == 1}}" data="{{...$root['0'], ...$root[$kk+'2U5-0-'+index],$root}}" is="53b36e52"></template>
+      <template wx:if="{{template.type == 2}}" data="{{...$root['0'], ...$root[$kk+'yoT-1-'+index],$root}}" is="4f9d0350"></template>
+      <template wx:if="{{template.type == 3}}" data="{{...$root['0'], ...$root[$kk+'et9-2-'+index],$root}}" is="618e3a34"></template>
+      <template wx:if="{{template.type == 4}}" data="{{...$root['0'], ...$root[$kk+'rb0-3-'+index],$root}}" is="2fdf5f8e"></template>
+      <template wx:if="{{template.type == 5}}" data="{{...$root['0'], ...$root[$kk+'Quy-4-'+index],$root}}" is="f7363d58"></template>
+      <template wx:if="{{template.type == 6}}" data="{{...$root['0'], ...$root[$kk+'XVy-5-'+index],$root}}" is="210424a2"></template>
     </block>
   </view>
 </template>

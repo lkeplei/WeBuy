@@ -1,12 +1,12 @@
 <template name="7f65cfe1">
   <view class="_view data-v-47cd4a9c page">
     <view class="_view data-v-47cd4a9c input-view">
-      <input type="text" focus="true" value="{{userMail}}" bindinput="handleProxy" placeholder="{{placeholderMail}}" data-eventid="{{'ly0-0'}}" data-comkey="{{$k}}" class="_input data-v-47cd4a9c" />
+      <input type="text" focus="true" value="{{userMail}}" bindinput="handleProxy" placeholder="{{placeholderMail}}" data-eventid="{{'WbP-0'}}" data-comkey="{{$k}}" class="_input data-v-47cd4a9c" />
       <view class="_view data-v-47cd4a9c password">
-        <input placeholder="{{placeholderPwd}}" value="{{userPwd}}" bindinput="handleProxy" password="{{showPassword}}" data-eventid="{{'IT8-1'}}" data-comkey="{{$k}}" class="_input data-v-47cd4a9c" />
-        <view class="_view data-v-47cd4a9c uni-icon uni-icon-eye {{[!showPassword ? 'uni-active' : '']}}" bindtap="handleProxy" data-eventid="{{'gQN-2'}}" data-comkey="{{$k}}"></view>
+        <input placeholder="{{placeholderPwd}}" value="{{userPwd}}" bindinput="handleProxy" password="{{showPassword}}" data-eventid="{{'KII-1'}}" data-comkey="{{$k}}" class="_input data-v-47cd4a9c" />
+        <view class="_view data-v-47cd4a9c uni-icon uni-icon-eye {{[!showPassword ? 'uni-active' : '']}}" bindtap="handleProxy" data-eventid="{{'TVB-2'}}" data-comkey="{{$k}}"></view>
       </view>
     </view>
-    <button type="primary" bindtap="handleProxy" data-eventid="{{'BS4-3'}}" data-comkey="{{$k}}" class="_button data-v-47cd4a9c">{{loginText}}</button>
+    <button type="primary" bindtap="handleProxy" data-eventid="{{'q4H-3'}}" data-comkey="{{$k}}" class="_button data-v-47cd4a9c">{{loginText}}</button>
   </view>
 </template>

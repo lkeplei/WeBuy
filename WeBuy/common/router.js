@@ -1,8 +1,9 @@
 var routerMap = {
 	"wb://login/login": "/pages/login/login",
 	"wb://cart/cart": "/pages/cart/cart",
-	"wb://account/setting": "/pages/account/setting",
-	"wb://order/list": "/pages/order/order"
+	"wb://account/setting": "/pages/setting/setting",
+	"wb://order/list": "/pages/order/order",
+	"wb://user/info": "/pages/account/my-info"
 };
 
 export default {

@@ -41,10 +41,6 @@
 				</view>
 			</block>
 		</view>
-		
-		<view style="height: 1000upx;">
-			
-		</view>
 	</view>
 </template>
 
@@ -94,9 +90,7 @@
 			});
 		},
 		onNavigationBarButtonTap(index) {
-			uni.navigateTo({
-				url: './setting'
-			});
+			this.router('wb://account/setting', () => {});
 		},
 		computed: {
 			headerHeight() {
