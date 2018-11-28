@@ -1,5 +1,5 @@
 <template>
-	<view class="page" @touchmove="touchMove" @touchstart="touchStart">
+	<view class="container" @touchmove="touchMove" @touchstart="touchStart">
 		<!-- #ifdef APP-PLUS -->
 		<view class="nav">
 			<view class="nav-bar" :style="{'margin-top': statusHeight + 'px'}">
@@ -155,7 +155,7 @@
 </script>
 
 <style scoped>
-	.page {
+	.container {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;

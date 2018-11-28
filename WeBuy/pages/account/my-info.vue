@@ -1,13 +1,13 @@
 <template>
 	<view class="page">
-		<view class="user-cell" hover-class="user-cell-hover" @click="uploadAvatar">
-			<view class="uni-list-cell-navigate uni-navigate-right user-avatar">
+		<view class="wb-cell" hover-class="wb-cell-hover" @click="uploadAvatar">
+			<view class="wb-list-cell-navigate wb-navigate-right user-avatar">
 				{{avatar}}
 				<image src="../../static/userDefault.png"></image>
 			</view>
 		</view>
-		<view class="user-cell" hover-class="user-cell-hover" @click="changeName">
-			<view class="uni-list-cell-navigate uni-navigate-right user-right">
+		<view class="wb-cell" hover-class="wb-cell-hover" @click="changeName">
+			<view class="wb-list-cell-navigate wb-navigate-right wb-right">
 				{{name}}
 				<text>{{userName}}</text>
 			</view>
@@ -15,8 +15,8 @@
 		
 		<view class="func">
 			<block v-for="(item, index) in funcList" :key="index">
-				<view class="user-cell" hover-class="user-cell-hover" @click="clickFunc(item)">
-					<view class="uni-list-cell-navigate uni-navigate-right user-right">
+				<view class="wb-cell" hover-class="wb-cell-hover" @click="clickFunc(item)">
+					<view class="wb-list-cell-navigate wb-navigate-right wb-right">
 						{{item.text}}
 						<text>{{item.value}}</text>
 					</view>
@@ -146,39 +146,9 @@
 </script>
 
 <style scoped>
-	.page {
-		display: flex;
-		flex-direction: column;
-		background-color: #F8F8F8;
-	}
-	
-	.user-cell {
-		position: relative;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		background-color: #FFFFFF;
-		border-bottom: 1upx solid;
-		border-color: #EEEEEE;
-	}
-	
-	.user-cell-hover {
-		background-color: #EEEEEE;
-	}
-	
 	.user-avatar {
 		height: 70px;
 		justify-content: space-between;
-	}
-	
-	.user-right {
-		justify-content: space-between;
-	}
-	
-	.user-right text {
-		margin-right: 10px;
-		color: #999999;
 	}
 	
 	.user-avatar image {

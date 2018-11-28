@@ -5,9 +5,9 @@
       <text class="_text data-v-46cfd9a5">{{template.title}}</text>
     </view>
     <view class="_view data-v-46cfd9a5 content-four">
-      <image class="_image data-v-46cfd9a5 main-four" src="{{template.main.image}}" bindtap="handleProxy" data-eventid="{{'Zw8-0'}}" data-comkey="{{$k}}"></image>
+      <image class="_image data-v-46cfd9a5 main-four" src="{{template.main.image}}" bindtap="handleProxy" data-eventid="{{'5qD-0'}}" data-comkey="{{$k}}"></image>
       <block wx:key="index" key="{{index}}" wx:for="{{template.items}}" wx:for-index="index" wx:for-item="item">
-        <view class="_view data-v-46cfd9a5 grid-9-item-four" bindtap="handleProxy" data-eventid="{{'x6M-1-'+index}}" data-comkey="{{$k}}">
+        <view class="_view data-v-46cfd9a5 grid-9-item-four" bindtap="handleProxy" data-eventid="{{'jck-1-'+index}}" data-comkey="{{$k}}">
           <image class="_image data-v-46cfd9a5 grid-9-image-four" src="{{item.image}}"></image>
           <text class="_text data-v-46cfd9a5 grid-9-text-four"> {{item.title}} </text>
         </view>

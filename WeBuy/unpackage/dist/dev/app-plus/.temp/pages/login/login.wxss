@@ -287,18 +287,28 @@
 .uni-icon-scan.data-v-47cd4a9c:before {
   content: "\E612";
 }
-.page.data-v-47cd4a9c {
+.password.data-v-47cd4a9c {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
+  -webkit-flex-direction: row;
+  flex-direction: row;
   -webkit-box-align: center;
   -webkit-align-items: center;
   align-items: center;
+}
+._input.data-v-47cd4a9c {
+  margin: 30rpx;
+  border: 1px solid;
+  border-color: #eee;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+._button.data-v-47cd4a9c {
+  margin: 30rpx;
+  border: none;
 }

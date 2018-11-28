@@ -1,51 +1,10 @@
 @import "../../common/vendor.wxss";
 
-.page.data-v-024f0188 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-  background-color: #F8F8F8;
-}
-.user-cell.data-v-024f0188 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  background-color: #FFFFFF;
-  border-bottom: 1rpx solid;
-  border-color: #EEEEEE;
-}
-.user-cell-hover.data-v-024f0188 {
-  background-color: #EEEEEE;
-}
 .user-avatar.data-v-024f0188 {
   height: 70px;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   justify-content: space-between;
-}
-.user-right.data-v-024f0188 {
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-}
-.user-right text.data-v-024f0188 {
-  margin-right: 10px;
-  color: #999999;
 }
 .user-avatar image.data-v-024f0188 {
   width: 50px;

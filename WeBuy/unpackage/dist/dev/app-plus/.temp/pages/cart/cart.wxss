@@ -1,6 +1,6 @@
 @import "../../common/vendor.wxss";
 
-.page {
+.container.data-v-004781de {
   padding-top: 10rpx;
   display: -webkit-box;
   display: -webkit-flex;
@@ -13,10 +13,10 @@
   -webkit-align-items: center;
   align-items: center;
 }
-page {
+page.data-v-004781de {
   background: #FFFFFF;
 }
-.news-grid-9 {
+.news-grid-9.data-v-004781de {
   background: #FFF;
   width: 750rpx;
   display: -webkit-box;
@@ -30,7 +30,7 @@ page {
   flex-wrap: wrap;
   margin-top: 20rpx;
 }
-.news-grid-9-item {
+.news-grid-9-item.data-v-004781de {
   width: 250rpx;
   height: 360rpx;
   display: -webkit-box;
@@ -51,11 +51,11 @@ page {
   box-sizing: border-box;
   margin-top: 30rpx;
 }
-.news-grid-9-image {
+.news-grid-9-image.data-v-004781de {
   width: 180rpx;
   height: 260rpx;
 }
-.news-grid-9-text {
+.news-grid-9-text.data-v-004781de {
   width: 250rpx;
   line-height: 40rpx;
   height: 40rpx;
@@ -63,7 +63,7 @@ page {
   font-size: 30rpx;
   color: crimson;
 }
-.news-grid-heart {
+.news-grid-heart.data-v-004781de {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -72,12 +72,12 @@ page {
   -webkit-flex-direction: row;
   flex-direction: row;
 }
-.news-grid-heart image {
+.news-grid-heart image.data-v-004781de {
   width: 40rpx;
   height: 40rpx;
   margin-right: 12rpx;
 }
-.news-grid-heart text {
+.news-grid-heart text.data-v-004781de {
   line-height: 40rpx;
   font-size: 28rpx;
   color: #949494;

@@ -89,7 +89,8 @@
 			
 			// 获取用户信息
 			this.post('user/info', {}).then(res => {
-				this.accountName = res.name;
+				// this.accountName = res.name;
+				this.accountName = 'user name';
 			});
 		},
 		onNavigationBarButtonTap(index) {
@@ -105,6 +106,7 @@
 		methods: {
 			userClick: function() {
 				var sign = uni.getStorageSync(this.staticVar.sign);
+
 				if (typeof sign == 'string' && sign.length > 0) {
 					uni.navigateTo({
 						url: '/pages/account/my-info?userName=' + this.accountName
@@ -135,12 +137,6 @@
 </script>
 
 <style scoped>
-	.page {
-		display: flex;
-		flex-direction: column;
-		width: 750upx;
-	}
-	
 	.header {
 		display: flex;
 		flex-direction: column;

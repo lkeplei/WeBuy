@@ -1,5 +1,5 @@
 <template>
-	<view class="page">
+	<view class="container">
 		<image src=../../static/cart/cartIcon.png mode=""></image>
 		<text>
 			You have a free gift to receive.
@@ -103,8 +103,8 @@
 	}
 </script>
 
-<style>
-	.page {
+<style scoped>
+	.container {
         padding-top: 10upx;
 		
 		display: flex;

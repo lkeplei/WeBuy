@@ -1,6 +1,6 @@
 @import "../../common/vendor.wxss";
 
-.page.data-v-832bdd84 {
+.container.data-v-832bdd84 {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;

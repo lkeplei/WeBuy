@@ -12,6 +12,8 @@ module.exports = {
 	publicMale: '男士',
 	publicFemale: '女士',
 	publicSave: '保存',
+	publicLogin: '登录',
+	publicLogout: '登出',
 	
 	loadingDown: "上拉显示更多",
 	loadingFresh: "正在加载...",
@@ -30,5 +32,16 @@ module.exports = {
 	myInfoAvatar: '头像',
 	myInfoName: '显示名称',
 	myInfoBirthday: '生日',
-	myInfoGender: '性别'
+	myInfoGender: '性别',
+	
+	settingMyInfo: '我的信息',
+	settingAddress: '配送地址',
+	settingLanguage: '语言',
+	settingCurrency: '货币',
+	settingCoumntry: '国家/地区',
+	settingPhone: '手机号',
+	settingEmail: '电子邮件',
+	settingChangePwd: '更改密码',
+	settingAboutUs: '关于我们',
+	settingRateUs: '给我们评价'
 }

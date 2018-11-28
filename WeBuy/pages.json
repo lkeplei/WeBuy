@@ -43,7 +43,9 @@
 		{
 			"path": "pages/account/setting",
 			"style": {
-				"navigationBarTitleText": "setting"
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
 			}
 		},
 		{
@@ -56,7 +58,8 @@
 			"path": "pages/login/login",
 			"style": {
 				"app-plus": {
-					// "titleNView": false //禁用原生导航栏
+					// "titleNView": false, //禁用原生导航栏
+					"bounce": "none" //关闭窗口回弹效果
 				}
 			}
 		},
@@ -123,9 +126,9 @@
 		"current": 0, //当前激活的模式(list 的索引项)
 		"list": [
 			{
-				"name": "My Info", //模式名称
-				"path": "pages/account/my-info", //启动页面，必选
-				"query": "userName=my name" //启动参数，在页面的onLoad函数里面得到
+				"name": "setting", //模式名称
+				"path": "pages/account/setting", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
 			}
 		]
 	}
