@@ -22,6 +22,7 @@ module.exports = {
 	publicSave: '保存',
 	publicLogin: '登录',
 	publicLogout: '登出',
+	publicNextStep: '下一步',
 	
 	loadingDown: "上拉显示更多",
 	loadingFresh: "正在加载...",
@@ -54,5 +55,8 @@ module.exports = {
 	settingRateUs: '给我们评价',
 	settingAbout: '关于',
 	settingTerms: '条款',
-	settingPrivacyPolicy: '隐私政策'
+	settingPrivacyPolicy: '隐私政策',
+	
+	bindPhoneText: '绑定手机号',
+	bindPhoneRemind: '绑定之后即可用此手机号登录'
 }
