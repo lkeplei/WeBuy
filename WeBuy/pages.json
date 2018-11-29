@@ -89,6 +89,97 @@
 					"bounce": "none" //关闭窗口回弹效果
 				}
 			}
+		},
+		{
+			"path": "pages/setting/about-us",
+			"style": {
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/setting/address",
+			"style": {
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/setting/change-pwd",
+			"style": {
+				"app-plus": {
+					"titleNView": false, //禁用原生导航栏
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/setting/country",
+			"style": {
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/setting/currency",
+			"style": {
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/setting/email",
+			"style": {
+				"app-plus": {
+					"titleNView": false, //禁用原生导航栏
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/setting/language",
+			"style": {
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/setting/phone",
+			"style": {
+				"app-plus": {
+					"titleNView": false, //禁用原生导航栏
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/setting/about",
+			"style": {
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/setting/terms",
+			"style": {
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/setting/privacy-policy",
+			"style": {
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
 		}
 	],
 	"globalStyle": {

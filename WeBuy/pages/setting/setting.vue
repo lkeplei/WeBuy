@@ -26,21 +26,21 @@
 				funcList: [
 					[
 						{text: this.local('settingMyInfo'), action: 'wb://user/info', value: ''},
-						{text: this.local('settingAddress'), action: 'gender', value: ''}
+						{text: this.local('settingAddress'), action: 'wb://setting/address', value: ''}
 					],
 					[
-						{text: this.local('settingLanguage'), action: 'birthday', value: '1998-01-07'},
-						{text: this.local('settingCurrency'), action: 'gender', value: ''},
-						{text: this.local('settingCoumntry'), action: 'gender', value: ''}
+						{text: this.local('settingLanguage'), action: 'wb://setting/language', value: '1998-01-07'},
+						{text: this.local('settingCurrency'), action: 'wb://setting/currency', value: ''},
+						{text: this.local('settingCountry'), action: 'wb://setting/country', value: ''}
 					],
 					[
-						{text: this.local('settingPhone'), action: 'birthday', value: ''},
-						{text: this.local('settingEmail'), action: 'gender', value: ''},
-						{text: this.local('settingChangePwd'), action: 'gender', value: ''}
+						{text: this.local('settingPhone'), action: 'wb://setting/phone', value: ''},
+						{text: this.local('settingEmail'), action: 'wb://setting/email', value: ''},
+						{text: this.local('settingChangePwd'), action: 'wb://setting/change-pwd', value: ''}
 					],
 					[
-						{text: this.local('settingAboutUs'), action: 'birthday', value: ''},
-						{text: this.local('settingRateUs'), action: 'gender', value: ''}
+						{text: this.local('settingAboutUs'), action: 'wb://setting/about-us', value: ''},
+						{text: this.local('settingRateUs'), action: 'rateUs', value: ''}
 					]
 				]
 			};
@@ -53,9 +53,13 @@
 		},
 		methods: {
 			clickFunc: function (item) {
-				this.router(item.action, () => {
-
-				});
+				if (item.action === 'rateUs') {
+					uni.showToast({
+						title: 'please rate us'
+					});
+				} else {
+					this.router(item.action, () => {});	
+				}
 			},
 			logout: function () {
 				this.post('user/logout', {email: this.userMail, pwd: this.userPwd}).then(res => {

@@ -1,6 +1,0 @@
-@import "../../common/vendor.wxss";
-
-._button {
-  width: 750rpx;
-  border-radius: 0;
-}

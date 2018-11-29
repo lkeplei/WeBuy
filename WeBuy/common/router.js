@@ -3,7 +3,15 @@ var routerMap = {
 	"wb://cart/cart": "/pages/cart/cart",
 	"wb://account/setting": "/pages/setting/setting",
 	"wb://order/list": "/pages/order/order",
-	"wb://user/info": "/pages/account/my-info"
+	"wb://user/info": "/pages/account/my-info",
+	"wb://setting/about-us": "/pages/setting/about-us",
+	"wb://setting/address": "/pages/setting/address",
+	"wb://setting/change-pwd": "/pages/setting/change-pwd",
+	"wb://setting/country": "/pages/setting/country",
+	"wb://setting/currency": "/pages/setting/currency",
+	"wb://setting/email": "/pages/setting/email",
+	"wb://setting/language": "/pages/setting/language",
+	"wb://setting/phone": "/pages/setting/phone"
 };
 
 export default {

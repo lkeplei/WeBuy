@@ -4,6 +4,14 @@ module.exports = {
 	navTitleMyInfo: '我的信息',
 	navTitleSetting: '账户设置',
 	navTitleChangeName: '修改显示名称',
+	navTitleAboutUs: '关于WeBuy',
+	navTitleAddressBook: '地址薄',
+	navTitleSelectCountry: '选择国家/地区',
+	navTitleCurrency: '货币',
+	navTitleLanguage: '语言',
+	navTitleAbout: '关于',
+	navTitleTerms: '条款',
+	navTitlePrivacyPolicy: '隐私政策',
 	
 	placeholderMail: '请输入邮箱',
 	placeholderPwd: '请输入密码',
@@ -38,10 +46,13 @@ module.exports = {
 	settingAddress: '配送地址',
 	settingLanguage: '语言',
 	settingCurrency: '货币',
-	settingCoumntry: '国家/地区',
+	settingCountry: '国家/地区',
 	settingPhone: '手机号',
 	settingEmail: '电子邮件',
 	settingChangePwd: '更改密码',
-	settingAboutUs: '关于我们',
-	settingRateUs: '给我们评价'
+	settingAboutUs: '关于WeBuy',
+	settingRateUs: '给我们评价',
+	settingAbout: '关于',
+	settingTerms: '条款',
+	settingPrivacyPolicy: '隐私政策'
 }

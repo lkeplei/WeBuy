@@ -1,9 +1,0 @@
-<template name="2fdf5f8e">
-  <view class="_view data-v-de08cdc6 container-two">
-    <image class="_image data-v-de08cdc6 main-two" src="{{template.main.image}}" bindtap="handleProxy" data-eventid="{{'s64-0'}}" data-comkey="{{$k}}"></image>
-    <view class="_view data-v-de08cdc6 items-two">
-      <image src="{{template.top.image}}" bindtap="handleProxy" data-eventid="{{'wWi-1'}}" data-comkey="{{$k}}" class="_image data-v-de08cdc6"></image>
-      <image src="{{template.bottom.image}}" bindtap="handleProxy" data-eventid="{{'L4i-2'}}" data-comkey="{{$k}}" class="_image data-v-de08cdc6"></image>
-    </view>
-  </view>
-</template>
