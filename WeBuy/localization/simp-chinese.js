@@ -66,5 +66,15 @@ module.exports = {
 	bindSmsText: '请输入验证码',
 	bindSmsRemind: '验证码已发送至：',
 	bindVerTime: ' 秒\n重新发送',
-	bindVerResend: '发送验证码'
+	bindVerResend: '发送验证码',
+	
+	changePwdText: '更新您的密码',
+	changePwdOldPwd: '原始密码',
+	changePwdNewPwd: '新密码',
+	changePwdConfirmPwd: '确认密码',
+	changePwdNewRemind: '您的密码必须是6-20个字符',
+	changePwdConfirmRemind: '密码不匹配！',
+	
+	emailText: '输入新电子邮箱',
+	emailRemind: '更改后您可以使用新的电子邮箱登录'
 }
