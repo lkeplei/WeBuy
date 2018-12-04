@@ -16,12 +16,16 @@ module.exports = {
 	placeholderMail: '请输入邮箱',
 	placeholderPwd: '请输入密码',
 	placeholderUserName: '请输入显示名称',
+	placeholderPhone: '请输入手机号码',
+	placeholderVerCode: '请输入验证码',
 	
 	publicMale: '男士',
 	publicFemale: '女士',
 	publicSave: '保存',
 	publicLogin: '登录',
 	publicLogout: '登出',
+	publicConfirm: '确定',
+	publicCancel: '取消',
 	publicNextStep: '下一步',
 	
 	loadingDown: "上拉显示更多",
@@ -58,5 +62,9 @@ module.exports = {
 	settingPrivacyPolicy: '隐私政策',
 	
 	bindPhoneText: '绑定手机号',
-	bindPhoneRemind: '绑定之后即可用此手机号登录'
+	bindPhoneRemind: '绑定之后即可用此手机号登录',
+	bindSmsText: '请输入验证码',
+	bindSmsRemind: '验证码已发送至：',
+	bindVerTime: ' 秒\n重新发送',
+	bindVerResend: '发送验证码'
 }

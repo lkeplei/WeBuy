@@ -109,6 +109,7 @@
 		{
 			"path": "pages/setting/change-pwd",
 			"style": {
+				"navigationBarTextStyle": "black",
 				"app-plus": {
 					"titleNView": false, //禁用原生导航栏
 					"bounce": "none" //关闭窗口回弹效果
@@ -134,6 +135,7 @@
 		{
 			"path": "pages/setting/email",
 			"style": {
+				"navigationBarTextStyle": "black",
 				"app-plus": {
 					"titleNView": false, //禁用原生导航栏
 					"bounce": "none" //关闭窗口回弹效果
@@ -149,8 +151,9 @@
 			}
 		},
 		{
-			"path": "pages/setting/phone",
+			"path": "pages/bind/phone",
 			"style": {
+				"navigationBarTextStyle": "black",
 				"app-plus": {
 					"titleNView": false, //禁用原生导航栏
 					"bounce": "none" //关闭窗口回弹效果
@@ -177,6 +180,16 @@
 			"path": "pages/setting/privacy-policy",
 			"style": {
 				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/bind/confirm-sms",
+			"style": {
+				"navigationBarTextStyle": "black",
+				"app-plus": {
+					"titleNView": false, //禁用原生导航栏
 					"bounce": "none" //关闭窗口回弹效果
 				}
 			}

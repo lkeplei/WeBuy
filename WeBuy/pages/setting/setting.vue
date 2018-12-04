@@ -14,12 +14,17 @@
 			</block>
 		</block>
 		
-		<button type="primary" plain="true" @tap="logout">{{logoutText}}</button>
+		<wb-button :text="logoutText" @btnTap="logout"></wb-button>
 	</view>
 </template>
 
 <script>
+	import wbButton from '../../components/wb-button.vue'
+	
 	export default {
+		components: {
+			'wb-button': wbButton
+		},
 		data() {
 			return {
 				logoutText: this.local('publicLogout'),
@@ -34,7 +39,7 @@
 						{text: this.local('settingCountry'), action: 'wb://setting/country', value: ''}
 					],
 					[
-						{text: this.local('settingPhone'), action: 'wb://setting/phone', value: ''},
+						{text: this.local('settingPhone'), action: 'wb://bind/phone', value: ''},
 						{text: this.local('settingEmail'), action: 'wb://setting/email', value: ''},
 						{text: this.local('settingChangePwd'), action: 'wb://setting/change-pwd', value: ''}
 					],
@@ -72,10 +77,5 @@
 </script>
 
 <style>
-	
-	button {
-		width: 750upx;
-		border-radius: 0;
-	}
 
 </style>
