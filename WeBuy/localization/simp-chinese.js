@@ -27,6 +27,8 @@ module.exports = {
 	publicConfirm: '确定',
 	publicCancel: '取消',
 	publicNextStep: '下一步',
+	publicEdit: '编辑',
+	publicFinish: '完成',
 	
 	loadingDown: "上拉显示更多",
 	loadingFresh: "正在加载...",

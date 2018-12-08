@@ -31,7 +31,7 @@
 				funcList: [
 					[
 						{text: this.local('settingMyInfo'), action: 'wb://user/info', value: ''},
-						{text: this.local('settingAddress'), action: 'wb://setting/address', value: ''}
+						{text: this.local('settingAddress'), action: 'wb://address/address', value: ''}
 					],
 					[
 						{text: this.local('settingLanguage'), action: 'wb://setting/language', value: '1998-01-07'},
