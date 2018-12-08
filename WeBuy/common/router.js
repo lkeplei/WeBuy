@@ -11,7 +11,10 @@ var routerMap = {
 	"wb://setting/currency": "/pages/setting/currency",
 	"wb://setting/email": "/pages/setting/email",
 	"wb://setting/language": "/pages/setting/language",
-	"wb://bind/phone": "/pages/bind/phone"
+	"wb://bind/phone": "/pages/bind/phone",
+	"wb://setting/about": "/pages/setting/about",
+	"wb://setting/terms": "/pages/setting/terms",
+	"wb://setting/privacy-policy": "/pages/setting/privacy-policy"
 };
 
 export default {
