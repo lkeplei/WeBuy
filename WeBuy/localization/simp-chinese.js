@@ -78,5 +78,7 @@ module.exports = {
 	changePwdConfirmRemind: '密码不匹配！',
 	
 	emailText: '输入新电子邮箱',
-	emailRemind: '更改后您可以使用新的电子邮箱登录'
+	emailRemind: '更改后您可以使用新的电子邮箱登录',
+	
+	addressNew: '新增地址'
 }
