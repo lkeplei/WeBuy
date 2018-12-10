@@ -29,6 +29,7 @@ module.exports = {
 	publicNextStep: '下一步',
 	publicEdit: '编辑',
 	publicFinish: '完成',
+	publicDefault: '默认',
 	
 	loadingDown: "上拉显示更多",
 	loadingFresh: "正在加载...",
