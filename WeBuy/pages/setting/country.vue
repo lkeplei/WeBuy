@@ -2,34 +2,32 @@
 	<view class="page">
 		<scroll-view class="scrollList" scroll-y :scroll-into-view="scrollViewId" :style="{height:winHeight + 'px;'}">
 			<view class="uni-list">
-				<block v-for="(item, key) in list" :key="key" v-if="item.data[0]">
-					<view class="uni-list-cell-divider" :id="item.letter">
-						{{item.letter}}
+				<block v-for="(list,key) in lists" :key="key" v-if="list.data[0]">
+					<view class="uni-list-cell-divider" :id="list.letter">
+						{{list.letter}}
 					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover" v-for="(name, index) in item.data" 
-					:key="index" :class="item.data.length -1 == index ? 'uni-list-cell-last' : ''">
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover" 
+						v-for="(item,index) in list.data" :key="index" @tap="selectCountry(item)"
+						:class="list.data.length -1 == index ? 'uni-list-cell-last' : ''">
 						<view class="uni-list-cell-navigate">
-							{{name}}
+							{{item.name}}
 						</view>
 					</view>
 				</block>
 			</view>
 		</scroll-view>
-		<view class="uni-indexed-list-bar" :class="touchmove ? 'active' : ''" :style="{height:winHeight + 'px;'}"
-			@touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd" @touchcancel="touchCancel" >
-			<text v-for="(item, key) in list" :key="key" class="uni-indexed-list-text" 
-				:class="touchmoveIndex == key ? 'active' : ''"
-			    :style="{heigth:itemHeight + 'px',lineHeight:itemHeight + 'px'}">
-				{{item.letter}}
-			</text>
+		<view class="uni-indexed-list-bar" :class="touchmove ? 'active' : ''" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd" @touchcancel="touchCancel" :style="{height:winHeight + 'px;'}">
+			<text v-for="(list,key) in lists" :key="key" class="uni-indexed-list-text" :class="touchmoveIndex == key ? 'active' : ''"
+			    :style="{heigth:itemHeight + 'px',lineHeight:itemHeight + 'px'}">{{list.letter}}</text>
 		</view>
 		<view class="uni-indexed-list-alert" v-if="touchmove">
-			{{list[touchmoveIndex].letter}}
+			{{lists[touchmoveIndex].letter}}
 		</view>
 	</view>
 </template>
 
 <script>
+
 	export default {
 		data() {
 			return {
@@ -39,173 +37,174 @@
 				winHeight:0,
 				scrollViewId: "A",
 				
-				list: [
+				lists: [
 					{
 						letter: 'A',
 						data: [
-							'Albania',
-							'Australia',
-							'Austria'
+							{name: 'Albania', key: 'Albania'},
+							{name: 'Australia', key: 'Australia'},
+							{name: 'Austria', key: 'Austria'}
 						]
 					},
 					{
 						letter: 'B',
 						data: [
-							'Bahrain',
-							'Bangladesh',
-							'Belgium',								
-							'Bosnia and Herzegovina'
+							{name: 'Bahrain', key: 'Bahrain'},
+							{name: 'Bangladesh', key: 'Bangladesh'},
+							{name: 'Belgium', key: 'Belgium'},
+							{name: 'Bosnia and Herzegovina', key: 'Bosnia and Herzegovina'}
 						]
 					},
 					{
 						letter: 'C',
 						data: [
-							'Cambodia',
-							'Canada',
-							'Canary Islands',
-							'China(P.R.C)',
-							'Cyprus',
-							'Czech Republic'
+							{name: 'Cambodia', key: 'Cambodia'},
+							{name: 'Canada', key: 'Canada'},
+							{name: 'Canary Islands', key: 'Canary Islands'},
+							{name: 'China(P.R.C)', key: 'China(P.R.C)'},
+							{name: 'Cyprus', key: 'Cyprus'},
+							{name: 'Czech Republic', key: 'Czech Republic'}
 						]
 					},
 					{
 						letter: 'D',
 						data: [
-							'Denmark'
+							{name: 'Denmark', key: 'Denmark'}
 						]
 					},
 					{
 						letter: 'F',
 						data: [
-							'Faroe Islands',
-							'Finland',
-							'France'
+							{name: 'Faroe Islands', key: 'Faroe Islands'},
+							{name: 'Finland', key: 'Finland'},
+							{name: 'France', key: 'France'}
 						]
 					},
 					{
 						letter: 'G',
 						data: [
-							'Georgia',
-							'Germany',
-							'Greenland'
+							{name: 'Georgia', key: 'Georgia'},
+							{name: 'Germany', key: 'Germany'},
+							{name: 'Greenland', key: 'Greenland'}
 						]
 					},
 					{
 						letter: 'H',
 						data: [
-							'Hong Kong'
+							{name: 'Hong Kong', key: 'Hong Kong'}
 						]
 					},
 					{
 						letter: 'I',
 						data: [
-							'Iceland',
-							'Indonesia',
-							'Ireland',
-							'Italy'
+							{name: 'Iceland', key: 'Iceland'},
+							{name: 'Indonesia', key: 'Indonesia'},
+							{name: 'Ireland', key: 'Ireland'},
+							{name: 'Italy', key: 'Italy'}
 						]
 					},
 					{
 						letter: 'J',
 						data: [
-							'Japan',
-							'Jordan'
+							{name: 'Japan', key: 'Japan'},
+							{name: 'Jordan', key: 'Jordan'}
 						]
 					},
 					{
 						letter: 'K',
 						data: [
-							'Korea(Republic)',
-							'Kuwait'
+							{name: 'Korea(Republic)', key: 'Korea(Republic)'},
+							{name: 'Kuwait', key: 'Kuwait'}
 						]
 					},
 					{
 						letter: 'L',
 						data: [
-							'Lebanon',
-								'Lithuania'
+							{name: 'Lebanon', key: 'Lebanon'},
+							{name: 'Lithuania', key: 'Lithuania'}
 						],
 					},
 					{
 						letter: 'M',
 						data: [
-							'Macau',
-							'Malaysia',
-							'Mauritius',
-							'Mexico',
-							'Morocco',
-							'Myanmar'
+							{name: 'Macau', key: 'Macau'},
+							{name: 'Malaysia', key: 'Malaysia'},
+							{name: 'Mauritius', key: 'Mauritius'},
+							{name: 'Mexico', key: 'Mexico'},
+							{name: 'Morocco', key: 'Morocco'},
+							{name: 'Myanmar', key: 'Myanmar'}
 						]
 					},
 					{
 						letter: 'N',
 						data: [
-							'Netherlands',
-								'New Zealand'
+							{name: 'Netherlands', key: 'Netherlands'},
+							{name: 'New Zealand', key: 'New Zealand'}
 						]
 					},
 					{
 						letter: 'O',
 						data: [
-							'Oman'
+							{name: 'Oman', key: 'Oman'}
 						]
 					},
 					{
 						letter: 'P',
 						data: [
-							'Philippines',
-							'Poland',
-							'Portugal'
+							{name: 'Philippines', key: 'Philippines'},
+							{name: 'Poland', key: 'Poland'},
+							{name: 'Portugal', key: 'Portugal'}
 						]
 					},
 					{
 						letter: 'Q',
 						data: [
-							'Qatar'
+							{name: 'Qatar', key: 'Qatar'}
 						]
 					},
 					{
 						letter: 'R',
 						data: [
-							'Romania'
+							{name: 'Romania', key: 'Romania'}
 						]
 					},
 					{
 						letter: 'S',
 						data: [
-							'San Marino',
-							'Saudi Arabia',
-							'Singapore',
-							'Slovenia',
-							'South Africa',
-							'Spain',
-							'Sri Lanka',
-							'Sweden',
-							'Switzerland'
+							{name: 'San Marino', key: 'San Marino'},
+							{name: 'Saudi Arabia', key: 'Saudi Arabia'},
+							{name: 'Singapore', key: 'Singapore'},
+							{name: 'Slovenia', key: 'Slovenia'},
+							{name: 'South Africa', key: 'South Africa'},
+							{name: 'Spain', key: 'Spain'},
+							{name: 'Sri Lanka', key: 'Sri Lanka'},
+							{name: 'Sweden', key: 'Sweden'},
+							{name: 'Switzerland', key: 'Switzerland'}
 						]
 					},
 					{
 						letter: 'T',
 						data: [
-							'Thailand',
-							'Turkey',
+							{name: 'Thailand', key: 'Thailand'},
+							{name: 'Turkey', key: 'Turkey'}
 						]
 					},
 					{
 						letter: 'U',
 						data: [
-							'United Arab Emirates',
-							'United Kingdom',
-							'United States',
-							'Uzbekistan'
+							{name: 'United Arab Emirates', key: 'United Arab Emirates'},
+							{name: 'United Kingdom', key: 'United Kingdom'},
+							{name: 'United States', key: 'United States'},
+							{name: 'Uzbekistan', key: 'Uzbekistan'}
 						]
 					},
 				]
 			}
 		},
 		onLoad() {
-			this.winHeight = uni.getSystemInfoSync().windowHeight;
-			this.itemHeight = this.winHeight / 26;
+			let winHeight = uni.getSystemInfoSync().windowHeight;
+			this.itemHeight = winHeight / this.lists.length;
+			this.winHeight = winHeight;
 			
 			// 设置导航栏标题
 			uni.setNavigationBarTitle({
@@ -217,14 +216,16 @@
 				this.touchmove = true;
 				let pageY = e.touches[0].pageY;
 				let index = Math.floor(pageY / this.itemHeight);
-				this.scrollViewId = this.list[index].letter;
+				this.scrollViewId = this.lists[index].letter;
 				this.touchmoveIndex = index;
 			},
 			touchMove(e) {
 				let pageY = e.touches[0].pageY;
 				let index = Math.floor(pageY / this.itemHeight);
-				this.scrollViewId = this.list[index].letter;
-				this.touchmoveIndex = index;
+				if (index >= 0 && index < this.lists.length) {
+					this.scrollViewId = this.lists[index].letter;
+					this.touchmoveIndex = index;	
+				}
 			},
 			touchEnd() {
 				this.touchmove = false;
@@ -233,6 +234,15 @@
 			touchCancel(){
 				this.touchmove = false;
 				this.touchmoveIndex = -1;
+			},
+			selectCountry: function (item) {
+				this.post('user/changeCountry', {country: item.key}).then(res => {	
+					
+				});	
+				
+				uni.navigateBack({
+					delta: 1
+				});
 			}
 		}
 	}

@@ -6,11 +6,7 @@
 		<view :style="{'height': navHeight + 'px'}"></view>
 		
 		<view class="container">
-			<view class="">
-				<view class="">
-					address-7
-				</view>
-			</view>
+			form
 		</view>
 	</view>
 </template>
@@ -24,29 +20,21 @@
 		},
 		data() {
 			return {
-				isEditing: false,
 				navHeight: 64,
 				navTitle: this.local('navTitleAddressBook'),
-				rightBtn: {text: this.local('addressNew')},
-				editTitle: this.local('addressAddTitle'),
-				
-				addressList: []
+				rightBtn: {text: this.local('publicSave')}
 			};
 		},
-		onLoad() {
-			this.post('user/addressList', {}).then(res => {
-				this.addressList = res.list;
-			});
+		onLoad(prop) {
+			this.navTitle = prop.title;
 		},
 		onReady() {
 			this.navHeight = this.$refs.nav.navHeight();
 		},
 		methods: {
 			newAddress: function () {
-				this.editTitle = this.local('addressAddTitle');
-				
-				uni.navigateTo({
-					url: './edit-address?title=' + this.editTitle
+				uni.showToast({
+					title: 'save'
 				});
 			}
 		}

@@ -80,5 +80,7 @@ module.exports = {
 	emailText: '输入新电子邮箱',
 	emailRemind: '更改后您可以使用新的电子邮箱登录',
 	
-	addressNew: '新增地址'
+	addressNew: '新增地址',
+	addressEditTitle: '编辑收货地址',
+	addressAddTitle: '添加收货地址'
 }
