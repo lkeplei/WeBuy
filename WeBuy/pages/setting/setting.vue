@@ -34,8 +34,8 @@
 						{text: this.local('settingAddress'), action: 'wb://setting/address', value: ''}
 					],
 					[
-						{text: this.local('settingLanguage'), action: 'wb://setting/language', value: '1998-01-07'},
-						{text: this.local('settingCurrency'), action: 'wb://setting/currency', value: ''},
+						{text: this.local('settingLanguage'), action: 'wb://setting/language', value: ''},
+						// {text: this.local('settingCurrency'), action: 'wb://setting/currency', value: ''},
 						{text: this.local('settingCountry'), action: 'wb://setting/country', value: ''}
 					],
 					[
