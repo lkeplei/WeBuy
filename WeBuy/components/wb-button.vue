@@ -31,7 +31,7 @@
 		align-items: center;
 		
 		margin: 40upx;
-		height: 88upx;
+		height: 44px;
 		width: 660upx;
 		background-color: #007AFF;
 	}

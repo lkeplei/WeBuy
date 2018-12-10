@@ -1,8 +1,8 @@
 <template>
 	<view class="page">
 		<view style="height: 10px;">
-			
 		</view>
+		
 		<block v-for="(item, index) in funcList" :key="index">
 			<view class="wb-cell" hover-class="wb-cell-hover" @click="clickFunc(item)">
 				<view class="wb-list-cell-navigate wb-navigate-right wb-right">

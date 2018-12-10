@@ -5,13 +5,16 @@ var routerMap = {
 	"wb://order/list": "/pages/order/order",
 	"wb://user/info": "/pages/account/my-info",
 	"wb://setting/about-us": "/pages/setting/about-us",
-	"wb://setting/address": "/pages/setting/address",
+	"wb://address/address": "/pages/address/address",
 	"wb://setting/change-pwd": "/pages/setting/change-pwd",
 	"wb://setting/country": "/pages/setting/country",
 	"wb://setting/currency": "/pages/setting/currency",
 	"wb://setting/email": "/pages/setting/email",
 	"wb://setting/language": "/pages/setting/language",
-	"wb://bind/phone": "/pages/bind/phone"
+	"wb://bind/phone": "/pages/bind/phone",
+	"wb://setting/about": "/pages/setting/about",
+	"wb://setting/terms": "/pages/setting/terms",
+	"wb://setting/privacy-policy": "/pages/setting/privacy-policy"
 };
 
 export default {

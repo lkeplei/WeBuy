@@ -27,6 +27,8 @@ module.exports = {
 	publicConfirm: '确定',
 	publicCancel: '取消',
 	publicNextStep: '下一步',
+	publicEdit: '编辑',
+	publicFinish: '完成',
 	
 	loadingDown: "上拉显示更多",
 	loadingFresh: "正在加载...",
@@ -76,5 +78,7 @@ module.exports = {
 	changePwdConfirmRemind: '密码不匹配！',
 	
 	emailText: '输入新电子邮箱',
-	emailRemind: '更改后您可以使用新的电子邮箱登录'
+	emailRemind: '更改后您可以使用新的电子邮箱登录',
+	
+	addressNew: '新增地址'
 }
