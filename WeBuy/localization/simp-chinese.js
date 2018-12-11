@@ -12,12 +12,16 @@ module.exports = {
 	navTitleAbout: '关于',
 	navTitleTerms: '条款',
 	navTitlePrivacyPolicy: '隐私政策',
+	navTitleProvince: '选择您的州/省/地区',
+	navTitleCity: '选择您的城市',
 	
 	placeholderMail: '请输入邮箱',
 	placeholderPwd: '请输入密码',
 	placeholderUserName: '请输入显示名称',
 	placeholderPhone: '请输入手机号码',
 	placeholderVerCode: '请输入验证码',
+	placeholderSelect: '请选择',
+	placeholderOption: '可选项',
 	
 	publicMale: '男士',
 	publicFemale: '女士',
@@ -83,5 +87,18 @@ module.exports = {
 	
 	addressNew: '新增地址',
 	addressEditTitle: '编辑收货地址',
-	addressAddTitle: '添加收货地址'
+	addressAddTitle: '添加收货地址',
+	addressFirstName: '名：',
+	addressLastName: '姓：',
+	addressCountry: '国家/地区：',
+	addressState: '州/省/地区：',
+	addressCity: '城市：',
+	addressLine1: '地址1：',
+	addressLine2: '地址2：',
+	addressPostalCode: '邮编/邮政区号：',
+	addressPhone: '手机号码：',
+	addressAlternativePhone: '备用电话电码：',
+	addressNote: '货运说明：',
+	addressSetDefault: '设置为默认地址',
+	addressPlaceAddress: '街道、地区、楼栋号、单元室等'
 }

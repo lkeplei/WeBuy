@@ -36,13 +36,11 @@
 		},
 		data() {
 			return {
-				isEditing: false,
 				navHeight: 64,
 				editText: this.local('publicEdit'),
 				defaultText: this.local('publicDefault'),
 				navTitle: this.local('navTitleAddressBook'),
 				rightBtn: {text: this.local('addressNew')},
-				editTitle: this.local('addressAddTitle'),
 				
 				addressList: [
 					{addressId: 12,name: '雷小姐', contact: '1358601891', isDefault: true,
@@ -62,24 +60,25 @@
 			this.post('user/addressList', {}).then(res => {
 				// this.addressList = res.list;
 			});
+			
+			// 设置状态栏颜色 
+			uni.setNavigationBarColor({
+				frontColor: '#000000',
+				backgroundColor: '#FFFFFF'
+			});
 		},
 		onReady() {
 			this.navHeight = this.$refs.nav.navHeight();
 		},
 		methods: {
 			newAddress: function () {
-				this.editTitle = this.local('addressAddTitle');
-				
 				uni.navigateTo({
-					url: './edit-address?title=' + this.editTitle
+					url: './edit-address?isEdit=false'
 				});
 			},
 			edit: function (item) {
-				console.log(1111)
-				this.editTitle = this.local('addressEditTitle');
-				
 				uni.navigateTo({
-					url: './edit-address?title=' + this.editTitle + '&id=' + item.addressId
+					url: './edit-address?isEdit=true&id=' + item.addressId
 				});
 			}
 		}

@@ -40,7 +40,10 @@
             },
             "sdkConfigs": { /* SDK配置 */
 
-            }
+            },
+			"orientation": [
+                "portrait-primary"
+            ]
         }
     },
     "quickapp": { /* 快应用特有相关 */
