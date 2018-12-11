@@ -106,14 +106,6 @@
 			this.isEdit = prop.isEdit == 'true' ? true : false;
 			this.navTitle = this.local(this.isEdit ? 'addressEditTitle' : 'addressAddTitle');
 			
-			console.log(prop)
-			
-			// 设置状态栏颜色 
-			uni.setNavigationBarColor({
-				frontColor: '#000000',
-				backgroundColor: '#FFFFFF'
-			});
-			
 			if (this.isEdit) {
 				this.post('user/addressDetail', {addressId: prop.id}).then(res => {
 					// this.address = res;
@@ -156,7 +148,6 @@
 		display: flex;
 		flex-direction: column;
 		margin-top: 20upx;
-		border-top: #EEEEEE 1upx solid;
 	}
 	
 	.content {

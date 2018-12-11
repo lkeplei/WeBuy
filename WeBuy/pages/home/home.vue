@@ -4,9 +4,9 @@
 		<view class="nav">
 			<view class="nav-bar" :style="{'margin-top': statusHeight + 'px'}">
 				<image src="../../static/scan.png"></image>
-				<view class="input-view">
+				<view class="input-view" @tap="search">
 					<image src="../../static/search.png"></image>
-					<input confirm-type="search" class="input" type="text" placeholder="输入搜索关键词" />
+					<input disabled confirm-type="search" class="input" type="text" placeholder="输入搜索关键词" />
 				</view>
 				<image src="../../static/info.png"></image>
 			</view>
@@ -149,6 +149,11 @@
 				this.currentY = e.clientY;
 				
 				// this.statusHeight += offsetY;
+			},
+			search: function () {
+				uni.navigateTo({
+					url: './search'
+				})
 			}
 		}
 	}

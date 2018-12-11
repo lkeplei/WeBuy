@@ -60,12 +60,6 @@
 			this.post('user/addressList', {}).then(res => {
 				// this.addressList = res.list;
 			});
-			
-			// 设置状态栏颜色 
-			uni.setNavigationBarColor({
-				frontColor: '#000000',
-				backgroundColor: '#FFFFFF'
-			});
 		},
 		onReady() {
 			this.navHeight = this.$refs.nav.navHeight();
