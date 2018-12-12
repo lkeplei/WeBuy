@@ -3,14 +3,15 @@
 		<wb-nav ref="nav" :leftBtn="leftBtn" :rightBtn="rightBtn" @rightBtnClick="cancel">
 			<view class="input-view">
 				<image src="../../static/search.png"></image>
-				<input focus="true" confirm-type="search" class="input" type="text" v-model="searchKey" :placeholder="placeSearch" />
+				<input focus="true" confirm-type="search" class="input" type="text" 
+					v-model="searchKey" :placeholder="placeSearch" @confirm="search"/>
 			</view>
 		</wb-nav>
 		
 		<!-- 用了自定义导航栏，需要占位 -->
 		<view :style="{'height': navHeight + 'px'}"></view>
 		
-		<view v-if="searchList.showHistory" class="history">
+		<view v-if="searchList.showHistory" class="container">
 			<block v-for="(object, index) in searchList.list" :key="index">
 				<view class="item">
 					<view class="item-header">
@@ -28,18 +29,42 @@
 			</block>
 		</view>
 		
-		<view v-else>
+		<view v-else class="container">
+			<view class="filtrate">
+				<text>排序</text>
+			</view>
 			
+			<view class="pro-list">
+				<block v-for="(product, index) in searchList.proList" :key="index">
+					<view class="product" @tap="choosePro(product.proId)">
+						<view class="pro-img">
+							<image :src="product.image"></image>
+						</view>
+						<view class="pro-desc">
+							<view class="pro-name">
+								<image :src="product.tag"></image>
+								<text>{{product.name}}</text>
+							</view>
+							<view class="pro-price">
+								<text>{{product.price}}</text>
+							</view>
+						</view>
+					</view>
+				</block>
+			</view>
+			<load-more :loadingType="loadingType" :contentText="contentText"></load-more>
 		</view>
 	</view>
 </template>
 
 <script>
 	import wbNav from '../../components/wb-nav.vue'
+	import loadMore from '../../components/load-more.vue'
 	
 	export default {
 		components: {
-			'wb-nav': wbNav
+			'wb-nav': wbNav,
+			'load-more': loadMore
 		},
 		data() {
 			return {
@@ -50,6 +75,13 @@
 				navHeight: 64,
 				leftBtn: {},
 				rightBtn: {text: this.local('publicCancel')},
+				
+				loadingType: 0,
+				contentText: {
+					contentdown: this.local('loadingDown'),
+					contentrefresh: this.local('loadingFresh'),
+					contentnomore: this.local('loadingNomore')
+				},
 				
 				searchList: {
 					showHistory: true,
@@ -78,6 +110,65 @@
 								{key: '男装', bgColor: '#0FFF00', textColor: '#33333A'}
 							]
 						}
+					],
+					haveMore: false,
+					proList: [
+						{
+							name: '我只是一我只是一个小饰品啊个小饰品啊',
+							proId: 123,
+							image: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg',
+							tagImg: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg',
+							price: '$12.12',
+							tag: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg'
+						},
+						{
+							name: '我只是一个小饰品啊',
+							proId: 123,
+							image: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg',
+							tagImg: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg',
+							price: '$12.12',
+							tag: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg'
+						},
+						{
+							name: '我只是一个小饰品啊我只是一个小饰品啊我只是一个小饰品啊我只是一个小饰品啊我只是一个小饰品啊我只是一个小饰品啊',
+							proId: 123,
+							image: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg',
+							tagImg: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg',
+							price: '$12.12',
+							tag: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg'
+						},
+						{
+							name: '我只是一个小饰品啊我只是一个小饰品啊我只是一个小饰品啊',
+							proId: 123,
+							image: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg',
+							tagImg: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg',
+							price: '$12.12',
+							tag: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg'
+						},
+						{
+							name: '我只是一个小饰品啊',
+							proId: 123,
+							image: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg',
+							tagImg: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg',
+							price: '$12.12',
+							tag: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg'
+						},
+						{
+							name: '我只是一个小饰品啊我只是一个小饰品啊',
+							proId: 123,
+							image: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg',
+							tagImg: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg',
+							price: '$12.12',
+							tag: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg'
+						},
+						{
+							name: '我只是一个小我只是一个小饰品啊饰品啊',
+							proId: 123,
+							image: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg',
+							tagImg: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg',
+							price: '$12.12',
+							tag: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg'
+						}
 					]
 				}
 			};
@@ -90,6 +181,19 @@
 		onReady() {
 			this.navHeight = this.$refs.nav.navHeight();
 		},
+		onReachBottom() {
+			if (this.loadingType != 0) {
+				return;
+			}
+			this.loadingType = 1;
+			
+			if (searchList.haveMore) {
+				this.page++;
+				this.search(this.searchKey);
+			} else {
+				this.loadingType = 2;
+			}
+		},
 		methods: {
 			cancel: function () {
 				uni.navigateBack({
@@ -97,10 +201,19 @@
 				});
 			},
 			search: function (key) {
-				this.searchKey = key;
+				this.searchKey = key.length > 0 ? key : this.searchKey;
+				
+				//测试用的，真实要去掉
+				this.searchList.showHistory = this.searchKey.length <= 0;
 				
 				this.post('home/search', {key: this.searchKey, page: this.page}).then(res => {
 					// this.searchList = res.list;
+					this.loadingType = 0;
+				});
+			},
+			choosePro: function (proId) {
+				uni.navigateTo({
+					url: '../product/pro-detail?proId=' + proId
 				});
 			}
 		}
@@ -137,16 +250,16 @@
 		padding: 0 5px;
 	}
 	
-	/* history */
-	.history {
+	.container {
 		display: flex;
 		flex-direction: column;
-		font-size: 26upx;
 	}
 	
+	/* history */
 	.item {
 		display: flex;
 		flex-direction: column;
+		font-size: 26upx;
 	}
 	
 	.item-header {
@@ -182,5 +295,71 @@
 	.item-value text {
 		line-height: 64upx;
 		padding: 0 32upx;
+	}
+	
+	/* pro list */
+	.filtrate {
+		display: flex;
+		flex-direction: row;
+		height: 80upx;
+		background-color: #FFFFFF;
+	}
+	
+	.pro-list {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.product {
+		display: flex;
+		flex-direction: row;
+		height: 250upx;
+		background-color: #FFFFFF;
+		border-bottom: #EEEEEE 1upx solid;
+	}
+	
+	.pro-img {
+		width: 250upx;
+		height: 250upx;
+	}
+	
+	.pro-img image {
+		width: 200upx;
+		height: 200upx;
+		margin: 25upx 20upx 25upx 30upx;
+	}
+	
+	.pro-desc {
+		display: flex;
+		flex-direction: column;
+		width: 500upx;
+		height: 250upx;
+	}
+	
+	.pro-name {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		height: 160upx;
+		margin-top: 25upx;
+	}
+	
+	.pro-name image {
+		width: 100upx;
+		height: 28upx;
+	}
+	
+	.pro-name text {
+		font-size: 26upx;
+		line-height: 30upx;
+		margin-left: 10upx;
+	}
+	
+	.pro-price {
+		color: #DC143C;
+		font-size: 32upx;
+		height: 40upx;
+		line-height: 40upx;
+		margin-bottom: 25upx;
 	}
 </style>

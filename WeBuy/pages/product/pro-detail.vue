@@ -10,6 +10,11 @@
 			return {
 				
 			};
+		},
+		onLoad(prop) {
+			uni.showToast({
+				title: '' + prop.proId
+			});
 		}
 	}
 </script>

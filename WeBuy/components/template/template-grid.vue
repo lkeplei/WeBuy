@@ -34,7 +34,7 @@
 			clickItem(item) {
 				this.router(item.action, () => {
 					
-				})
+				});
 			}
 		}
 	}
