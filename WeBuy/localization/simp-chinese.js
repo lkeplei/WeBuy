@@ -100,5 +100,7 @@ module.exports = {
 	addressAlternativePhone: '备用电话电码：',
 	addressNote: '货运说明：',
 	addressSetDefault: '设置为默认地址',
-	addressPlaceAddress: '街道、地区、楼栋号、单元室等'
+	addressPlaceAddress: '街道、地区、楼栋号、单元室等',
+	
+	searchPlace: '想买点儿撒'
 }
