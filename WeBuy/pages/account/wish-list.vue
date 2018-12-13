@@ -11,11 +11,11 @@
 							<text class="pro-name">{{product.name}}</text>
 							<view class="pro-price">
 								<text>{{product.price}}</text>
-								<text>{{product.originalPrice}}</text>
+								<text class="original-price">{{product.originalPrice}}</text>
 							</view>
 						</view>
-						<view class="pro-more">
-							查找相似商品
+						<view class="pro-more" @tap="findMore(product)">
+							<text>{{textMore}}</text>
 						</view>
 					</view>
 				</view>
@@ -34,6 +34,7 @@
 		},
 		data() {
 			return {
+				textMore: this.local('historyFindMore'),
 				page: 0,
 				loadingType: 0,
 				contentText: {
@@ -122,6 +123,11 @@
 					// this.searchList = res.list;
 					this.loadingType = 0;
 				});
+			},
+			findMore: function (product) {
+				uni.navigateTo({
+					url: './find-more?proId=' + product.proId
+				});
 			}
 		}
 	}
@@ -188,7 +194,9 @@
 		color: #686868;
 	}
 	
-	.pro-more {
-		
+	.pro-more text {
+		width: 120upx;
+		padding: 10upx 20upx;
+		border: #EEEEEE 1upx solid;
 	}
 </style>

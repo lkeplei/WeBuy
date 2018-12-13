@@ -16,6 +16,7 @@ module.exports = {
 	navTitleCity: '选择您的城市',
 	navTitleHistory: '历史',
 	navTitleWish: '心愿单',
+	navTitleFindMore: '相似商品',
 	
 	placeholderMail: '请输入邮箱',
 	placeholderPwd: '请输入密码',
@@ -104,5 +105,7 @@ module.exports = {
 	addressSetDefault: '设置为默认地址',
 	addressPlaceAddress: '街道、地区、楼栋号、单元室等',
 	
-	searchPlace: '想买点儿撒'
+	searchPlace: '想买点儿撒',
+	
+	historyFindMore: '找相似商品'
 }

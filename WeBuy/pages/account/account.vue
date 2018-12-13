@@ -17,8 +17,9 @@
 		</view>
 		
 		<view class="order">
-			<view class="uni-list-cell-navigate uni-navigate-right" @click="clickItem('all')"> 
-				{{accountAllOrder}} 
+			<view class="order-all order-all-right" @click="clickItem('all')"> 
+				<text>{{accountAllOrder}}</text>
+				<text> </text>
 			</view>
 			
 			<view class="order-status">
@@ -136,8 +137,8 @@
 	.header {
 		display: flex;
 		flex-direction: column;
-		background-color: #D24C30;
 		color: #FFFFFF;
+		background-image: url('https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg');
 	}
 	
 	.user {
@@ -234,5 +235,29 @@
 		margin: 32upx 0;
 		width: 44upx;
 		height: 44upx;
+	}
+	
+	
+	
+	.order-all {
+		padding: 0upx 30upx;
+		line-height: 80upx;
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		box-sizing: border-box;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	.order-all.order-all-right:after {
+		font-family: uniicons;
+		content: '\e583';
+		position: absolute;
+		right: 24upx;
+		top: 50%;
+		color: #bbb;
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
 	}
 </style>
