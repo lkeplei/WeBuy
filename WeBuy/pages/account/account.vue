@@ -17,7 +17,9 @@
 		</view>
 		
 		<view class="order">
-			<view class="uni-list-cell-navigate uni-navigate-right" @click="clickItem('all')"> {{accountAllOrder}} </view>
+			<view class="uni-list-cell-navigate uni-navigate-right" @click="clickItem('all')"> 
+				{{accountAllOrder}} 
+			</view>
 			
 			<view class="order-status">
 				<block v-for="(item, index) in orderStatusList" :key="index">
@@ -52,8 +54,8 @@
 				accountAllOrder: this.local('accountAllOrder'),
 				accountName: this.local('accountUnlogin'),
 				funcList: [
-					{image:'/static/search.png', text: this.local('accountFuncWish'), action: 'unpaid'},
-					{image:'/static/search.png', text: this.local('accountFuncHisgtory'), action: 'unpaid'}
+					{image:'/static/search.png', text: this.local('accountFuncWish'), action: 'wb://account/wish'},
+					{image:'/static/search.png', text: this.local('accountFuncHistory'), action: 'wb://account/history'}
 				],
 				orderStatusList: [
 					{image:'/static/search.png', text: this.local('accountOrderUnpaid'), type: 'unpaid'},
@@ -134,7 +136,7 @@
 	.header {
 		display: flex;
 		flex-direction: column;
-		background-color: #DC143C;
+		background-color: #D24C30;
 		color: #FFFFFF;
 	}
 	
@@ -175,19 +177,20 @@
 	.order {
 		display: flex;
 		flex-direction: column;
-		height: 170upx;
-		color: #333333;
-		background-color: #FFF;
+		height: 240upx;
+		color: #3A3A3A;
+		font-size: 30upx;
+		background-color: #FFFFFF;
 	}
 	
 	.order-status {
 		display: flex;
 		flex-direction: row;
-		height: 100upx;
+		height: 160upx;
 		justify-content: space-around;
 		border-top: 1upx solid;
 		border-color: #eee;
-		color: #999999;
+		color: #686868;
 		font-size: 24upx;
 	}
 	
@@ -198,25 +201,26 @@
 	}
 	
 	.order-status image {
-		margin-top: 20upx;
-		width: 40upx;
-		height: 40upx;
+		margin: 30upx 0;
+		width: 42upx;
+		height: 42upx;
 	}
 	
 	/* service */
 	.service {
 		display: flex;
 		flex-direction: column;
-		background-color: #FFF;
+		background-color: #FFFFFF;
 		margin-top: 20upx;
 	}
 	
 	.service-line {
 		display: flex;
 		flex-direction: row;
-		height: 100upx;
+		height: 166upx;
 		font-size: 24upx;
-		margin: 20upx 0upx;
+		margin: 32upx 0 0 0;
+		color: #686868;
 	}
 	
 	.service-line view {
@@ -227,8 +231,8 @@
 	}
 	
 	.service-line image {
-		margin-top: 20upx;
-		width: 40upx;
-		height: 40upx;
+		margin: 32upx 0;
+		width: 44upx;
+		height: 44upx;
 	}
 </style>

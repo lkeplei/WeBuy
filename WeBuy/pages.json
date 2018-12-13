@@ -34,6 +34,24 @@
 				}
             }
 		},
+		{
+			"path": "pages/account/history",
+			"style": {
+				"navigationBarTextStyle": "black",
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/account/wish-list",
+			"style": {
+				"navigationBarTextStyle": "black",
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
 		
 		// 	account
 		{
@@ -283,8 +301,8 @@
 		"current": 0, //当前激活的模式(list 的索引项)
 		"list": [
 			{
-				"name": "", //模式名称
-				"path": "", //启动页面，必选
+				"name": "wish", //模式名称
+				"path": "pages/account/wish-list", //启动页面，必选
 				"query": "" //启动参数，在页面的onLoad函数里面得到
 			}
 		]

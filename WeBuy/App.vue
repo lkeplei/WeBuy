@@ -29,6 +29,11 @@
 		margin-right: 10upx;
 	}
 	
+	view {
+		display: flex;
+		flex-direction: column;
+	}
+	
 	button {
 		margin-top: 20upx;
 		margin-bottom: 20upx;

@@ -14,6 +14,8 @@ module.exports = {
 	navTitlePrivacyPolicy: '隐私政策',
 	navTitleProvince: '选择您的州/省/地区',
 	navTitleCity: '选择您的城市',
+	navTitleHistory: '历史',
+	navTitleWish: '心愿单',
 	
 	placeholderMail: '请输入邮箱',
 	placeholderPwd: '请输入密码',
@@ -41,7 +43,7 @@ module.exports = {
 	
 	accountUnlogin: '登录/注册',
 	accountFuncWish: '心愿单',
-	accountFuncHisgtory: '历史',
+	accountFuncHistory: '历史',
 	accountAllOrder: '全部订单',
 	accountOrderUnpaid: '未付款',
 	accountOrderPreparing: '待发货',
