@@ -237,8 +237,6 @@
 		height: 44upx;
 	}
 	
-	
-	
 	.order-all {
 		padding: 0upx 30upx;
 		line-height: 80upx;
