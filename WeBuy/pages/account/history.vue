@@ -150,6 +150,11 @@
 				uni.navigateTo({
 					url: './find-more?proId=' + product.proId
 				});
+			},
+			choosePro: function (proId) {
+				uni.navigateTo({
+					url: '../product/pro-detail?proId=' + proId
+				});
 			}
 		}
 	}
