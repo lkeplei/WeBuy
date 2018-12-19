@@ -8,13 +8,17 @@
 	export default {
 		data() {
 			return {
-				product: {}
+				
 			};
 		},
-		onLoad(prop) {
-			uni.showToast({
-				title: '' + prop.proId
+		onLoad() {
+			// 设置导航栏标题
+			uni.setNavigationBarTitle({
+				title: this.local('navTitleAppraise')
 			});
+		},
+		methods: {
+			
 		}
 	}
 </script>

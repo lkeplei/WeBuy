@@ -17,6 +17,10 @@ module.exports = {
 	navTitleHistory: '历史',
 	navTitleWish: '心愿单',
 	navTitleFindMore: '相似商品',
+	navTitleBuyyerReading: '购买须知',
+	navTitleSizeGuide: '尺寸指南',
+	navTitleAppraise: '发表评价',
+	navTitleAppraiseList: '评价',
 	
 	placeholderMail: '请输入邮箱',
 	placeholderPwd: '请输入密码',

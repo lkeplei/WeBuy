@@ -87,7 +87,30 @@
 		{
 			"path": "pages/product/pro-detail",
 			"style": {
-				"navigationBarTitleText": "detail"
+				"titleNView": false, //禁用原生导航栏
+				"bounce": "none" //关闭窗口回弹效果
+			}
+		},
+		{
+			"path": "pages/product/buyyer-reading",
+			"style": {
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/product/size-guide",
+			"style": {
+				"app-plus": {
+				}
+			}
+		},
+		{
+			"path": "pages/product/appraise-list",
+			"style": {
+				"app-plus": {
+				}
 			}
 		},
 		
@@ -114,28 +137,10 @@
 				}
 			}
 		},
-		
 		{
-			"path": "pages/account/my-info",
+			"path": "pages/order/appraise",
 			"style": {
 				"app-plus": {
-					"bounce": "none" //关闭窗口回弹效果
-				}
-			}
-		},
-		{
-			"path": "pages/account/change-name",
-			"style": {
-				"app-plus": {
-					"bounce": "none" //关闭窗口回弹效果
-				}
-			}
-		},
-		{
-			"path": "pages/setting/about-us",
-			"style": {
-				"app-plus": {
-					"bounce": "none" //关闭窗口回弹效果
 				}
 			}
 		},
@@ -180,6 +185,30 @@
 		// 	setting
 		{
 			"path": "pages/setting/setting",
+			"style": {
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/account/my-info",
+			"style": {
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/account/change-name",
+			"style": {
+				"app-plus": {
+					"bounce": "none" //关闭窗口回弹效果
+				}
+			}
+		},
+		{
+			"path": "pages/setting/about-us",
 			"style": {
 				"app-plus": {
 					"bounce": "none" //关闭窗口回弹效果
