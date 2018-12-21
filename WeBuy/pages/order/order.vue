@@ -97,7 +97,7 @@
 			});
 			
 			for (let i = 0; i < this.tabBars.length; i++) {
-				if (prop == this.tabBars[i].key) {
+				if (prop.type == this.tabBars[i].key) {
 					this.tabIndex = i;
 					break;
 				}

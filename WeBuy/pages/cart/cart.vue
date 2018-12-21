@@ -95,8 +95,8 @@
 				});
 			},
 			goProDetail(item) {
-				uni.navigateTo({
-					url: '../product/pro-detail'
+				this.router('wb://product/detail?proId=' + item.proId, () => {
+					
 				});
 			}
 		}
