@@ -21,6 +21,8 @@ module.exports = {
 	navTitleSizeGuide: '尺寸指南',
 	navTitleAppraise: '发表评价',
 	navTitleAppraiseList: '评价',
+	navTitleOrder: '我的订单',
+	navTitleOrderDetail: '订单详情',
 	
 	placeholderMail: '请输入邮箱',
 	placeholderPwd: '请输入密码',
@@ -50,10 +52,11 @@ module.exports = {
 	accountFuncWish: '心愿单',
 	accountFuncHistory: '历史',
 	accountAllOrder: '全部订单',
-	accountOrderUnpaid: '未付款',
+	accountAll: '全部订单',
+	accountOrderUnpaid: '待付款',
 	accountOrderPreparing: '待发货',
 	accountOrderShipped: '待收货',
-	accountOrderReviews: '评价',
+	accountOrderReviews: '待评价',
 	accountOrderReturns: '退货列表',
 	
 	myInfoAvatar: '头像',
