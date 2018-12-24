@@ -17,7 +17,8 @@ var routerMap = {
 	"wb://setting/privacy-policy": "/pages/setting/privacy-policy",
 	"wb://account/history": "/pages/account/history",
 	"wb://account/wish": "/pages/account/wish-list",
-	"wb://product/detail": "/pages/product/pro-detail"
+	"wb://product/detail": "/pages/product/pro-detail",
+	"wb://order/appraise": "/pages/order/appraise"
 };
 
 export default {

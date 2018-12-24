@@ -30,6 +30,11 @@
 					
 					<view class="order-bottom">
 						<text>{{order.desc}}</text>
+						<view v-if="order.funBtns" class="bottom-func">
+							<block v-for="(func, indexKey) in order.funBtns" :key="indexKey">
+								<text @tap="funcClick(func)">{{func.title}}</text>
+							</block>
+						</view>
 					</view>
 				</view>
 			</block>
@@ -48,6 +53,9 @@
 						title: '2018-11-12 12:10:12',
 						orderId: 123,
 						desc: '共计 2件商品 订单总额：￥12',
+						funBtns: [
+							{title: '评价', action: 'wb://order/appraise'}
+						],
 						list: [
 							{
 								name: '秋装',    /*商品名*/
@@ -136,6 +144,13 @@
 				uni.navigateTo({
 					url: './order-detail?orderId=' + orderId
 				});
+			},
+			funcClick: function (func) {
+				this.router(func.action, () => {
+					
+				});
+				
+				console.log(func.action)
 			}
 		}
 	}
@@ -212,7 +227,6 @@
 	}
 	
 	.order-bottom {
-		height: 80upx;
 		padding: 0 20upx;
 		align-items: flex-end;
 		border-top: #EEEEEE 1upx solid;
@@ -221,5 +235,20 @@
 	.order-bottom text {
 		font-size: 28upx;
 		line-height: 80upx;
+	}
+	
+	.bottom-func {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		margin: 0 20upx 20upx 20upx;
+	}
+	
+	.bottom-func text {
+		font-size: 28upx;
+		line-height: 50upx;
+		padding: 0 30upx;
+		border-radius: 25upx;
+		border: #EEEEEE 1upx solid;
 	}
 </style>
