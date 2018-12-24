@@ -135,6 +135,8 @@
 			"path": "pages/order/appraise",
 			"style": {
 				"app-plus": {
+					"titleNView": false, //禁用原生导航栏
+					"bounce": "none" //关闭窗口回弹效果
 				}
 			}
 		},

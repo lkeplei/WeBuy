@@ -32,7 +32,9 @@
 						<text>{{order.desc}}</text>
 						<view v-if="order.funBtns" class="bottom-func">
 							<block v-for="(func, indexKey) in order.funBtns" :key="indexKey">
-								<text @tap="funcClick(func)">{{func.title}}</text>
+								<view @click.stop="funcClick(func, order.orderId)">
+									<text>{{func.title}}</text>
+								</view>
 							</block>
 						</view>
 					</view>
@@ -145,12 +147,10 @@
 					url: './order-detail?orderId=' + orderId
 				});
 			},
-			funcClick: function (func) {
-				this.router(func.action, () => {
+			funcClick: function (func, orderId) {
+				this.router(func.action + '?orderId=' + orderId, () => {
 					
 				});
-				
-				console.log(func.action)
 			}
 		}
 	}
@@ -250,5 +250,9 @@
 		padding: 0 30upx;
 		border-radius: 25upx;
 		border: #EEEEEE 1upx solid;
+	}
+	
+	.bottom-func view {
+		padding: 20upx;
 	}
 </style>

@@ -114,5 +114,8 @@ module.exports = {
 	
 	searchPlace: '想买点儿撒',
 	
-	historyFindMore: '找相似商品'
+	historyFindMore: '找相似商品',
+	
+	appraiseHoldr: '宝贝满足你的期待吗？说说你的使用心得，分享给想买的他们吧',
+	appraisePost: '发表评论'
 }
