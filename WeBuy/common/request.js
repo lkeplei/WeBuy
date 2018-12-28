@@ -45,10 +45,16 @@ function getUrl(path) {
 
 function getParams(params) {
 	var sign = ''; 
+	var language = 'english';
 	try {
 		const value = uni.getStorageSync(Vue.prototype.staticVar.sign);
 		if (value) {
 			sign = value;
+		}
+		
+		const lan = uni.getStorageSync(Vue.prototype.staticVar.language);
+		if (lan) {
+			language = lan;
 		}
 	} catch (e) {
 		console.log(e);
@@ -56,7 +62,7 @@ function getParams(params) {
 
 	var auth = {
 		sign: sign,
-		apiVersion: '1'
+		language: language
 	}
 	
 	if (params.apiVersion) {

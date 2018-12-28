@@ -118,5 +118,9 @@ module.exports = {
 	historyFindMore: '找相似商品',
 	
 	appraiseHoldr: '宝贝满足你的期待吗？说说你的使用心得，分享给想买的他们吧',
-	appraisePost: '发表评论'
+	appraisePost: '发表评论',
+	
+	productCart: '购物车',
+	productAdd: '加入购物车',
+	productViewMore: '查看更多评论'
 }
