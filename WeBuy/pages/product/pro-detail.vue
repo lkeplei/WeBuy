@@ -32,23 +32,23 @@
 				<text>detail</text>
 			</view>
 			
-			<view class="review">
+			<view class="review" @tap="goToAppraiseList">
 				<view class="re-header">
 					<text>{{product.review.title}}</text>
 					<text>{{product.review.desc}}</text>
 				</view>
 				
 				<view class="re-center">
-					<view class="">
-						<image :src="product.review.info.avatar"></image>
-						<text>{{product.review.info.name}}</text>
+					<view class="user">
+						<image class="avatar" :src="product.review.info.avatar"></image>
+						<text class="name">{{product.review.info.name}}</text>
 						
 						<block v-for="n in product.review.info.point">
-							<image src="../../static/star-1.png"></image>
+							<image class="point" src="../../static/star-1.png"></image>
 						</block>
 					</view>
-					<text>{{product.review.info.message}}</text>
-					<text>{{product.review.info.desc}}</text>
+					<text class="message">{{product.review.info.message}}</text>
+					<text class="desc">{{product.review.info.desc}}</text>
 				</view>
 				
 				<view class="re-bottom">
@@ -141,6 +141,11 @@
 				uni.showToast({
 					title: 'add'
 				})
+			},
+			goToAppraiseList: function () {
+				uni.navigateTo({
+					url: './appraise-list?proId=' + this.proId
+				});
 			}
 		}
 	}
@@ -170,10 +175,47 @@
 		line-height: 80upx;
 		font-size: 32upx;
 		color: #999999;
+		margin: 0 20upx;
 	}
 	
 	.re-center {
 
+	}
+	
+	.re-center .user {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		height: 80upx;
+		padding-left: 20upx;
+	}
+	
+	.user .avatar {
+		width: 50upx;
+		height: 50upx;
+	}
+	
+	.user .name {
+		font-size: 24upx;
+		color: #666666;
+		margin: 0 10upx;
+	}
+	
+	.user .point {
+		width: 20upx;
+		height: 20upx;
+	}
+	
+	.re-center .message {
+		font-size: 30upx;
+		color: #666666;
+		padding: 0 20upx;
+	}
+	
+	.re-center .desc {
+		font-size: 26upx;
+		color: #999999;
+		padding: 0 20upx;
 	}
 	
 	.re-bottom {
