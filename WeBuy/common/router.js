@@ -18,7 +18,8 @@ var routerMap = {
 	"wb://account/history": "/pages/account/history",
 	"wb://account/wish": "/pages/account/wish-list",
 	"wb://product/detail": "/pages/product/pro-detail",
-	"wb://order/appraise": "/pages/order/appraise"
+	"wb://order/appraise": "/pages/order/appraise",
+	"wb://product/buyyer-reading": "/pages/product/buyyer-reading"
 };
 
 export default {
