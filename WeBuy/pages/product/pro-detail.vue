@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<scroll-view class="scrollList" scroll-y :style="{height:winHeight - 44 + 'px;'}">
+		<scroll-view scroll-y :style="{height:winHeight - 44 + 'px;'}">
 			<swiper autoplay="true" indicator-dots="true" circular="true" class="swiper-banners">
 				<swiper-item v-for="(item, key) in product.banners" :key="key">
 					<image :src="item.image" class="swiper-banners" />

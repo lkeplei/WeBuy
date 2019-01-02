@@ -1,29 +1,48 @@
 <template>
-	<view class="container">
-		<image src=../../static/cart/cartIcon.png mode=""></image>
-		<text>
-			You have a free gift to receive.
-		</text>
-		<button type="primary">
-			Get Now
-		</button>
-		<text>
-			You May Also Like
-		</text>
-		
-		<view class="news-grid-9">
-			<view class="news-grid-9-item" v-for="(item,index) in list" :key="index" @click="goProDetail(item)">
-				<image class="news-grid-9-image" src="../../static/cart/cartGrid.jpg"></image>
-				<text class="news-grid-9-text">
-					$ 16.99
-				</text>
-				<view class="news-grid-heart" @click.stop="clickHeart(item)">
-					<image src="../../static/cart/cartDislike.png"></image>
-					<text>840</text>
+	<view>
+		<view v-if="proList.length > 0">
+			<scroll-view scroll-y :style="{height:winHeight - 44 + 'px;'}">
+				<block v-for="(item, index) in proList" :key="index">
+					<view class="product">
+						
+					</view>
+				</block>
+			</scroll-view>
+			
+			<view class="bottom">
+				<view class="bottom-cart" @tap="goToCart">
+					<image src="../../static/cart.png"></image>
+					<text>{{cartText}}</text>
+				</view>
+				<view class="bottom-add" @tap="addToCart">
+					<text>{{cartAdd}}</text>
 				</view>
 			</view>
 		</view>
-		<load-more :loadingType="loadingType" :contentText="contentText"></load-more>
+		
+		<view v-else class="container">
+			<image src=../../static/cart/cartIcon.png mode=""></image>
+			<button type="primary">
+				Get Now
+			</button>
+			<text>
+				You May Also Like
+			</text>
+			
+			<view class="news-grid-9">
+				<view class="news-grid-9-item" v-for="(item,index) in list" :key="index" @click="goProDetail(item)">
+					<image class="news-grid-9-image" src="../../static/cart/cartGrid.jpg"></image>
+					<text class="news-grid-9-text">
+						$ 16.99
+					</text>
+					<view class="news-grid-heart" @click.stop="clickHeart(item)">
+						<image src="../../static/cart/cartDislike.png"></image>
+						<text>840</text>
+					</view>
+				</view>
+			</view>
+			<load-more :loadingType="loadingType" :contentText="contentText"></load-more>
+		</view>
 	</view>
 </template>
 
@@ -36,6 +55,64 @@
 		},
 		data() {
 			return {
+				winHeight: uni.getSystemInfoSync().windowHeight,
+				
+				proList: [
+					{
+						"proId": 123,
+						"name": "男装",
+						"image": "http://dummyimage.com/180x150",
+						"desc": "xl red",
+						"count": 1,
+						"price": "$124",
+						"originalPrice": "$230"
+					},
+					{
+						"proId": 123,
+						"name": "男装",
+						"image": "http://dummyimage.com/180x150",
+						"desc": "xl red",
+						"count": 1,
+						"price": "$124",
+						"originalPrice": "$230"
+					},
+					{
+						"proId": 123,
+						"name": "男装",
+						"image": "http://dummyimage.com/180x150",
+						"desc": "xl red",
+						"count": 1,
+						"price": "$124",
+						"originalPrice": "$230"
+					},
+					{
+						"proId": 123,
+						"name": "男装",
+						"image": "http://dummyimage.com/180x150",
+						"desc": "xl red",
+						"count": 1,
+						"price": "$124",
+						"originalPrice": "$230"
+					},
+					{
+						"proId": 123,
+						"name": "男装",
+						"image": "http://dummyimage.com/180x150",
+						"desc": "xl red",
+						"count": 1,
+						"price": "$124",
+						"originalPrice": "$230"
+					},
+					{
+						"proId": 123,
+						"name": "男装",
+						"image": "http://dummyimage.com/180x150",
+						"desc": "xl red",
+						"count": 1,
+						"price": "$124",
+						"originalPrice": "$230"
+					}
+				],
 				list: [
 					{},{},{},{},{},{}
 				],
@@ -105,17 +182,26 @@
 
 <style scoped>
 	.container {
-        padding-top: 10upx;
-		
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-    }
-
-    page {
-        background: #FFFFFF;
+		background-color: #FFFFFF;
     }
 	
+	/* 有购物车的商品 */
+	.product {
+		height: 250upx;
+		border-bottom: #EEEEEE 1upx solid;
+	}
+	
+	/* 有购物车的底部 bottom */
+	.bottom {
+		display: flex;
+		flex-direction: row;
+		height: 44px;
+		border: #EEEEEE 1upx solid;
+	}
+
 	/* 九宫格 */
 	.news-grid-9 {
 		background: #FFF;
