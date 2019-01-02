@@ -122,5 +122,7 @@ module.exports = {
 	
 	productCart: '购物车',
 	productAdd: '加入购物车',
-	productViewMore: '查看更多评论'
+	productViewMore: '查看更多评论',
+	
+	appraiseListAverage: '平均评分:'
 }

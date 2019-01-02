@@ -4,7 +4,7 @@
 			<input type="text" focus="true" v-model="userMail" :placeholder="placeholderMail"/>
 			<view class="password">
 				<input :placeholder="placeholderPwd" v-model="userPwd" :password="showPassword" />
-				<view class="uni-icon uni-icon-eye" :class="[!showPassword ? 'uni-active' : '']" @click="changePassword"></view>
+				<wb-icon size="20" :type="'uni-icon-eye'" :class="[!showPassword ? 'uni-active' : '']" @click="changePassword"></wb-icon>
 			</view>
 		</view>
 		
@@ -42,8 +42,6 @@
 </script>
 
 <style scoped>
-	@import "../../common/icon.css";
-	
 	.password {
 		display: flex;
 		flex-direction: row;

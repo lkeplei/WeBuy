@@ -31,8 +31,19 @@
 				</view>
 			</block>
 			
-			<view class="">
-				<text>detail</text>
+			<view class="detail">
+				<view class="detail-header" @tap="showDeatil = !showDeatil">
+					<text>detail</text>
+					<wb-icon size="20" :type="showDeatil ? 'arrowdown' : 'arrowright'"></wb-icon>
+				</view>
+				<view v-show="showDeatil">
+					<block v-for="(item, index) in product.details" :key="index">
+						<view class="detail-cell">
+							<text>{{item.title}}</text>
+							<text>{{item.value}}</text>
+						</view>
+					</block>
+				</view>
 			</view>
 			
 			<view class="review" @tap="goToAppraiseList">
@@ -73,10 +84,16 @@
 </template>
 
 <script>
+	import uniIcon from '../../components/wb-icon.vue'
+	
 	export default {
+		components: {
+			'wb-icon': uniIcon
+		},
 		data() {
 			return {
 				proId: -1,
+				showDeatil: false,
 				winHeight: uni.getSystemInfoSync().windowHeight,
 				
 				cartText: this.local('productCart'),
@@ -164,10 +181,6 @@
 				this.router(func.action, () => {
 					
 				});
-				
-				uni.showToast({
-					title: func.action
-				});
 			}
 		}
 	}
@@ -240,6 +253,51 @@
 		justify-content: space-between;
 	}
 	
+	/* detail */
+	.detail {
+		margin: 10upx 0;
+		background-color: #FFFFFF;
+	}
+	
+	.detail-header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		height: 80upx;
+		padding: 0 30upx;
+	}
+	
+	.detail-header:after {
+		font-family: uniicons;
+		content: '\e583';
+		position: absolute;
+		right: 24upx;
+		top: 50%;
+		color: #bbb;
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+	
+	.detail-header text {
+		font-size: 36upx;
+		line-height: 80upx;
+		color: #333333;
+	}
+	
+	.detail-cell {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 10upx 40upx;
+		height: 50upx;
+	}
+	
+	.detail-cell text {
+		color: #666666;
+		font-size: 28upx;
+		line-height: 50upx;
+	}
 	/* review */
 	.review {
 		margin-top: 10upx;
