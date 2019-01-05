@@ -18,7 +18,7 @@ export default {
 							//接口强制升级
 							console.log('需要强制升级app');
 						} else {
-							resolve(res);
+							resolve(res.data);
 						}
 						
 						//公共处理 actionsheet
@@ -40,8 +40,11 @@ export default {
 }
 
 function getUrl(path) {
-	return "http://www.okwrap.com:2018/8/" + path;
+	return "http://api.txkjchq.com:802/api/" + path;
+	// return "http://www.okwrap.com:2018/8/" + path;
 }
+
+import Vue from 'vue'
 
 function getParams(params) {
 	var sign = ''; 
@@ -62,7 +65,7 @@ function getParams(params) {
 
 	var auth = {
 		sign: sign,
-		language: language
+		lan: language
 	}
 	
 	if (params.apiVersion) {

@@ -4,7 +4,7 @@
 			<input type="text" focus="true" v-model="userMail" :placeholder="placeholderMail"/>
 			<view class="password">
 				<input :placeholder="placeholderPwd" v-model="userPwd" :password="showPassword" />
-				<wb-icon size="20" :type="'uni-icon-eye'" :class="[!showPassword ? 'uni-active' : '']" @click="changePassword"></wb-icon>
+				<wb-icon size="20" :type="'eye'" :class="[!showPassword ? 'uni-active' : '']" @click="changePassword"></wb-icon>
 			</view>
 		</view>
 		
@@ -29,13 +29,21 @@
 				this.showPassword = !this.showPassword;
 			},
 			login: function () {
-				this.post('user/emailLogin', {email: this.userMail, pwd: this.userPwd}).then(res => {
+				this.post('user/login', {loginName: this.userMail, password: this.userPwd}).then(res => {
 					// 缓存用户签名等信息
-					// uni.setStorageSync(this.staticVar.sign, res.sign);
+					uni.setStorageSync(this.staticVar.sign, res.data.sign);
+					
+					// 逻辑跳转
+					if (res.data.chooseLan) {
+						uni.redirectTo({
+							url: '/pages/setting/language'
+						});
+					} else {
+						uni.navigateBack({
+							delta: 1
+						});
+					}
 				});
-				
-				// 临时写一个用户签名
-				uni.setStorageSync(this.staticVar.sign, this.userMail + this.userPwd);
 			}
 		}
 	}

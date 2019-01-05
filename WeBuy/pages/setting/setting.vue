@@ -67,7 +67,7 @@
 				}
 			},
 			logout: function () {
-				this.post('user/logout', {email: this.userMail, pwd: this.userPwd}).then(res => {
+				this.post('user/logout', {}).then(res => {
 					// 清除用户签名等信息
 					uni.removeStorageSync(this.staticVar.sign);
 				});
@@ -76,6 +76,6 @@
 	}
 </script>
 
-<style>
+<style scoped>
 
 </style>

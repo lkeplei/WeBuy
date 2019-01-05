@@ -26,12 +26,12 @@
 		methods: {
 			saveUserName: function () {
 				this.post('user/changeName', {name: this.userName}).then(res => {
-					console.log(res);
+					if (res.code == 200) {
+						uni.navigateBack({
+							delta: 1
+						});
+					}
 				});
-				
-				uni.showToast({
-					title: this.userName
-				})
 			},
 			bindKeyInput: function (e) {
 				this.userName = e.target.value;

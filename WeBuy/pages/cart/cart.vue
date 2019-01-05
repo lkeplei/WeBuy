@@ -19,7 +19,7 @@
 										<text class="price">${{item.price}}</text>
 										<text class="original">{{item.originalPrice}}</text>
 									</view>
-									<wb-number-box :disabled="true" @change="onNumberChange(value, item)"
+									<wb-number-box :disabled="true" @change="onNumberChange(item)"
 										:value="item.count" :min="1">
 									</wb-number-box>
 								</view>
@@ -169,6 +169,11 @@
 			uni.setNavigationBarTitle({
 				title: this.local('navTitleCart')
 			});
+			
+			// 获取购物车数据
+			this.post('cart/list', {}).then(res => {
+				console.log('res = ' + JSON.stringify(res));
+			});
 		},
 		onPullDownRefresh() {
 			uni.showToast({
@@ -226,8 +231,8 @@
 				console.log('radio发生change事件，携带value值为：' + e.detail.value);
 			},
 			onNumberChange: function(value, product) {
-				product.count = value;
-				console.log('value == ' + value);
+				// product.count = value;
+				console.log('value == ' + value + JSON.stringify(product));
 			}
 		}
 	}

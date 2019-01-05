@@ -18,6 +18,8 @@
 }
 	
 .wb-list-cell-navigate {
+	display: flex;
+	flex-direction: row;
 	padding: 22upx 30upx;
 	line-height: 48upx;
 	position: relative;

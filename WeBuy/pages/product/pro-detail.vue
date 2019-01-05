@@ -24,7 +24,7 @@
 			
 			<block v-for="(item, index) in product.funcList" :key="index">
 				<view class="wb-cell" hover-class="wb-cell-hover" @click="clickFunc(item)">
-					<view class="cell wb-list-cell-navigate wb-navigate-right wb-right">
+					<view class="wb-list-cell-navigate wb-navigate-right wb-right">
 						<text>{{item.title}}</text>
 						<text>{{item.value}}</text>
 					</view>
@@ -245,12 +245,6 @@
 		padding: 10upx 30upx;
 		background-color: #FFFFFF;
 		margin-bottom: 20upx;
-	}
-	
-	.cell {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
 	}
 	
 	/* detail */
