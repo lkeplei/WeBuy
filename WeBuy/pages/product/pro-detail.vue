@@ -84,11 +84,11 @@
 </template>
 
 <script>
-	import uniIcon from '../../components/wb-icon.vue'
+	import wbIcon from '../../components/wb-icon.vue'
 	
 	export default {
 		components: {
-			'wb-icon': uniIcon
+			'wb-icon': wbIcon
 		},
 		data() {
 			return {

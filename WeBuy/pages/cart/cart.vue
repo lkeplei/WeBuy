@@ -2,20 +2,47 @@
 	<view>
 		<view v-if="proList.length > 0">
 			<scroll-view scroll-y :style="{height:winHeight - 44 + 'px;'}">
-				<block v-for="(item, index) in proList" :key="index">
-					<view class="product">
-						
-					</view>
-				</block>
+				<checkbox-group @change.stop="checkboxChange">
+					<block v-for="(item, index) in proList" :key="index">
+						<view class="product">
+							<checkbox :value="item" :checked="item.checked" />
+							<image :src="item.image"></image>
+							
+							<view class="pro-info" @tap="goProductDetail(item.proId)">
+								<text class="name">{{item.name}}</text>
+								<view class="select">
+									<text>{{item.desc}}</text>
+									<wb-icon size="18" :type="'arrowdown'"></wb-icon>
+								</view>
+								<view class="count">
+									<view class="pro-price">
+										<text class="price">${{item.price}}</text>
+										<text class="original">{{item.originalPrice}}</text>
+									</view>
+									<wb-number-box :disabled="true" @change="onNumberChange(value, item)"
+										:value="item.count" :min="1">
+									</wb-number-box>
+								</view>
+							</view>
+						</view>
+					</block>
+				</checkbox-group>
 			</scroll-view>
 			
 			<view class="bottom">
-				<view class="bottom-cart" @tap="goToCart">
-					<image src="../../static/cart.png"></image>
-					<text>{{cartText}}</text>
+				<view class="bottom-select">
+					<radio :value="all" :checked="'true'" />
+					<text>{{allText}}</text>
 				</view>
-				<view class="bottom-add" @tap="addToCart">
-					<text>{{cartAdd}}</text>
+					
+				<view class="bottom-info">
+					<view class="total-price">
+						<text>{{totalText}}</text>
+						<text class="money">{{totalPrice}}</text>
+					</view>
+					<view class="buy-now">
+						<text>{{buyText}}</text>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -48,13 +75,20 @@
 
 <script>
 	import loadMore from '../../components/load-more.vue'
+	import wbNumberBox from '../../components/wb-number-box.vue'
+	import wbIcon from '../../components/wb-icon.vue'
 	
 	export default {
 		components: {
-			loadMore
+			'load-more': loadMore,
+			'wb-number-box': wbNumberBox,
+			'wb-icon': wbIcon
 		},
 		data() {
 			return {
+				allText: this.local('cartAll'),
+				totalText: this.local('cartTotal'),
+				buyText: this.local('cartBuy'),
 				winHeight: uni.getSystemInfoSync().windowHeight,
 				
 				proList: [
@@ -64,8 +98,9 @@
 						"image": "http://dummyimage.com/180x150",
 						"desc": "xl red",
 						"count": 1,
-						"price": "$124",
-						"originalPrice": "$230"
+						"price": 124,
+						"originalPrice": "$230",
+						checked: false
 					},
 					{
 						"proId": 123,
@@ -73,8 +108,9 @@
 						"image": "http://dummyimage.com/180x150",
 						"desc": "xl red",
 						"count": 1,
-						"price": "$124",
-						"originalPrice": "$230"
+						"price": 124,
+						"originalPrice": "$230",
+						checked: true
 					},
 					{
 						"proId": 123,
@@ -82,8 +118,9 @@
 						"image": "http://dummyimage.com/180x150",
 						"desc": "xl red",
 						"count": 1,
-						"price": "$124",
-						"originalPrice": "$230"
+						"price": 124,
+						"originalPrice": "$230",
+						checked: false
 					},
 					{
 						"proId": 123,
@@ -91,8 +128,9 @@
 						"image": "http://dummyimage.com/180x150",
 						"desc": "xl red",
 						"count": 1,
-						"price": "$124",
-						"originalPrice": "$230"
+						"price": 124,
+						"originalPrice": "$230",
+						checked: false
 					},
 					{
 						"proId": 123,
@@ -100,8 +138,9 @@
 						"image": "http://dummyimage.com/180x150",
 						"desc": "xl red",
 						"count": 1,
-						"price": "$124",
-						"originalPrice": "$230"
+						"price": 124,
+						"originalPrice": "$230",
+						checked: false
 					},
 					{
 						"proId": 123,
@@ -109,8 +148,9 @@
 						"image": "http://dummyimage.com/180x150",
 						"desc": "xl red",
 						"count": 1,
-						"price": "$124",
-						"originalPrice": "$230"
+						"price": 124,
+						"originalPrice": "$230",
+						checked: false
 					}
 				],
 				list: [
@@ -125,17 +165,6 @@
 			};
 		},
 		onLoad() {
-			uni.request({
-				url: 'https://unidemo.dcloud.net.cn/api/news',
-				method: 'GET',
-				data: {},
-				success: res => {
-					console.log(res);
-				},
-				fail: () => {},
-				complete: () => {}
-			});
-			
 			// 设置导航栏标题
 			uni.setNavigationBarTitle({
 				title: this.local('navTitleCart')
@@ -165,6 +194,18 @@
 				this.loadingType = 0;
 			}, 800);
 		},
+		computed: {
+			totalPrice: function() {
+				var money = 0;
+				this.proList.forEach((product) => {
+					if (product.checked) {
+						money += product.price * product.count;
+					}
+				});
+				
+				return '$' + money;
+			}
+		},
 		methods: {
 			clickHeart(item) {
 				uni.showToast({
@@ -175,6 +216,18 @@
 				this.router('wb://product/detail?proId=' + item.proId, () => {
 					
 				});
+			},
+			goProductDetail: function(proId) {
+				this.router('wb://product/detail?proId=' + proId, () => {
+					
+				});
+			},
+			checkboxChange: function(e) {
+				console.log('radio发生change事件，携带value值为：' + e.detail.value);
+			},
+			onNumberChange: function(value, product) {
+				product.count = value;
+				console.log('value == ' + value);
 			}
 		}
 	}
@@ -190,16 +243,100 @@
 	
 	/* 有购物车的商品 */
 	.product {
-		height: 250upx;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		height: 300upx;
 		border-bottom: #EEEEEE 1upx solid;
+		padding: 20upx 30upx;
+		background-color: #FFFFFF;
+	}
+
+	.product image {
+		width: 150upx;
+		height: 260upx;
+	}
+	
+	.pro-info {
+		margin-left: 20upx;
+	}
+	
+	.pro-info .select {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin: 20upx 0;
+		background-color: #EEEEEE;
+		padding: 6upx 10upx;
+		font-size: 30upx;
+		color: #666666;
+	}
+	
+	.pro-info .count {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	.pro-price {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+	}
+	
+	.pro-price .price {
+		color: @#D24C30;
+		font-size: 38upx;
+	}
+	
+	.pro-price .original {
+		color: #666666;
+		font-size: 28upx;
+		text-decoration: line-through;
 	}
 	
 	/* 有购物车的底部 bottom */
 	.bottom {
 		display: flex;
 		flex-direction: row;
+		justify-content: space-between;
 		height: 44px;
 		border: #EEEEEE 1upx solid;
+	}
+	
+	.bottom text {
+		font-size: 30upx;
+		line-height: 44px;
+	}
+	
+	.bottom-select {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding-left: 20upx;
+	}
+	
+	.bottom-info {
+		display: flex;
+		flex-direction: row;
+	}
+	
+	.total-price {
+		display: flex;
+		flex-direction: row;
+		margin-right: 20upx;
+	}
+	
+	.total-price .money {
+		color: #D24C30;
+	}
+	
+	.buy-now {
+		font-size: 32upx;
+		background-color: #D24C30;
+		color: #FFFFFF;
+		padding: 0 30upx;
 	}
 
 	/* 九宫格 */
