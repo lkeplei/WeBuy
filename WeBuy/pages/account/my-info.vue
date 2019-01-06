@@ -41,12 +41,14 @@
 		},
 		data() {
 			return {
-				userName: 'test',
+				userName: '',
+				birthday: '',
+				
 				avatar: this.local('myInfoAvatar'),
 				name: this.local('myInfoName'),
 				funcList: [
-					{text: this.local('myInfoBirthday'), type: 'birthday', value: '2018-01-01'},
-					{text: this.local('myInfoGender'), type: 'gender', value: 'male'}
+					{text: this.local('myInfoBirthday'), type: 'birthday', value: ''},
+					{text: this.local('myInfoGender'), type: 'gender', value: ''}
 				],
 				// 多级选择
 				themeColor: '#007AFF',
@@ -69,6 +71,13 @@
 			// 获取用户信息
 			this.post('user/info', {}).then(res => {
 				this.userName = res.data.Nickname;
+
+				this.funcList[0].value = res.data.Birthday;
+				if (res.data.Sex) {
+					this.funcList[1].value = this.local(res.data.Sex == 'male' ? 'publicMale' : 'publicFemale');
+				} else {
+					this.funcList[1].value = this.local('publicMale');
+				}
 			});
 		},
 		methods: {
@@ -86,8 +95,10 @@
 			clickFunc: function (item) {
 				if (item.type === 'birthday') {
 					this.pickerValueArray = [];
+					var one = 0, two = 0, three = 0;
 					for (var year = 1970; year <= 2016; year++) {
 						var y = {value: '' + year, label: '' + year, children: []};
+
 						for (var month = 1; month <= 12; month++) {
 							var m = {value: '' + year + month, label: (month < 10 ? '0' : '') + month, children: []};
 							
@@ -127,13 +138,9 @@
 				this.currentItem.value = e.label;
 				
 				if (this.currentItem.type === 'birthday') {
-					this.post('user/changeBirthday', {birthday: e.label}).then(res => {
-						console.log(res);
-					});
+					this.post('user/changeBirthday', {birthday: e.label}).then(res => {});
 				} else if (this.currentItem.type === 'gender') {
-					this.post('user/changeGender', {gender: e.value}).then(res => {
-						console.log(res);
-					});
+					this.post('user/changeGender', {gender: e.value[0]}).then(res => {});
 				}
 			}
 		},

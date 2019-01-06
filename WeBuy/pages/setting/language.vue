@@ -4,7 +4,7 @@
 			<label class="wb-cell wb-cell-pd" hover-class="wb-cell-hover" v-for="item in list" :key="item.value">
 				<view>{{item.name}}</view>
 				<view>
-					<radio :value="item.value" checked="true" />
+					<radio :value="item.value" :checked="item.checked" />
 				</view>
 			</label>
 		</radio-group>	
@@ -37,6 +37,8 @@
 			uni.setNavigationBarTitle({
 				title: this.local('navTitleLanguage')
 			});
+			
+			this.radioChange({detail: {value: uni.getStorageSync(this.staticVar.language)}})
 		},
 		methods: {
 			radioChange: function (e) {

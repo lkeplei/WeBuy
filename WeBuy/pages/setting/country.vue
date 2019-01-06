@@ -1,33 +1,31 @@
 <template>
 	<view class="page">
 		<scroll-view class="scrollList" scroll-y :scroll-into-view="scrollViewId" :style="{height:winHeight + 'px;'}">
-			<view class="uni-list">
+			<view>
 				<block v-for="(list,key) in lists" :key="key" v-if="list.data[0]">
-					<view class="uni-list-cell-divider" :id="list.letter">
+					<view class="list-letter" :id="list.letter">
 						{{list.letter}}
 					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover" 
-						v-for="(item,index) in list.data" :key="index" @tap="selectCountry(item)"
-						:class="list.data.length -1 == index ? 'uni-list-cell-last' : ''">
-						<view class="uni-list-cell-navigate">
+					<view class="wb-cell" hover-class="wb-cell-hover" 
+						v-for="(item,index) in list.data" :key="index" @tap="selectCountry(item)">
+						<view class="wb-list-cell-navigate">
 							{{item.name}}
 						</view>
 					</view>
 				</block>
 			</view>
 		</scroll-view>
-		<view class="uni-indexed-list-bar" :class="touchmove ? 'active' : ''" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd" @touchcancel="touchCancel" :style="{height:winHeight + 'px;'}">
-			<text v-for="(list,key) in lists" :key="key" class="uni-indexed-list-text" :class="touchmoveIndex == key ? 'active' : ''"
+		<view class="wb-indexed-list-bar" :class="touchmove ? 'active' : ''" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd" @touchcancel="touchCancel" :style="{height:winHeight + 'px;'}">
+			<text v-for="(list,key) in lists" :key="key" class="wb-indexed-list-text" :class="touchmoveIndex == key ? 'active' : ''"
 			    :style="{heigth:itemHeight + 'px',lineHeight:itemHeight + 'px'}">{{list.letter}}</text>
 		</view>
-		<view class="uni-indexed-list-alert" v-if="touchmove">
+		<view class="wb-indexed-list-alert" v-if="touchmove">
 			{{lists[touchmoveIndex].letter}}
 		</view>
 	</view>
 </template>
 
 <script>
-
 	export default {
 		data() {
 			return {
@@ -239,10 +237,6 @@
 				this.post('user/changeCountry', {country: item.key}).then(res => {	
 					
 				});	
-				
-				uni.navigateBack({
-					delta: 1
-				});
 			}
 		}
 	}
@@ -259,7 +253,12 @@
 		height: 100vh;
 	}
 
-	.uni-indexed-list-bar {
+	.list-letter {
+		color: #999999;
+		padding: 10upx 20upx;
+	}
+
+	.wb-indexed-list-bar {
 		width: 46upx;
 		height: 100vh;
 		background-color: lightgrey;
@@ -267,26 +266,26 @@
 		flex-direction: column;
 	}
 
-	.uni-indexed-list-bar.active {
+	.wb-indexed-list-bar.active {
 		background-color: rgb(200, 200, 200);
 	}
 
-	.uni-indexed-list-text {
+	.wb-indexed-list-text {
 		color: #aaa;
 		font-size: 22upx;
 		text-align: center;
 	}
 
-	.uni-indexed-list-bar.active .uni-indexed-list-text {
+	.wb-indexed-list-bar.active .wb-indexed-list-text {
 		color: #333;
 	}
 
-	.uni-indexed-list-text.active,
-	.uni-indexed-list-bar.active .uni-indexed-list-text.active {
+	.wb-indexed-list-text.active,
+	.wb-indexed-list-bar.active .wb-indexed-list-text.active {
 		color: #007AFF;
 	}
 
-	.uni-indexed-list-alert {
+	.wb-indexed-list-alert {
 		position: absolute;
 		z-index: 20;
 		width: 160upx;
