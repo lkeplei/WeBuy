@@ -27,9 +27,7 @@
 			saveUserName: function () {
 				this.post('user/changeName', {name: this.userName}).then(res => {
 					if (res.code == 200) {
-						uni.navigateBack({
-							delta: 1
-						});
+						uni.navigateBack({delta: 1});
 					}
 				});
 			},

@@ -85,11 +85,11 @@
 			});
 			
 			this.statusHeight = uni.getSystemInfoSync().statusBarHeight;
-			
+		},
+		onShow() {
 			// 获取用户信息
 			this.post('user/info', {}).then(res => {
-				// this.accountName = res.name;
-				this.accountName = 'user name';
+				this.accountName = res.data.Nickname;
 			});
 		},
 		onNavigationBarButtonTap(index) {

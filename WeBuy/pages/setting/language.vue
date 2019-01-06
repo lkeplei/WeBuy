@@ -55,6 +55,8 @@
 					this.post('user/changeLanguage', {language: this.currentValue}).then(res => {	
 						if (res.code == 200) {
 							uni.setStorageSync(this.staticVar.language, this.currentValue);
+							
+							uni.navigateBack({delta: 1});
 						}
 					});	
 				}

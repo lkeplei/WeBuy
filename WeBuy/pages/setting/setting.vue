@@ -71,6 +71,7 @@
 					// 清除用户签名等信息
 					uni.removeStorageSync(this.staticVar.sign);
 				});
+				uni.removeStorageSync(this.staticVar.sign);
 			}
 		}
 	}

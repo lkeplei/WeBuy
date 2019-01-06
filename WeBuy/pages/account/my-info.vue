@@ -65,6 +65,12 @@
 			
 			this.userName = prop.userName;
 		},
+		onShow() {
+			// 获取用户信息
+			this.post('user/info', {}).then(res => {
+				this.userName = res.data.Nickname;
+			});
+		},
 		methods: {
 			uploadAvatar: function () {
 				uni.showToast({
