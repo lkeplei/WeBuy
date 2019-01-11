@@ -13,8 +13,6 @@
 </template>
 
 <script>
-	import crypto from 'crypto'
-	
 	export default {
 		data() {
 			return {
@@ -31,7 +29,7 @@
 				this.showPassword = !this.showPassword;
 			},
 			login: function () {
-				this.post('user/login', {loginName: this.userMail, password: this.userPwd}).then(res => {
+				this.post('user/login', {loginName: this.userMail, password: this.$md5(this.userPwd)}).then(res => {
 					// 缓存用户签名等信息
 					uni.setStorageSync(this.staticVar.sign, res.data.sign);
 					
@@ -46,12 +44,6 @@
 						});
 					}
 				});
-			},
-			getmd5: function(str){
-				var md5 = crypto.createHash("md5");
-				//update("中文", "utf8")
-				md5.update(str);
-				return md5.digest('hex');
 			}
 		}
 	}
