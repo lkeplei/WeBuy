@@ -83,7 +83,16 @@
 				}
 				
 				if (canConfirm) {
-					this.post('user/changePwd', {oldPwd: this.oldPwd, newPwd: this.newPwd}).then(res => {});	
+					this.post('user/changePwd', {oldPwd: this.$md5(this.oldPwd), newPwd: this.$md5(this.newPwd)}).then(res => {
+						if (res.code == 200) {
+							uni.showToast({
+								title: this.local('emailSuccess'),
+								complete() {
+									uni.navigateBack({delta: 1});		
+								}
+							});
+						}
+					});	
 				}
 			}
 		}

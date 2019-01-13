@@ -43,8 +43,17 @@
 			},
 			confirm: function () {
 				this.post('user/changeEmail', {email: this.newEmail}).then(res => {
-					this.showRemind = res.showRemind;
-					this.remind = res.remind;
+					if (res.data.success) {
+						uni.showToast({
+							title: this.local('emailSuccess'),
+							complete() {
+								uni.navigateBack({delta: 1});		
+							}
+						});
+					} else {
+						this.showRemind = res.data.showRemind;
+						this.remind = res.data.remind;	
+					}
 				});
 			}
 		}

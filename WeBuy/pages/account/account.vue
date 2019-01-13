@@ -89,7 +89,7 @@
 		onShow() {
 			// 获取用户信息
 			this.post('user/info', {}).then(res => {
-				this.accountName = res.data.Nickname;
+				this.accountName = res.data.name;
 			});
 		},
 		onNavigationBarButtonTap(index) {

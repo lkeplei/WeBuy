@@ -57,7 +57,7 @@
 			</text>
 			
 			<view class="news-grid-9">
-				<view class="news-grid-9-item" v-for="(item,index) in list" :key="index" @click="goProDetail(item)">
+				<view class="news-grid-9-item" v-for="(item,index) in guessList" :key="index" @click="goProDetail(item)">
 					<image class="news-grid-9-image" src="../../static/cart/cartGrid.jpg"></image>
 					<text class="news-grid-9-text">
 						$ 16.99
@@ -153,9 +153,9 @@
 						checked: false
 					}
 				],
-				list: [
-					{},{},{},{},{},{}
-				],
+				
+				guessPage: 0,
+				guessList: [],
 				loadingType: 0,
 				contentText: {
 					contentdown: this.local('loadingDown'),
@@ -170,34 +170,25 @@
 				title: this.local('navTitleCart')
 			});
 			
-			// 获取购物车数据
-			this.post('cart/list', {}).then(res => {
-				console.log('res = ' + JSON.stringify(res));
-			});
+			// 刷新页面数据
+			this.freshPageData();
 		},
 		onPullDownRefresh() {
-			uni.showToast({
-				title: "需要下拉刷新",
-				complete: (res) => {
-					uni.stopPullDownRefresh();
-				}
-			});
+			// 刷新页面数据
+			this.freshPageData();
 		},
 		onReachBottom() {
 			if (this.loadingType != 0) {
 				return;
 			}
+			
 			this.loadingType = 1;
-			for (let i = 0; i < 6; i++) {
-				this.list.push({});
-			}
-			setTimeout(() => {
-				if (this.list.length >= 18) {
-					this.loadingType = 2;
-					return;
-				}
-				this.loadingType = 0;
-			}, 800);
+			this.post('user/getGuessList', {page: this.guessPage}).then(res => {
+				this.guessPage++;
+				this.loadingType = res.data.haveMore ? 0 : 2;
+
+				this.guessList.concat(res.data.list);
+			});
 		},
 		computed: {
 			totalPrice: function() {
@@ -233,6 +224,18 @@
 			onNumberChange: function(value, product) {
 				// product.count = value;
 				console.log('value == ' + value + JSON.stringify(product));
+			},
+			freshPageData: function() {
+				this.post('cart/list', {}).then(res => {
+					if (res.data.list && res.data.list.length > 0) {
+						this.proList = res.data.list;
+					} else {
+						this.post('user/getGuessList', {page: this.guessPage}).then(res => {
+							this.guessPage++;
+							this.guessList = res.data.list;
+						});
+					}
+				});
 			}
 		}
 	}

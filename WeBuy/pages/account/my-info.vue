@@ -70,11 +70,11 @@
 		onShow() {
 			// 获取用户信息
 			this.post('user/info', {}).then(res => {
-				this.userName = res.data.Nickname;
+				this.userName = res.data.name;
 
-				this.funcList[0].value = res.data.Birthday;
-				if (res.data.Sex) {
-					this.funcList[1].value = this.local(res.data.Sex == 'male' ? 'publicMale' : 'publicFemale');
+				this.funcList[0].value = res.data.birthday;
+				if (res.data.gender) {
+					this.funcList[1].value = this.local(res.data.gender == 'male' ? 'publicMale' : 'publicFemale');
 				} else {
 					this.funcList[1].value = this.local('publicMale');
 				}

@@ -93,6 +93,7 @@ module.exports = {
 	changePwdNewRemind: '您的密码必须是6-20个字符',
 	changePwdConfirmRemind: '密码不匹配！',
 	
+	emailSuccess: '修改成功',
 	emailText: '输入新电子邮箱',
 	emailRemind: '更改后您可以使用新的电子邮箱登录',
 	
