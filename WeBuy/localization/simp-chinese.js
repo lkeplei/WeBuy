@@ -129,5 +129,8 @@ module.exports = {
 	
 	cartAll: '全部',
 	cartTotal: '合计：',
-	cartBuy: '结算'
+	cartBuy: '结算',
+	cartBuyNowDesc: '购物车空空如也，盛世寂寞！',
+	cartBuyNow: '立即购买',
+	cartGuessTitle: '你可能喜欢'
 }

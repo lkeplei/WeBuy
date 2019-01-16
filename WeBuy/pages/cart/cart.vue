@@ -20,7 +20,7 @@
 										<text class="original">{{item.originalPrice}}</text>
 									</view>
 									<wb-number-box :disabled="true" @change="onNumberChange(item)"
-										:value="item.count" :min="1">
+										:value="item.count" :min="1" :height="40">
 									</wb-number-box>
 								</view>
 							</view>
@@ -48,27 +48,22 @@
 		</view>
 		
 		<view v-else class="container">
-			<image src=../../static/cart/cartIcon.png mode=""></image>
-			<button type="primary">
-				Get Now
-			</button>
-			<text>
-				You May Also Like
-			</text>
+			<image class="cart-img" src=../../static/cart/cartIcon.png mode=""></image>
+			<text class="cart-desc">{{buyNowDescText}}</text>
+			<view class="cart-buy"> <text>{{buyNowText}}</text></view>
+			<text class="cart-guess-title">{{guessTitleText}}</text>
 			
 			<view class="news-grid-9">
-				<view class="news-grid-9-item" v-for="(item,index) in guessList" :key="index" @click="goProDetail(item)">
-					<image class="news-grid-9-image" src="../../static/cart/cartGrid.jpg"></image>
-					<text class="news-grid-9-text">
-						$ 16.99
-					</text>
+				<view class="news-grid-9-item" v-for="(item, index) in guessList" :key="index" @click="goProDetail(item)">
+					<image class="news-grid-9-image" :src="item.url"></image>
+					<text class="news-grid-9-text">{{item.price}}</text>
 					<view class="news-grid-heart" @click.stop="clickHeart(item)">
-						<image src="../../static/cart/cartDislike.png"></image>
-						<text>840</text>
+						<image :src="item.wishImg"></image>
+						<text>{{item.number}}</text>
 					</view>
 				</view>
 			</view>
-			<load-more :loadingType="loadingType" :contentText="contentText"></load-more>
+			<load-more v-show="guessList.length > 6" :loadingType="loadingType" :contentText="contentText"></load-more>
 		</view>
 	</view>
 </template>
@@ -154,8 +149,62 @@
 					}
 				],
 				
+				buyNowDescText: this.local('cartBuyNowDesc'),
+				buyNowText: this.local('cartBuyNow'),
+				guessTitleText: this.local('cartGuessTitle'),
+				
 				guessPage: 0,
-				guessList: [],
+				guessList: [
+// 					{
+// 					"proId": 12,    /*商品id*/
+// 					"url": "http://dummyimage.com/150X200",    /*商品图片地址*/
+// 					"wish": true,    /*是否已在心愿表*/
+// 					"number": "1230",    /*有多少人加入心愿*/
+// 					"price": "$123",    /*商品价格*/
+// 					wishImg: '../../static/cart/cartLike.png',
+// 					"discount": "30%"    /*折扣数*/
+// 				},{
+// 					"proId": 12,    /*商品id*/
+// 					"url": "http://dummyimage.com/150X200",    /*商品图片地址*/
+// 					"wish": true,    /*是否已在心愿表*/
+// 					"number": "1230",    /*有多少人加入心愿*/
+// 					"price": "$123",    /*商品价格*/
+// 					wishImg: '../../static/cart/cartDislike.png',
+// 					"discount": "30%"    /*折扣数*/
+// 				},{
+// 					"proId": 12,    /*商品id*/
+// 					"url": "http://dummyimage.com/150X200",    /*商品图片地址*/
+// 					"wish": true,    /*是否已在心愿表*/
+// 					"number": "1230",    /*有多少人加入心愿*/
+// 					"price": "$123",    /*商品价格*/
+// 					wishImg: '../../static/cart/cartDislike.png',
+// 					"discount": "30%"    /*折扣数*/
+// 				},{
+// 					"proId": 12,    /*商品id*/
+// 					"url": "http://dummyimage.com/150X200",    /*商品图片地址*/
+// 					"wish": true,    /*是否已在心愿表*/
+// 					"number": "1230",    /*有多少人加入心愿*/
+// 					"price": "$123",    /*商品价格*/
+// 					wishImg: '../../static/cart/cartLike.png',
+// 					"discount": "30%"    /*折扣数*/
+// 				},{
+// 					"proId": 12,    /*商品id*/
+// 					"url": "http://dummyimage.com/150X200",    /*商品图片地址*/
+// 					"wish": true,    /*是否已在心愿表*/
+// 					"number": "1230",    /*有多少人加入心愿*/
+// 					"price": "$123",    /*商品价格*/
+// 					wishImg: '../../static/cart/cartDislike.png',
+// 					"discount": "30%"    /*折扣数*/
+// 				},{
+// 					"proId": 12,    /*商品id*/
+// 					"url": "http://dummyimage.com/150X200",    /*商品图片地址*/
+// 					"wish": true,    /*是否已在心愿表*/
+// 					"number": "1230",    /*有多少人加入心愿*/
+// 					"price": "$123",    /*商品价格*/
+// 					wishImg: '../../static/cart/cartDislike.png',
+// 					"discount": "30%"    /*折扣数*/
+// 				}
+				],
 				loadingType: 0,
 				contentText: {
 					contentdown: this.local('loadingDown'),
@@ -169,7 +218,8 @@
 			uni.setNavigationBarTitle({
 				title: this.local('navTitleCart')
 			});
-			
+		},
+		onShow() {
 			// 刷新页面数据
 			this.freshPageData();
 		},
@@ -186,8 +236,14 @@
 			this.post('user/getGuessList', {page: this.guessPage}).then(res => {
 				this.guessPage++;
 				this.loadingType = res.data.haveMore ? 0 : 2;
-
-				this.guessList.concat(res.data.list);
+				
+				if (res.data.list && res.data.list.length > 0) {
+					res.data.list.forEach((product) => {
+						product.wishImg = '../../static/cart/' + item.wish ? 'cartLike.png' : 'cartDislike.png';
+					});	
+					
+					this.guessList.concat(res.data.list);
+				}
 			});
 		},
 		computed: {
@@ -204,8 +260,9 @@
 		},
 		methods: {
 			clickHeart(item) {
-				uni.showToast({
-					title: "点击了喜欢功能"
+				this.post('product/like', {proId: item.proId}).then(res => {
+					item.number = res.data.number;
+					item.wish = res.data.wish;
 				});
 			},
 			goProDetail(item) {
@@ -226,13 +283,22 @@
 				console.log('value == ' + value + JSON.stringify(product));
 			},
 			freshPageData: function() {
+				this.guessPage = 0;
 				this.post('cart/list', {}).then(res => {
 					if (res.data.list && res.data.list.length > 0) {
 						this.proList = res.data.list;
 					} else {
 						this.post('user/getGuessList', {page: this.guessPage}).then(res => {
 							this.guessPage++;
-							this.guessList = res.data.list;
+							this.loadingType = res.data.haveMore ? 0 : 2;
+							
+							if (res.data.list && res.data.list.length > 0) {
+								this.guessList = res.data.list;
+							
+								this.guessList.forEach((product) => {
+									product.wishImg = '../../static/cart/' + item.wish ? 'cartLike.png' : 'cartDislike.png';
+								});	
+							}
 						});
 					}
 				});
@@ -243,6 +309,8 @@
 
 <style scoped>
 	.container {
+		font-size: 28upx;
+		color: #666666;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -254,19 +322,25 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		height: 300upx;
+		height: 232upx;
 		border-bottom: #EEEEEE 1upx solid;
-		padding: 20upx 30upx;
+		padding: 0 30upx;
 		background-color: #FFFFFF;
 	}
 
 	.product image {
-		width: 150upx;
-		height: 260upx;
+		width: 140upx;
+		height: 184upx;
+		margin-top: 24upx;
 	}
 	
 	.pro-info {
-		margin-left: 20upx;
+		margin: 24upx 0 24upx 12upx;
+	}
+	
+	.pro-info .name {
+		color: #606060;
+		font-size: 24upx;
 	}
 	
 	.pro-info .select {
@@ -274,10 +348,11 @@
 		flex-direction: row;
 		align-items: center;
 		margin: 20upx 0;
-		background-color: #EEEEEE;
-		padding: 6upx 10upx;
-		font-size: 30upx;
-		color: #666666;
+		background-color: #F9F9F9;
+		padding: 0 20upx;
+		font-size: 22upx;
+		height: 50upx;
+		color: #ABABAB;
 	}
 	
 	.pro-info .count {
@@ -294,13 +369,14 @@
 	}
 	
 	.pro-price .price {
-		color: @#D24C30;
-		font-size: 38upx;
+		color: #FF0714;
+		font-size: 28upx;
+		margin-right: 12upx;
 	}
 	
 	.pro-price .original {
 		color: #666666;
-		font-size: 28upx;
+		font-size: 22upx;
 		text-decoration: line-through;
 	}
 	
@@ -311,6 +387,7 @@
 		justify-content: space-between;
 		height: 44px;
 		border: #EEEEEE 1upx solid;
+		/* position: fixed; */
 	}
 	
 	.bottom text {
@@ -346,6 +423,36 @@
 		color: #FFFFFF;
 		padding: 0 30upx;
 	}
+	
+	/* 购物车空时 */
+	.cart-img {
+		margin-top: 70upx;
+		width: 240upx;
+		height: 240upx;
+	}
+	
+	.cart-desc {
+		margin: 20upx 0;
+	}
+	
+	.cart-buy {
+		width: 220upx;
+		height: 54upx;
+		color: #FFFFFF;
+		background-color: #333333;
+		margin-bottom: 90upx;
+	}
+	
+	.cart-buy text {
+		width: 100%;
+		line-height: 60upx;
+		text-align: center;
+	}
+	
+	.cart-guess-title {
+		color: #333333;
+		font-size: 32upx;
+	}
 
 	/* 九宫格 */
 	.news-grid-9 {
@@ -377,27 +484,26 @@
 
 	.news-grid-9-text {
 		width: 250upx;
-		line-height: 40upx;
-		height: 40upx;
+		line-height: 60upx;
+		height: 60upx;
 		text-align: center;
-		font-size: 30upx;
-		color: crimson;
+		color: #FF0013;
 	}
 	
 	.news-grid-heart {
 		display: flex;
 		flex-direction: row;
+		align-items: center;
+		margin-bottom: 10upx;
 	}
 	
 	.news-grid-heart image {
-		width: 40upx;
-		height: 40upx;
+		width: 30upx;
+		height: 30upx;
 		margin-right: 12upx;
 	}
 	
 	.news-grid-heart text {
-		line-height: 40upx;
-		font-size: 28upx;
-		color: #949494;
+		font-size: 22upx;
 	}
 </style>

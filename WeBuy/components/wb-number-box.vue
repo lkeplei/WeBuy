@@ -1,8 +1,8 @@
 <template>
-	<view class="uni-numbox">
-		<view class="uni-numbox-minus" :class="{'uni-numbox-disabled': disableSubtract}" @click.stop="_calcValue('subtract')">-</view>
-		<input class="uni-numbox-value" type="number" :disabled="disabled" :value="inputValue" @blur="_onBlur">
-		<view class="uni-numbox-plus" :class="{'uni-numbox-disabled': disableAdd}" @click.stop="_calcValue('add')">+</view>
+	<view class="uni-numbox" :style="{height: customHeight}">
+		<view class="uni-numbox-minus" :style="{'line-height': customHeight, 'width': customWidth}" :class="{'uni-numbox-disabled': disableSubtract}" @click.stop="_calcValue('subtract')">-</view>
+		<text class="uni-numbox-value" :style="{'line-height': customHeight}">{{inputValue}}</text>
+		<view class="uni-numbox-plus" :style="{'line-height': customHeight, 'width': customWidth}" :class="{'uni-numbox-disabled': disableAdd}" @click.stop="_calcValue('add')">+</view>
 	</view>
 </template>
 <script>
@@ -25,9 +25,9 @@
 				type: Number,
 				default: 1
 			},
-			disabled: {
-				type: Boolean,
-				default: false
+			height: {
+				type: Number,
+				default: 50
 			}
 		},
 		data() {
@@ -41,6 +41,12 @@
 			},
 			disableAdd() {
 				return this.value >= this.max
+			},
+			customHeight() {
+			    return this.height / 2 + 'px';
+			},
+			customWidth() {
+			    return (this.height / 2 * 1.2) + 'px';
 			}
 		},
 		watch: {
@@ -97,43 +103,35 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
-		height: 70upx;
+		border: 1upx solid #EEEEEE;
+		border-radius: 6upx;
 	}
 
 	.uni-numbox-minus,
 	.uni-numbox-plus {
 		margin: 0;
 		background-color: #f9f9f9;
-		width: 80upx;
 		height: 100%;
-		line-height: 70upx;
 		text-align: center;
-		color: #555555;
+		color: #848484;
 	}
-
+	
 	.uni-numbox-minus {
-		border: 2upx solid #cccccc;
-		border-right: none;
-		border-top-left-radius: 6upx;
-		border-bottom-left-radius: 6upx;
+		border-right: 1upx solid #EEEEEE;
 	}
-
+	
 	.uni-numbox-plus {
-		border: 2upx solid #cccccc;
-		border-left: none;
-		border-top-right-radius: 6upx;
-		border-bottom-right-radius: 6upx;
+		border-left: 1upx solid #EEEEEE;
 	}
 
 	.uni-numbox-value {
-		border: 2upx solid #cccccc;
-		background-color: #ffffff;
-		width: 80upx;
+		background-color: #FFFFFF;
+		width: 90upx;
 		height: 100%;
 		text-align: center;
 	}
 
 	.uni-numbox-disabled {
-		color: #c0c0c0;
+		color: #DDDDDD;
 	}
 </style>
