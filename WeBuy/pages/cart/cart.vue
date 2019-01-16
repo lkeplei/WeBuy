@@ -5,23 +5,24 @@
 				<checkbox-group @change.stop="checkboxChange">
 					<block v-for="(item, index) in proList" :key="index">
 						<view class="product">
-							<checkbox :value="item" :checked="item.checked" />
+							<checkbox :value="item.proId" :checked="item.checked" />
 							<image :src="item.image"></image>
 							
 							<view class="pro-info" @tap="goProductDetail(item.proId)">
 								<text class="name">{{item.name}}</text>
 								<view class="select">
-									<text>{{item.desc}}</text>
-									<wb-icon size="18" :type="'arrowdown'"></wb-icon>
+									<view class="sel-content">
+										<text>{{item.desc}}</text>
+										<wb-icon size="10" :type="'arrowdown'"></wb-icon>
+									</view>
+									<text></text>
 								</view>
 								<view class="count">
 									<view class="pro-price">
 										<text class="price">${{item.price}}</text>
 										<text class="original">{{item.originalPrice}}</text>
 									</view>
-									<wb-number-box :disabled="true" @change="onNumberChange(item)"
-										:value="item.count" :min="1" :height="40">
-									</wb-number-box>
+									<wb-number-box v-model="item.count" :min="1" :height="40"></wb-number-box>
 								</view>
 							</view>
 						</view>
@@ -31,16 +32,16 @@
 			
 			<view class="bottom">
 				<view class="bottom-select">
-					<radio :value="all" :checked="'true'" />
+					<radio :value="all" :checked="checkAll" />
 					<text>{{allText}}</text>
 				</view>
 					
 				<view class="bottom-info">
 					<view class="total-price">
 						<text>{{totalText}}</text>
-						<text class="money">{{totalPrice}}</text>
+						<text class="money">${{totalPrice}}</text>
 					</view>
-					<view class="buy-now">
+					<view class="buy-now" :style="{'background-color': totalPrice > 0 ? '#D24C30' : '#DBDBDB'}">
 						<text>{{buyText}}</text>
 					</view>
 				</view>
@@ -84,31 +85,32 @@
 				allText: this.local('cartAll'),
 				totalText: this.local('cartTotal'),
 				buyText: this.local('cartBuy'),
+				checkAll: false,
 				winHeight: uni.getSystemInfoSync().windowHeight,
 				
 				proList: [
 					{
-						"proId": 123,
-						"name": "男装",
+						"proId": 1232,
+						"name": "男装我是一个小步的端口，你年直接上去",
 						"image": "http://dummyimage.com/180x150",
 						"desc": "xl red",
 						"count": 1,
-						"price": 124,
+						"price": 1224,
 						"originalPrice": "$230",
 						checked: false
 					},
 					{
-						"proId": 123,
+						"proId": 1213,
 						"name": "男装",
 						"image": "http://dummyimage.com/180x150",
 						"desc": "xl red",
 						"count": 1,
-						"price": 124,
+						"price": 1124,
 						"originalPrice": "$230",
 						checked: true
 					},
 					{
-						"proId": 123,
+						"proId": 1323,
 						"name": "男装",
 						"image": "http://dummyimage.com/180x150",
 						"desc": "xl red",
@@ -118,7 +120,7 @@
 						checked: false
 					},
 					{
-						"proId": 123,
+						"proId": 1243,
 						"name": "男装",
 						"image": "http://dummyimage.com/180x150",
 						"desc": "xl red",
@@ -128,7 +130,7 @@
 						checked: false
 					},
 					{
-						"proId": 123,
+						"proId": 12543,
 						"name": "男装",
 						"image": "http://dummyimage.com/180x150",
 						"desc": "xl red",
@@ -138,7 +140,7 @@
 						checked: false
 					},
 					{
-						"proId": 123,
+						"proId": 1253,
 						"name": "男装",
 						"image": "http://dummyimage.com/180x150",
 						"desc": "xl red",
@@ -255,7 +257,7 @@
 					}
 				});
 				
-				return '$' + money;
+				return money;
 			}
 		},
 		methods: {
@@ -276,7 +278,19 @@
 				});
 			},
 			checkboxChange: function(e) {
-				console.log('radio发生change事件，携带value值为：' + e.detail.value);
+				var items = this.proList, values = e.detail.value, checkedNum = 0;
+				for (var i = 0, lenI = items.length; i < lenI; ++i) {
+					items[i].checked = false;
+					for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
+						if (items[i].proId == values[j]) {
+							items[i].checked = true;
+							checkedNum++;
+							break
+						}
+					}
+				}
+				
+				this.checkAll = checkedNum == this.proList.length;
 			},
 			onNumberChange: function(value, product) {
 				// product.count = value;
@@ -287,6 +301,10 @@
 				this.post('cart/list', {}).then(res => {
 					if (res.data.list && res.data.list.length > 0) {
 						this.proList = res.data.list;
+						
+						this.proList.forEach((product) => {
+							product.checked = false;
+						});
 					} else {
 						this.post('user/getGuessList', {page: this.guessPage}).then(res => {
 							this.guessPage++;
@@ -335,6 +353,7 @@
 	}
 	
 	.pro-info {
+		width: 530upx;
 		margin: 24upx 0 24upx 12upx;
 	}
 	
@@ -348,11 +367,21 @@
 		flex-direction: row;
 		align-items: center;
 		margin: 20upx 0;
+	}
+	
+	.sel-content {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 		background-color: #F9F9F9;
 		padding: 0 20upx;
 		font-size: 22upx;
 		height: 50upx;
 		color: #ABABAB;
+	}
+	
+	.sel-content text {
+		margin-right: 20upx;
 	}
 	
 	.pro-info .count {
@@ -400,6 +429,8 @@
 		flex-direction: row;
 		align-items: center;
 		padding-left: 20upx;
+		
+		font-weight: bold;
 	}
 	
 	.bottom-info {
@@ -414,14 +445,14 @@
 	}
 	
 	.total-price .money {
-		color: #D24C30;
+		color: #FF0714;
 	}
 	
 	.buy-now {
-		font-size: 32upx;
-		background-color: #D24C30;
+		font-size: 30upx;
+		/* background-color: #D24C30; */
 		color: #FFFFFF;
-		padding: 0 30upx;
+		padding: 0 44upx;
 	}
 	
 	/* 购物车空时 */

@@ -8,6 +8,10 @@
 <script>
 	export default {
 		name: 'uni-number-box',
+		model: {    
+			prop: 'value',
+			event: 'change'
+		},
 		props: {
 			value: {
 				type: Number,
