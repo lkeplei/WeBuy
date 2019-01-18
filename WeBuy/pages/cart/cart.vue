@@ -4,15 +4,17 @@
 			<scroll-view scroll-y :style="{height:winHeight - 44 + 'px;'}">
 				<checkbox-group @change.stop="checkboxChange">
 					<block v-for="(item, index) in proList" :key="index">
-						<view class="cart-item" :class="{'trans-test': showTrans, 'trans-test-1': !showTrans}">
-							<view :id="item.proId" class="product" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd"
-								:style="{'margin-left': -offsetX + 'px;'}">
+						<view class="cart-item" :animation="item.animationData">
+							<view class="product">
 								<checkbox :value="item.proId" :checked="item.checked" />
 								<image :src="item.image"></image>
 								
 								<view class="pro-info" @tap="goProductDetail(item.proId)">
-									<text class="name">{{item.name}}</text>
-									<view class="select">
+									<view class="edit" @tap.stop="proEdit(item)">
+										<text v-show="!isEdit">{{editText}}</text>
+									</view>
+									<text class="name" :style="{'margin-top': isEdit ? '24upx' : '0'}">{{item.name}}</text>
+									<view class="select" @tap.stop="tapSelect(item)">
 										<view class="sel-content">
 											<text>{{item.desc}}</text>
 											<wb-icon size="10" :type="'arrowdown'"></wb-icon>
@@ -29,7 +31,7 @@
 								</view>
 							</view>
 							<view class="pro-edit" @tap.stop="proDelete(item)">
-								<text>delete</text>
+								<text>{{deleteText}}</text>
 							</view>
 						</view>
 					</block>
@@ -61,7 +63,7 @@
 			<text class="cart-guess-title">{{guessTitleText}}</text>
 			
 			<view class="news-grid-9">
-				<view class="news-grid-9-item" v-for="(item, index) in guessList" :key="index" @click="goProDetail(item)">
+				<view class="news-grid-9-item" v-for="(item, index) in guessList" :key="index" @click="goProductDetail(item.proId)">
 					<image class="news-grid-9-image" :src="item.url"></image>
 					<text class="news-grid-9-text">{{item.price}}</text>
 					<view class="news-grid-heart" @click.stop="clickHeart(item)">
@@ -88,10 +90,13 @@
 		},
 		data() {
 			return {
-				offsetX: 0,
-				startX: 0,
-				showTrans: false,
-				
+				isEdit: false,
+				editText: this.local('cartEdit'),
+				deleteText: this.local('cartDelete'),
+				animation: uni.createAnimation({
+					duration: 500,
+					timingFunction: 'ease',
+				}),
 				
 				allText: this.local('cartAll'),
 				totalText: this.local('cartTotal'),
@@ -278,11 +283,6 @@
 					item.wish = res.data.wish;
 				});
 			},
-			goProDetail(item) {
-				this.router('wb://product/detail?proId=' + item.proId, () => {
-					
-				});
-			},
 			goProductDetail: function(proId) {
 				this.router('wb://product/detail?proId=' + proId, () => {
 					
@@ -332,40 +332,30 @@
 					}
 				});
 			},
-			
+			tapSelect: function(pro) {
+				uni.showToast({
+					icon: 'none',
+					title: 'show select view'
+				})
+			},
 			// 编辑相关功能
-			touchStart: function(e) {
-				this.startX = e.clientX;
-			},
-			touchMove: function(e) {
-				var offset = this.startX - e.clientX;
-				this.offsetX = Math.min(100, Math.max(offset, 0));
+			proEdit: function(pro) {
+				this.animation.translate(-100, 0).step();
+				pro.animationData = this.animation.export();
 				
-				console.log(offset);
-			},
-			touchEnd: function(e) {
-// 				this.showTrans = this.offsetX > 50;
-// 				this.offsetX = 0;
-console.log('==========')
+				this.isEdit = true;
 			},
 			proDelete: function(pro) {
-				this.showTrans = !this.showTrans;
+				this.animation.translate(0, 0).step();
+				pro.animationData = this.animation.export();
+				
+				this.isEdit = false;
 			}
 		}
 	}
 </script>
 
 <style scoped>
-	.trans-test {
-		transition: all 0.3s ease-out;
-		/* transform: translatex(-100px); */
-	}
-	
-	.trans-test-1 {
-		transition: all 0.3s ease-out;
-		transform: translatex(0);
-	}
-	
 	.container {
 		font-size: 28upx;
 		color: #666666;
@@ -397,6 +387,13 @@ console.log('==========')
 		height: 232upx;
 		background-color: #FE0650;
 	}
+	
+	.pro-edit text {
+		width: 100px;
+		line-height: 232upx;
+		text-align: center;
+		color: #FFFFFF;
+	}
 
 	.product image {
 		width: 140upx;
@@ -407,12 +404,21 @@ console.log('==========')
 	.pro-info {
 		width: 510upx;
 		padding-right: 20upx;
-		margin: 24upx 0 24upx 12upx;
+		margin: 0 0 24upx 12upx;
+		font-size: 22upx;
+	}
+	
+	.pro-info .edit {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		color: #D9D9D9;
+		height: 24upx;
 	}
 	
 	.pro-info .name {
 		color: #606060;
-		font-size: 24upx;
+		height: 24upx;
 	}
 	
 	.pro-info .select {
@@ -428,7 +434,6 @@ console.log('==========')
 		align-items: center;
 		background-color: #F9F9F9;
 		padding: 0 20upx;
-		font-size: 22upx;
 		height: 50upx;
 		color: #ABABAB;
 	}
@@ -458,7 +463,6 @@ console.log('==========')
 	
 	.pro-price .original {
 		color: #666666;
-		font-size: 22upx;
 		text-decoration: line-through;
 	}
 	
