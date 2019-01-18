@@ -4,26 +4,32 @@
 			<scroll-view scroll-y :style="{height:winHeight - 44 + 'px;'}">
 				<checkbox-group @change.stop="checkboxChange">
 					<block v-for="(item, index) in proList" :key="index">
-						<view class="product">
-							<checkbox :value="item.proId" :checked="item.checked" />
-							<image :src="item.image"></image>
-							
-							<view class="pro-info" @tap="goProductDetail(item.proId)">
-								<text class="name">{{item.name}}</text>
-								<view class="select">
-									<view class="sel-content">
-										<text>{{item.desc}}</text>
-										<wb-icon size="10" :type="'arrowdown'"></wb-icon>
+						<view class="cart-item" :class="{'trans-test': showTrans, 'trans-test-1': !showTrans}">
+							<view :id="item.proId" class="product" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd"
+								:style="{'margin-left': -offsetX + 'px;'}">
+								<checkbox :value="item.proId" :checked="item.checked" />
+								<image :src="item.image"></image>
+								
+								<view class="pro-info" @tap="goProductDetail(item.proId)">
+									<text class="name">{{item.name}}</text>
+									<view class="select">
+										<view class="sel-content">
+											<text>{{item.desc}}</text>
+											<wb-icon size="10" :type="'arrowdown'"></wb-icon>
+										</view>
+										<text></text>
 									</view>
-									<text></text>
-								</view>
-								<view class="count">
-									<view class="pro-price">
-										<text class="price">${{item.price}}</text>
-										<text class="original">{{item.originalPrice}}</text>
+									<view class="count">
+										<view class="pro-price">
+											<text class="price">${{item.price}}</text>
+											<text class="original">{{item.originalPrice}}</text>
+										</view>
+										<wb-number-box v-model="item.count" :min="1" :height="40"></wb-number-box>
 									</view>
-									<wb-number-box v-model="item.count" :min="1" :height="40"></wb-number-box>
 								</view>
+							</view>
+							<view class="pro-edit" @tap.stop="proDelete(item)">
+								<text>delete</text>
 							</view>
 						</view>
 					</block>
@@ -82,6 +88,11 @@
 		},
 		data() {
 			return {
+				offsetX: 0,
+				startX: 0,
+				showTrans: false,
+				
+				
 				allText: this.local('cartAll'),
 				totalText: this.local('cartTotal'),
 				buyText: this.local('cartBuy'),
@@ -320,12 +331,41 @@
 						});
 					}
 				});
+			},
+			
+			// 编辑相关功能
+			touchStart: function(e) {
+				this.startX = e.clientX;
+			},
+			touchMove: function(e) {
+				var offset = this.startX - e.clientX;
+				this.offsetX = Math.min(100, Math.max(offset, 0));
+				
+				console.log(offset);
+			},
+			touchEnd: function(e) {
+// 				this.showTrans = this.offsetX > 50;
+// 				this.offsetX = 0;
+console.log('==========')
+			},
+			proDelete: function(pro) {
+				this.showTrans = !this.showTrans;
 			}
 		}
 	}
 </script>
 
 <style scoped>
+	.trans-test {
+		transition: all 0.3s ease-out;
+		/* transform: translatex(-100px); */
+	}
+	
+	.trans-test-1 {
+		transition: all 0.3s ease-out;
+		transform: translatex(0);
+	}
+	
 	.container {
 		font-size: 28upx;
 		color: #666666;
@@ -336,14 +376,26 @@
     }
 	
 	/* 有购物车的商品 */
+	.cart-item {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	
 	.product {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		height: 232upx;
+		width: 750upx;
 		border-bottom: #EEEEEE 1upx solid;
-		padding: 0 30upx;
 		background-color: #FFFFFF;
+	}
+	
+	.pro-edit {
+		width: 100px;
+		height: 232upx;
+		background-color: #FE0650;
 	}
 
 	.product image {
@@ -353,7 +405,8 @@
 	}
 	
 	.pro-info {
-		width: 530upx;
+		width: 510upx;
+		padding-right: 20upx;
 		margin: 24upx 0 24upx 12upx;
 	}
 	
