@@ -29,10 +29,10 @@
 		margin-right: 10upx;
 	}
 	
-	view {
+/* 	view {
 		display: flex;
 		flex-direction: column;
-	}
+	} */
 	
 	button {
 		margin-top: 20upx;

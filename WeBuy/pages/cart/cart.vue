@@ -10,12 +10,12 @@
 								<image :src="item.image"></image>
 								
 								<view class="pro-info" @tap="goProductDetail(item.proId)">
-									<view class="edit" @tap.stop="proEdit(item)">
+									<view class="edit" @tap.stop="showEdit(item)">
 										<text v-show="!isEdit">{{editText}}</text>
 									</view>
 									<text class="name" :style="{'margin-top': isEdit ? '24upx' : '0'}">{{item.name}}</text>
-									<view class="select" @tap.stop="tapSelect(item)">
-										<view class="sel-content">
+									<view class="select">
+										<view class="sel-content" @tap.stop="tapSelect(item)">
 											<text>{{item.desc}}</text>
 											<wb-icon size="10" :type="'arrowdown'"></wb-icon>
 										</view>
@@ -74,6 +74,9 @@
 			</view>
 			<load-more v-show="guessList.length > 6" :loadingType="loadingType" :contentText="contentText"></load-more>
 		</view>
+	
+		<!-- popup -->
+		<pro-select-popup ref="selectPop"></pro-select-popup>
 	</view>
 </template>
 
@@ -81,18 +84,21 @@
 	import loadMore from '../../components/load-more.vue'
 	import wbNumberBox from '../../components/wb-number-box.vue'
 	import wbIcon from '../../components/wb-icon.vue'
+	import selPopup from '../../components/business/pro-select-popup.vue'
 	
 	export default {
 		components: {
 			'load-more': loadMore,
 			'wb-number-box': wbNumberBox,
-			'wb-icon': wbIcon
+			'wb-icon': wbIcon,
+			'pro-select-popup': selPopup
 		},
 		data() {
 			return {
 				isEdit: false,
 				editText: this.local('cartEdit'),
 				deleteText: this.local('cartDelete'),
+				currentEditPro: {},
 				animation: uni.createAnimation({
 					duration: 500,
 					timingFunction: 'ease',
@@ -284,9 +290,11 @@
 				});
 			},
 			goProductDetail: function(proId) {
-				this.router('wb://product/detail?proId=' + proId, () => {
-					
-				});
+				if (this.proList.length > 0 && this.isEdit) {
+					this.hideEdit();
+				} else {
+					this.router('wb://product/detail?proId=' + proId, () => {});	
+				}
 			},
 			checkboxChange: function(e) {
 				var items = this.proList, values = e.detail.value, checkedNum = 0;
@@ -302,10 +310,6 @@
 				}
 				
 				this.checkAll = checkedNum == this.proList.length;
-			},
-			onNumberChange: function(value, product) {
-				// product.count = value;
-				console.log('value == ' + value + JSON.stringify(product));
 			},
 			freshPageData: function() {
 				this.guessPage = 0;
@@ -333,23 +337,36 @@
 				});
 			},
 			tapSelect: function(pro) {
-				uni.showToast({
-					icon: 'none',
-					title: 'show select view'
-				})
+				if (this.isEdit) {
+					this.hideEdit();
+				} else {
+					this.$refs.selectPop.showPopup();
+				}
 			},
 			// 编辑相关功能
-			proEdit: function(pro) {
+			showEdit: function(pro) {
+				this.currentEditPro = pro;
+				this.isEdit = true;
+				
 				this.animation.translate(-100, 0).step();
 				pro.animationData = this.animation.export();
-				
-				this.isEdit = true;
 			},
-			proDelete: function(pro) {
+			hideEdit: function() {
 				this.animation.translate(0, 0).step();
-				pro.animationData = this.animation.export();
+				this.currentEditPro.animationData = this.animation.export();
 				
 				this.isEdit = false;
+			},
+			proDelete: function(pro) {
+				this.hideEdit();
+				
+				setTimeout(() => {
+					var index = this.proList.indexOf(pro);
+					if (index > -1) {
+						this.proList.splice(index, 1);
+					}
+				}, 600);
+
 			}
 		}
 	}

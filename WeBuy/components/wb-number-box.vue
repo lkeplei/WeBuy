@@ -1,13 +1,13 @@
 <template>
-	<view class="uni-numbox" :style="{height: customHeight}">
-		<view class="uni-numbox-minus" :style="{'line-height': customHeight, 'width': customWidth}" :class="{'uni-numbox-disabled': disableSubtract}" @click.stop="_calcValue('subtract')">-</view>
-		<text class="uni-numbox-value" :style="{'line-height': customHeight}">{{inputValue}}</text>
-		<view class="uni-numbox-plus" :style="{'line-height': customHeight, 'width': customWidth}" :class="{'uni-numbox-disabled': disableAdd}" @click.stop="_calcValue('add')">+</view>
+	<view class="wb-numbox" :style="{height: customHeight}">
+		<view class="wb-numbox-minus" :style="{'line-height': customHeight, 'width': customWidth}" :class="{'wb-numbox-disabled': disableSubtract}" @click.stop="_calcValue('subtract')">-</view>
+		<text class="wb-numbox-value" :style="{'line-height': customHeight}">{{inputValue}}</text>
+		<view class="wb-numbox-plus" :style="{'line-height': customHeight, 'width': customWidth}" :class="{'wb-numbox-disabled': disableAdd}" @click.stop="_calcValue('add')">+</view>
 	</view>
 </template>
 <script>
 	export default {
-		name: 'uni-number-box',
+		name: 'wb-number-box',
 		model: {    
 			prop: 'value',
 			event: 'change'
@@ -103,7 +103,7 @@
 	}
 </script>
 <style>
-	.uni-numbox {
+	.wb-numbox {
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
@@ -111,8 +111,8 @@
 		border-radius: 6upx;
 	}
 
-	.uni-numbox-minus,
-	.uni-numbox-plus {
+	.wb-numbox-minus,
+	.wb-numbox-plus {
 		margin: 0;
 		background-color: #f9f9f9;
 		height: 100%;
@@ -120,22 +120,22 @@
 		color: #848484;
 	}
 	
-	.uni-numbox-minus {
+	.wb-numbox-minus {
 		border-right: 1upx solid #EEEEEE;
 	}
 	
-	.uni-numbox-plus {
+	.wb-numbox-plus {
 		border-left: 1upx solid #EEEEEE;
 	}
 
-	.uni-numbox-value {
+	.wb-numbox-value {
 		background-color: #FFFFFF;
 		width: 90upx;
 		height: 100%;
 		text-align: center;
 	}
 
-	.uni-numbox-disabled {
+	.wb-numbox-disabled {
 		color: #DDDDDD;
 	}
 </style>
