@@ -12,7 +12,7 @@
 								<text class="discount">{{selectData.discount}}</text>
 							</view>
 							<text class="original">{{selectData.originalPrice}}</text>
-							<text>{{selectData.desc}}</text>
+							<text>{{selectedDesc}}</text>
 						</view>
 					</view>
 					<wb-icon size="32" :type="'closeempty'" @click="hidePopup"></wb-icon>
@@ -31,9 +31,9 @@
 						</view>
 					</view>
 				</block>
-				
-				<wb-button :text="confirmText" @btnTap="confirm"></wb-button>
 			</view>
+			
+			<wb-button :text="confirmText" :height="40" :bgColor="'#FF4D05'" @btnTap="confirm"></wb-button>
 		</view>
 	</view>
 </template>
@@ -66,7 +66,10 @@
 					"price": "$20.99",
 					"originalPrice": "36.99",
 					"discount": "43% off",
-					"desc": "Please Select SIZE",
+					"selected": [
+						{key: 'color', value: 'none', desc: ''},
+						{key: 'size', value: 'none', desc: ''}
+					],
 					"list": [
 						{
 							"title": "颜色",
@@ -119,25 +122,42 @@
 							"key": "size",    /*分类key*/
 							"list": [
 								{
-									"key": "blue",
+									"key": "M",
 									"value": "M"
 								},
 								{
-									"key": "blue",
+									"key": "L",
 									"value": "L"
 								},
 								{
-									"key": "blue",
+									"key": "XL",
 									"value": "XL"
 								},
 								{
-									"key": "blue",
+									"key": "XXL",
 									"value": "XXL"
 								}
 							]
 						}
 					]
 				}
+			}
+		},
+		computed: {
+			selectedDesc: function() {
+				var desc = '';
+				if (this.selectData.selected[0] && this.selectData.selected[0].value) {
+					desc += 'Selected '
+					this.selectData.selected.forEach((item) => {
+						desc += ' ' + item.key + ' ' + item.desc + ',';
+					});
+				} else {
+					desc += 'Please select '
+					this.selectData.selected.forEach((item) => {
+						desc += ' ' + item.key + ',';
+					});
+				}
+				return desc.substring(0, desc.length - 1);
 			}
 		},
 		methods: {
@@ -147,12 +167,34 @@
 			showPopup: function(proId) {
 				this.showPop = true;
 				
-				this.post('product/select', {proId: proId}).then(res => {
-				
+				this.post('product/selectList', {proId: proId}).then(res => {
+					// this.selectData = res.data;
 				});
 			},
 			selectItem: function(select, item) {
-				this.selectData.desc = 'selected ' + select.title + '=' + item.value;
+				var temp = null;
+
+				for (var i = 0; i < this.selectData.selected.length; i++) {
+					if (this.selectData.selected[i].key === select.key) {
+						temp = this.selectData.selected[i];
+						break;
+					}
+				}
+				
+				if (!temp) {
+					temp = {key: select.key, value: item.key, desc: item.value};
+					this.selectData.selected.push(temp);
+				} else {
+					temp.value = item.key;
+					temp.desc = item.value;
+				}
+			},
+			confirm: function() {
+				this.post('product/selected', {values: this.selectData.selected}).then(res => {
+					
+				});
+				
+				this.hidePopup();
 			}
 		}
 	}
@@ -184,7 +226,7 @@
 		display: flex;
 		flex-direction: column;
 		width: 750upx;
-		height: 800upx;
+		height: 700upx;
 		background-color: #FFFFFF;
 	}
 	
