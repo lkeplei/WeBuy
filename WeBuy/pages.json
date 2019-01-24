@@ -74,8 +74,8 @@
                         "buttons": [ //原生标题栏按钮配置,
                         	{
                         		"float": "right",
-                        		"type": "none",
-								"text": "\ue560"
+                        		"type": "favorite"
+								// "text": "\ue560"
                         	}
                         ]
                     }
@@ -317,7 +317,7 @@
 	},
 	"tabBar" : {
 		"color" : "#7A7E83",
-		"selectedColor" : "#007AFF",
+		"selectedColor" : "#D24C30",
 		"borderStyle" : "black",
 		"backgroundColor" : "#ffffff",
 		"list" : [
@@ -345,8 +345,8 @@
 		"current": 0, //当前激活的模式(list 的索引项)
 		"list": [
 			{
-				"name": "cart", //模式名称
-				"path": "pages/cart/cart", //启动页面，必选
+				"name": "account", //模式名称
+				"path": "pages/account/account", //启动页面，必选
 				"query": "" //启动参数，在页面的onLoad函数里面得到
 			}
 		]

@@ -128,6 +128,11 @@
 </script>
 
 <style scoped>
+	view {
+		display: flex;
+		flex-direction: column;
+	}
+	
 	.header {
 		display: flex;
 		flex-direction: row;

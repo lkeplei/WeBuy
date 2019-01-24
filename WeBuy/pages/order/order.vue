@@ -157,6 +157,11 @@
 </script>
 
 <style scoped>
+	view {
+		display: flex;
+		flex-direction: column;
+	}
+	
     .swiper-tab {
         width: 100%;
         white-space: nowrap;

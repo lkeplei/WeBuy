@@ -350,6 +350,8 @@
 	}
 	
 	.re-bottom {
+		display: flex;
+		flex-direction: column;
 		align-items: center;
 		font-size: 36upx;
 		color: #333333;
@@ -366,6 +368,8 @@
 	}
 	
 	.bottom-cart {
+		display: flex;
+		flex-direction: column;
 		align-items: center;
 		width: 200upx;
 		height: 100%;
@@ -382,6 +386,8 @@
 	}
 	
 	.bottom-add {
+		display: flex;
+		flex-direction: column;
 		align-items: center;
 		color: #FFFFFF;
 		width: 550upx;

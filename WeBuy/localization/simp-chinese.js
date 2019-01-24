@@ -1,4 +1,8 @@
 module.exports = {
+	tabHome: '首页',
+	tabCart: '购物车',
+	tabAccount: '账户',
+	
 	navTitleCart: '购物车',
 	navTitleAccount: '我的账户',
 	navTitleMyInfo: '我的信息',
@@ -59,6 +63,9 @@ module.exports = {
 	accountOrderShipped: '待收货',
 	accountOrderReviews: '待评价',
 	accountOrderReturns: '退货列表',
+	accountFAQ: '问题解答',
+	accountSupport: '技术支持',
+	accountContact: '联系我们',
 	
 	myInfoAvatar: '头像',
 	myInfoName: '显示名称',

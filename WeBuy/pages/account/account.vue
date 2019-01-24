@@ -1,5 +1,6 @@
 <template>
 	<view class="page">
+		<!-- <image class="header-bg" src="../../static/account/account-top-bg.png"></image> -->
 		<view class="header" :style="{'height': headerHeight + 'px'}">
 			<view class="user" @click="userClick" :style="{'margin-top': statusHeight + 44 + 'px'}">
 				<image src="../../static/userDefault.png" @click.stop="avatarClick"></image>
@@ -55,25 +56,21 @@
 				accountAllOrder: this.local('accountAllOrder'),
 				accountName: this.local('accountUnlogin'),
 				funcList: [
-					{image:'/static/search.png', text: this.local('accountFuncWish'), action: 'wb://account/wish'},
-					{image:'/static/search.png', text: this.local('accountFuncHistory'), action: 'wb://account/history'}
+					{image:'/static/account/account-wish.png', text: this.local('accountFuncWish'), action: 'wb://account/wish'},
+					{image:'/static/account/account-history.png', text: this.local('accountFuncHistory'), action: 'wb://account/history'}
 				],
 				orderStatusList: [
-					{image:'/static/search.png', text: this.local('accountOrderUnpaid'), type: 'unpaid'},
-					{image:'/static/search.png', text: this.local('accountOrderPreparing'), type: 'preparing'},
-					{image:'/static/search.png', text: this.local('accountOrderShipped'), type: 'shipped'},
-					{image:'/static/search.png', text: this.local('accountOrderReviews'), type: 'reviews'},
-					{image:'/static/search.png', text: this.local('accountOrderReturns'), type: 'returns'}
+					{image:'/static/account/account-unpaid.png', text: this.local('accountOrderUnpaid'), type: 'unpaid'},
+					{image:'/static/account/account-preparing.png', text: this.local('accountOrderPreparing'), type: 'preparing'},
+					{image:'/static/account/account-shipped.png', text: this.local('accountOrderShipped'), type: 'shipped'},
+					{image:'/static/account/account-reviews.png', text: this.local('accountOrderReviews'), type: 'reviews'},
+					{image:'/static/account/account-returns.png', text: this.local('accountOrderReturns'), type: 'returns'}
 				],
 				serviceList: [
 					[
-						{image:'/static/setting.png', text: this.local('accountOrderReviews'), action: 'wb://'},
-						{image:'/static/setting.png', text: this.local('accountOrderReviews'), action: 'wb://'},
-						{image:'/static/setting.png', text: this.local('accountOrderReviews'), action: 'wb://'}
-					],
-					[
-						{image:'/static/setting.png', text: this.local('accountOrderReviews'), action: 'wb://'},
-						{image:'/static/setting.png', text: this.local('accountOrderReviews'), action: 'wb://'}
+						{image:'/static/account/account-FAQ.png', text: this.local('accountFAQ'), action: 'wb://'},
+						{image:'/static/account/account-contact.png', text: this.local('accountContact'), action: 'wb://'},
+						{image:'/static/account/account-support.png', text: this.local('accountSupport'), action: 'wb://'}
 					]
 				]
 			};
@@ -134,11 +131,26 @@
 </script>
 
 <style scoped>
+	.page {
+		color: #686868;
+		font-size: 24upx;
+	}
+	
 	.header {
 		display: flex;
 		flex-direction: column;
 		color: #FFFFFF;
-		background-image: url('https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg');
+		height: 400upx;
+		background-color: #D24C30;
+	}
+	
+	.header-bg {
+		position: fixed;
+		top: 0;
+		left: 0;
+		/* z-index: 0; */
+		width: 750upx;
+		height: 400upx;
 	}
 	
 	.user {
@@ -149,16 +161,19 @@
 	}
 	
 	.user image {
-		width: 160upx;
-		height: 160upx;
+		width: 120upx;
+		height: 120upx;
 		margin: 30upx 20upx 10upx 20upx;
+	}
+	
+	.user text {
+		font-size: 28upx;
 	}
 	
 	.func {
 		display: flex;
 		flex-direction: row;
 		height: 140upx;
-		font-size: 24upx;
 	}
 	
 	.func view {
@@ -170,8 +185,8 @@
 	
 	.func image {
 		margin: 10upx 0upx;
-		width: 60upx;
-		height: 60upx;
+		width: 70upx;
+		height: 66upx;
 	}
 	
 	/* order */

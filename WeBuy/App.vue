@@ -2,12 +2,38 @@
 	export default {
 		onLaunch: function () {
 			console.log('App Launch')
+			this.initTabbar();
 		},
 		onShow: function () {
 			console.log('App Show')
 		},
 		onHide: function () {
 			console.log('App Hide')
+		},
+		
+		methods: {
+			initTabbar: function() {
+				setTimeout(()=>{
+					uni.setTabBarItem({
+						index: 0,
+						text: this.local('tabHome'),
+						iconPath: 'static/tabbar/tabHome.png',
+						selectedIconPath: 'static/tabbar/tabHomeHL.png'
+					});
+					uni.setTabBarItem({
+						index: 1,
+						text: this.local('tabCart'),
+						iconPath: 'static/tabbar/tabCart.png',
+						selectedIconPath: 'static/tabbar/tabCartHL.png'
+					});
+					uni.setTabBarItem({
+						index: 2,
+						text: this.local('tabAccount'),
+						iconPath: 'static/tabbar/tabAccount.png',
+						selectedIconPath: 'static/tabbar/tabAccountHL.png'
+					});
+				}, 1000);
+			}
 		}
 	}
 </script>

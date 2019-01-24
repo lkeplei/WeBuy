@@ -394,7 +394,8 @@
 		flex-direction: row;
 		align-items: center;
 		height: 232upx;
-		width: 750upx;
+		padding-left: 20upx;
+		width: 730upx;
 		border-bottom: #EEEEEE 1upx solid;
 		background-color: #FFFFFF;
 	}
@@ -489,8 +490,12 @@
 		flex-direction: row;
 		justify-content: space-between;
 		height: 44px;
+		width: 750upx;
+		background-color: #FFFFFF;
 		border: #EEEEEE 1upx solid;
-		/* position: fixed; */
+		
+		position: fixed;
+		bottom: 0;
 	}
 	
 	.bottom text {

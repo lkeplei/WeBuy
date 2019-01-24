@@ -1,6 +1,6 @@
 <template>
 	<view class="container" @tap="buttonTap">
-		<view class="wb-button" hover-class="wb-button-hover"
+		<view class="wb-button"
 			:style="{'height': height + 'px', 'width': width + '%', 'background-color': bgColor, 'color': color}">
 			<text>{{text}}</text>
 		</view>
@@ -45,9 +45,5 @@
 		align-items: center;
 		
 		background-color: #007AFF;
-	}
-	
-	.wb-button-hover {
-		background-color: #4CD964;
 	}
 </style>
