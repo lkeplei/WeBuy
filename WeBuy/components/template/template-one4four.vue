@@ -11,9 +11,7 @@
 			<block v-for="(item, index) in template.items" :key="index">
 				<view class="grid-9-item-four" @click="clickItem(item.action)">
 					<image class="grid-9-image-four" :src="item.image"></image>
-					<text class="grid-9-text-four">
-						{{item.title}}
-					</text>
+					<text class="grid-9-text-four">{{item.title}}</text>
 				</view>
 			</block>
 		</view>
@@ -48,7 +46,7 @@
 	.container-four {
 		display: flex;
 		flex-direction: column;
-		height: 800upx;
+		height: 710upx;
 	}
 	
 	/* 头部 */
@@ -56,43 +54,44 @@
 		display: flex;
 		flex-direction: row;
 		width: 750upx;
-		height: 80upx;
+		height: 70upx;
 		align-content: center;
 		justify-content: center;
+		align-items: center;
+		color: #1C1C1C;
 		background-color: #FFF;
 		border-bottom: 1upx solid;
 		border-color: #eee;
 	}
 	
 	.header-four image {
-		margin: 13upx;
-		width: 54upx;
-		height: 54upx;
+		margin-right: 12upx;
+		width: 30upx;
+		height: 30upx;
 	}
 	
 	.header-four text {
-		line-height: 80upx;
-		font-size: 34upx;
+		font-size: 26upx;
 	}
 	
 	/* 内部 */
 	.content-four {
 		display: flex;
 		width: 750upx;
-		height: 720upx;
+		height: 640upx;
 		flex-direction: row;
 		flex-wrap: wrap;
 	}
 	
 	.main-four {
 		width: 500upx;
-		height: 360upx;
+		height: 320upx;
 	}
 	
 	/* 九宫格 */
 	.grid-9-item-four {
 		width: 250upx;
-		height: 360upx;
+		height: 320upx;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -104,15 +103,15 @@
 	
 	.grid-9-image-four {
 		width: 250upx;
-		height: 300upx;
+		height: 250upx;
 	}
 
 	.grid-9-text-four {
 		width: 250upx;
-		line-height: 60upx;
-		height: 60upx;
+		line-height: 70upx;
+		height: 70upx;
 		text-align: center;
-		font-size: 30upx;
-		color: crimson;
+		font-size: 24upx;
+		background-color: #FFFFFF;
 	}
 </style>

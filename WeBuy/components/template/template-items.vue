@@ -58,34 +58,40 @@
 		display: flex;
 		flex-direction: column;
 		margin-top: 10upx;
+		color: #666666;
+		font-size: 22upx;
+		background-color: #FFFFFF;
 	}
 	
 	.items-line {
-		height: 180upx;
+		height: 130upx;
 		width: 750upx;
 		display: flex;
 		flex-direction: row;
+		margin-top: 10upx;
 		justify-content: space-around;
 	}
 	
 	.items-item {
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 		width: 150upx;
-		height: 180upx;
+		height: 100%;
 	}
 	
 	.items-item image {
-		width: 120upx;
-		height: 120upx;
+		width: 80upx;
+		height: 80upx;
 		margin: 0 15upx;
-		border-radius: 60px;
+		border-radius: 38px;
 	}
 	
 	.items-item text {
 		width: 150upx;
-		height: 60upx;
-		line-height: 60upx;
+		height: 40upx;
+		line-height: 40upx;
 		text-align: center;
 	}
 </style>

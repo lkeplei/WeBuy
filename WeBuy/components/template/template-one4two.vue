@@ -36,24 +36,24 @@
 	.container-two {
 		display: flex;
 		flex-direction: row;
-		height: 400upx;
+		height: 290upx;
 		width: 750upx;
 	}
 	
 	.main-two {
 		width: 375upx;
-		height: 400upx;
+		height: 290upx;
 	}
 	
 	.items-two {
 		display: flex;
 		flex-direction: column;
 		width: 375upx;
-		height: 400upx;
+		height: 290upx;
 	}
 	
 	.items-two image {
 		width: 375upx;
-		height: 200upx;
+		height: 2145upx;
 	}
 </style>

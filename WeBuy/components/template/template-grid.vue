@@ -8,9 +8,7 @@
 		<view class="grid-9">
 			<view class="grid-9-item" v-for="(item,index) in template.list" :key="index" @click="clickItem(item)">
 				<image class="grid-9-image" :src="item.image"></image>
-				<text class="grid-9-text">
-					{{item.title}}
-				</text>
+				<text class="grid-9-text">{{item.title}}</text>
 			</view>
 		</view>
 	</view>
@@ -44,23 +42,24 @@
 	.header-grid {
 		display: flex;
 		flex-direction: row;
-		height: 80upx;
+		height: 66upx;
 		align-content: center;
 		justify-content: center;
+		align-items: center;
+		color: #1C1C1C;
 		background-color: #FFF;
 		border-bottom: 1upx solid;
 		border-color: #eee;
 	}
 	
 	.header-grid image {
-		margin: 13upx;
-		width: 54upx;
-		height: 54upx;
+		margin: 12upx;
+		width: 30upx;
+		height: 30upx;
 	}
 	
 	.header-grid text {
-		line-height: 80upx;
-		font-size: 34upx;
+		font-size: 26upx;
 	}
 	/* 九宫格 */
 	.grid-9 {
@@ -73,7 +72,7 @@
 
 	.grid-9-item {
 		width: 250upx;
-		height: 360upx;
+		height: 320upx;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -85,7 +84,7 @@
 	
 	.grid-9-image {
 		width: 250upx;
-		height: 300upx;
+		height: 260upx;
 	}
 
 	.grid-9-text {
@@ -93,7 +92,6 @@
 		line-height: 60upx;
 		height: 60upx;
 		text-align: center;
-		font-size: 30upx;
-		color: crimson;
+		font-size: 22upx;
 	}
 </style>

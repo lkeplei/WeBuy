@@ -20,6 +20,7 @@
 			<tem-one4two v-if="template.type == 4" :template="template"></tem-one4two>
 			<tem-one4four v-if="template.type == 5" :template="template"></tem-one4four>
 			<tem-page v-if="template.type == 6" :template="template"></tem-page>
+			
 		</block>
 	</view>
 </template>
@@ -70,7 +71,7 @@
 					},
 					{
 						type: 3,
-						title: '精品分类',
+						title: '九宫格-grid',
 						headerImg: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg',
 						list: [
 							{title: '11', image: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg', action: 'wb://account/setting'},
