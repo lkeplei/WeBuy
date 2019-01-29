@@ -1,4 +1,5 @@
 var routerMap = {
+	"wb://web/loadUrl": "/pages/webview/webview",
 	"wb://login/login": "/pages/login/login",
 	"wb://cart/cart": "/pages/cart/cart",
 	"wb://account/setting": "/pages/setting/setting",

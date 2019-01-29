@@ -6,7 +6,7 @@
 		</view>
 		
 		<view class="page-list">
-			<view class="page-list-item" v-for="(item,index) in template.list" :key="index" @click="clickItem(item)">
+			<view class="page-list-item" v-for="(item,index) in template.list" :key="index" @click="clickItem(item.action)">
 				<image class="page-list-image" :src="item.image"></image>
 				<text class="page-list-text">{{item.title}}</text>
 			</view>
@@ -48,16 +48,16 @@
 				return;
 			}
 			this.loadingType = 1;
-			for (let i = 0; i < 4; i++) {
-				this.list.push(this.list[0]);
+			for (let i = 0; i < 2; i++) {
+				this.list.push(this.list[Math.floor(Math.random()*this.list.length)]);
 			}
 			setTimeout(() => {
-				if (this.list.length >= 18) {
+				if (this.list.length >= 38) {
 					this.loadingType = 2;
 					return;
 				}
 				this.loadingType = 0;
-			}, 800);
+			}, 100);
 		},
 		methods: {
 			clickItem(url) {

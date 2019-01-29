@@ -13,7 +13,7 @@
 									<view class="edit" @tap.stop="showEdit(item)">
 										<text v-show="!isEdit">{{editText}}</text>
 									</view>
-									<text class="name" :style="{'margin-top': isEdit ? '24upx' : '0'}">{{item.name}}</text>
+									<text class="name" :style="{'margin-top': isEdit ? '16upx' : '0'}">{{item.name}}</text>
 									<view class="select">
 										<view class="sel-content" @tap.stop="tapSelect(item)">
 											<text>{{item.desc}}</text>
@@ -113,62 +113,32 @@
 				proList: [
 					{
 						"proId": 1232,
-						"name": "男装我是一个小步的端口，你年直接上去",
-						"image": "http://dummyimage.com/180x150",
+						"name": "PANMAX男士外套情侣秋装2018新款加棉棒球服外衣大码胖子潮牌夹克",
+						"image": "/static/cart/cart-item1.jpg",
 						"desc": "xl red",
 						"count": 1,
-						"price": 1224,
-						"originalPrice": "$230",
+						"price": 229.00,
+						"originalPrice": "$278.00",
 						checked: false
 					},
 					{
 						"proId": 1213,
-						"name": "男装",
-						"image": "http://dummyimage.com/180x150",
-						"desc": "xl red",
+						"name": "Fuse/迪芙斯2019春季银色婚鞋尖头细高跟浅口单鞋女DF91111023",
+						"image": "/static/cart/cart-item2.jpg",
+						"desc": "38 粉红色",
 						"count": 1,
-						"price": 1124,
-						"originalPrice": "$230",
+						"price": 599.00,
+						"originalPrice": "$1099.00",
 						checked: true
 					},
 					{
-						"proId": 1323,
-						"name": "男装",
-						"image": "http://dummyimage.com/180x150",
-						"desc": "xl red",
-						"count": 1,
-						"price": 124,
-						"originalPrice": "$230",
-						checked: false
-					},
-					{
-						"proId": 1243,
-						"name": "男装",
-						"image": "http://dummyimage.com/180x150",
-						"desc": "xl red",
-						"count": 1,
-						"price": 124,
-						"originalPrice": "$230",
-						checked: false
-					},
-					{
-						"proId": 12543,
-						"name": "男装",
-						"image": "http://dummyimage.com/180x150",
-						"desc": "xl red",
-						"count": 1,
-						"price": 124,
-						"originalPrice": "$230",
-						checked: false
-					},
-					{
 						"proId": 1253,
-						"name": "男装",
-						"image": "http://dummyimage.com/180x150",
+						"name": "好孩子婴儿推车高景观四轮避震宝宝婴儿手推车可躺可坐折叠GB08-W",
+						"image": "/static/cart/cart-item3.jpg",
 						"desc": "xl red",
 						"count": 1,
-						"price": 124,
-						"originalPrice": "$230",
+						"price": 1099.00,
+						"originalPrice": "$1999.00",
 						checked: false
 					}
 				],
@@ -401,6 +371,8 @@
 	}
 	
 	.pro-edit {
+		display: flex;
+		flex-direction: column;
 		width: 100px;
 		height: 232upx;
 		background-color: #FE0650;
@@ -420,6 +392,8 @@
 	}
 	
 	.pro-info {
+		display: flex;
+		flex-direction: column;
 		width: 510upx;
 		padding-right: 20upx;
 		margin: 0 0 24upx 12upx;
@@ -431,12 +405,13 @@
 		flex-direction: row;
 		justify-content: flex-end;
 		color: #D9D9D9;
-		height: 24upx;
+		line-height: 16upx;
+		height: 16upx;
 	}
 	
 	.pro-info .name {
 		color: #606060;
-		height: 24upx;
+		height: 48upx;
 	}
 	
 	.pro-info .select {

@@ -308,6 +308,19 @@
 					"bounce": "none" //关闭窗口回弹效果
 				}
 			}
+		},
+		
+		//webview
+		{
+			"path": "pages/webview/webview",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					// "titleNView": false, //禁用原生导航栏
+					"bounce": "none" ,//关闭窗口回弹效果
+					"titleText": ""
+				}
+			}
 		}
 	],
 	"globalStyle": {
