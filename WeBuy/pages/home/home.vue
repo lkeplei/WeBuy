@@ -218,6 +218,7 @@
 		border: 2upx solid;
 		border-color: #eee;
 		margin-top: 6px;
+		background-color: rgba(255, 255, 255, 0.8);
 	}
 	
 	.input-view image {

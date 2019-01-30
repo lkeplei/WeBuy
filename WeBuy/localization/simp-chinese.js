@@ -28,6 +28,7 @@ module.exports = {
 	navTitleOrder: '我的订单',
 	navTitleOrderDetail: '订单详情',
 	navTitleProductDetail: '商品详情',
+	navTitleLogin: '登录',
 	
 	placeholderMail: '请输入邮箱',
 	placeholderPwd: '请输入密码',

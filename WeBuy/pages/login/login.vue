@@ -2,10 +2,7 @@
 	<view class="page">
 		<view class="input-view">
 			<input type="text" focus="true" v-model="userMail" :placeholder="placeholderMail"/>
-			<view class="password">
-				<input :placeholder="placeholderPwd" v-model="userPwd" :password="showPassword" />
-				<wb-icon size="20" :type="'eye'" :class="[!showPassword ? 'uni-active' : '']" @click="changePassword"></wb-icon>
-			</view>
+			<input :placeholder="placeholderPwd" v-model="userPwd" :password="showPassword" />
 		</view>
 		
 		<button type="primary" @tap="login">{{loginText}}</button>
@@ -23,6 +20,12 @@
 				placeholderMail: this.local('placeholderMail'),
 				placeholderPwd: this.local('placeholderPwd')
 			};
+		},
+		onLoad() {
+			// 设置导航栏标题
+			uni.setNavigationBarTitle({
+				title: this.local('navTitleLogin')
+			});
 		},
 		methods: {
 			changePassword: function () {
@@ -50,22 +53,12 @@
 </script>
 
 <style scoped>
-	.password {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-	}
-	
-	.input-view {
-		
-	}
-	
 	input {
 		margin: 30upx;
 		border: 1px solid;
 		border-color: #eee;
 		height: 36px;
-		line-height: 36px;
+		line-height: 30px;
 		border-radius: 4px;
 		padding: 0 10px;
 	}

@@ -45,11 +45,32 @@
 				</view>
 			</block>
 		</view>
+		
+		<view class="container">
+			<text class="cart-guess-title">{{guessTitleText}}</text>
+			
+			<view class="news-grid-9">
+				<view class="news-grid-9-item" v-for="(item, index) in guessList" :key="index" @click="goProductDetail(item.proId)">
+					<image class="news-grid-9-image" :src="item.url"></image>
+					<text class="news-grid-9-text">{{item.price}}</text>
+					<view class="news-grid-heart" @click.stop="clickHeart(item)">
+						<image :src="item.wishImg"></image>
+						<text>{{item.number}}</text>
+					</view>
+				</view>
+			</view>
+			<load-more v-show="guessList.length > 6" :loadingType="loadingType" :contentText="contentText"></load-more>
+		</view>
 	</view>
 </template>
 
 <script>
+	import loadMore from '../../components/load-more.vue'
+	
 	export default {
+		components: {
+			'load-more': loadMore
+		},
 		data() {
 			return {
 				statusHeight: 20,
@@ -72,7 +93,180 @@
 						{image:'/static/account/account-contact.png', text: this.local('accountContact'), action: 'wb://'},
 						{image:'/static/account/account-support.png', text: this.local('accountSupport'), action: 'wb://'}
 					]
-				]
+				],
+				
+				guessTitleText: this.local('cartGuessTitle'),
+				guessPage: 0,
+				guessList: [
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-1.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "17230",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartLike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-2.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "12230",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartDislike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-3.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "12130",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartDislike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-4.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "12",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartLike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-5.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "13",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartDislike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-6.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "1220",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartDislike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-7.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "1290",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartLike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-8.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "1830",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartDislike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-9.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "10",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartDislike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-10.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "30",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartLike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-11.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "11230",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartDislike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-12.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "30",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartDislike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-13.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "1237",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartLike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-14.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "1430",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartDislike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-15.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "2230",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartDislike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-16.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "123",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartLike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-17.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "230",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartDislike.png',
+						"discount": "30%"    /*折扣数*/
+					},
+					{
+						"proId": 12,    /*商品id*/
+						"url": "/static/account/guess-18.jpg",    /*商品图片地址*/
+						"wish": true,    /*是否已在心愿表*/
+						"number": "130",    /*有多少人加入心愿*/
+						"price": "$121.30",    /*商品价格*/
+						wishImg: '../../static/cart/cartDislike.png',
+						"discount": "30%"    /*折扣数*/
+					}
+				],
+				loadingType: 0,
+				contentText: {
+					contentdown: this.local('loadingDown'),
+					contentrefresh: this.local('loadingFresh'),
+					contentnomore: this.local('loadingNomore')
+				}
 			};
 		},
 		onLoad() {
@@ -88,6 +282,40 @@
 			this.post('user/info', {}).then(res => {
 				this.accountName = res.data.name;
 			});
+		},
+		onReachBottom() {
+			if (this.loadingType != 0) {
+				return;
+			}
+			this.loadingType = 1;
+			for (let i = 0; i < 3; i++) {
+				this.guessList.push(this.guessList[Math.floor(Math.random()*this.guessList.length)]);
+			}
+			setTimeout(() => {
+				if (this.guessList.length >= 60) {
+					this.loadingType = 2;
+					return;
+				}
+				this.loadingType = 0;
+			}, 50);
+			
+// 			if (this.loadingType != 0) {
+// 				return;
+// 			}
+// 			
+// 			this.loadingType = 1;
+// 			this.post('user/getGuessList', {page: this.guessPage}).then(res => {
+// 				this.guessPage++;
+// 				this.loadingType = res.data.haveMore ? 0 : 2;
+// 				
+// 				if (res.data.list && res.data.list.length > 0) {
+// 					res.data.list.forEach((product) => {
+// 						product.wishImg = '../../static/cart/' + item.wish ? 'cartLike.png' : 'cartDislike.png';
+// 					});	
+// 					
+// 					this.guessList.concat(res.data.list);
+// 				}
+// 			});
 		},
 		onNavigationBarButtonTap(index) {
 			this.router('wb://account/setting', () => {});
@@ -124,6 +352,15 @@
 			clickAction: function(action) {
 				this.router(action, () => {
 					
+				});
+			},
+			goProductDetail: function(proId) {
+				this.router('wb://product/detail?proId=' + proId, () => {});	
+			},
+			clickHeart: function(item) {
+				this.post('product/like', {proId: item.proId}).then(res => {
+					item.number = res.data.number;
+					item.wish = res.data.wish;
 				});
 			}
 		}
@@ -227,7 +464,7 @@
 		display: flex;
 		flex-direction: column;
 		background-color: #FFFFFF;
-		margin-top: 20upx;
+		margin: 20upx 0;
 	}
 	
 	.service-line {
@@ -272,5 +509,97 @@
 		color: #bbb;
 		-webkit-transform: translateY(-50%);
 		transform: translateY(-50%);
+	}
+	
+	/* 猜你喜欢 */
+	.container {
+		font-size: 28upx;
+		color: #666666;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: #FFFFFF;
+	}
+	
+	.cart-img {
+		margin-top: 70upx;
+		width: 240upx;
+		height: 240upx;
+	}
+	
+	.cart-desc {
+		margin: 20upx 0;
+	}
+	
+	.cart-buy {
+		width: 220upx;
+		height: 54upx;
+		color: #FFFFFF;
+		background-color: #333333;
+		margin-bottom: 90upx;
+	}
+	
+	.cart-buy text {
+		width: 100%;
+		line-height: 60upx;
+		text-align: center;
+	}
+	
+	.cart-guess-title {
+		color: #333333;
+		font-size: 34upx;
+		margin-top: 30upx;
+	}
+	
+	/* 九宫格 */
+	.news-grid-9 {
+		background: #FFF;
+		width: 750upx;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	
+	.news-grid-9-item {
+		width: 250upx;
+		height: 360upx;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		border-bottom: 2upx solid;
+		border-color: #eee;
+		box-sizing: border-box;
+		margin-top: 30upx;
+	}
+	
+	.news-grid-9-image {
+		width: 180upx;
+		height: 260upx;
+	}
+	
+	.news-grid-9-text {
+		width: 250upx;
+		line-height: 60upx;
+		height: 60upx;
+		text-align: center;
+		color: #FF0013;
+	}
+	
+	.news-grid-heart {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: 10upx;
+	}
+	
+	.news-grid-heart image {
+		width: 30upx;
+		height: 30upx;
+		margin-right: 12upx;
+	}
+	
+	.news-grid-heart text {
+		font-size: 22upx;
 	}
 </style>
