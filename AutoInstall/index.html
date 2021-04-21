@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<script type="text/javascript">
+function doLocation(url)
+{
+  var a = document.createElement("a");
+  if(!a.click) {
+    window.location = url;
+    return;
+  }
+  a.setAttribute("href", url);
+  a.style.display = "none";
+  document.body.appendChild(a);
+  a.click();
+}
+</script>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7 charset=utf8" />
+<title>SDeal</title></head>
+
+<body>
+
+<script type="text/javascript">
+doLocation('itms-services://?action=download-manifest&url=https://appinstall.aiyoumi.com/app/aixuedai/ios/2.0/install.plist');
+</script>
+
+
+</body>
+
+</html>
